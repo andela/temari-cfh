@@ -2,6 +2,7 @@
     "app": {
         "name": "Cards for Humanity - Development"
     },
+    "db": "mongodb://localhost:27017/temari",
     "facebook": {
         "clientID": "APP_ID",
         "clientSecret": "APP_SECRET",

@@ -9,12 +9,12 @@
         "url": "https://github.com/cardsforhumanity/cardsforhumanity.git"
     },
     "engines": {
-        "node": "0.10.x",
-        "npm": "1.2.x"
+        "node": "6.9 .x",
+        "npm": "3.10.x"
     },
     "scripts": {
         "start": "gulp",
-        "test": "node_modules/gulp/bin/gulp test"
+        "test": "gulp test"
     },
     "dependencies": {
         "express": "~3.4.0",
