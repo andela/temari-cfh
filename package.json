@@ -9,7 +9,7 @@
     "url": "https://github.com/cardsforhumanity/cardsforhumanity.git"
   },
   "engines": {
-    "node": "0.12.x",
+    "node": "4.6.x",
     "npm": "2.15.x"
   },
   "scripts": {
