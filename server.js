@@ -7,15 +7,21 @@ var express = require('express'),
     logger = require('mean-logger'),
     io = require('socket.io');
 
+
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
  */
 
 //Load configurations
+
 //if test env, load example file
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
-    config = require('./config/config'),
+var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+if (env === 'development' || !env) {
+    require('dotenv').config();
+}
+
+var config = require('./config/config'),
     auth = require('./config/middlewares/authorization'),
     mongoose = require('mongoose');
 
@@ -24,8 +30,8 @@ var db = mongoose.connect(config.db);
 
 //Bootstrap models
 var models_path = __dirname + '/app/models';
-var walk = function(path) {
-    fs.readdirSync(path).forEach(function(file) {
+var walk = function (path) {
+    fs.readdirSync(path).forEach(function (file) {
         var newPath = path + '/' + file;
         var stat = fs.statSync(newPath);
         if (stat.isFile()) {
@@ -44,7 +50,7 @@ require('./config/passport')(passport);
 
 var app = express();
 
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
     next();
 });
 
