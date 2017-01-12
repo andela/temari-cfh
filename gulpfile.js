@@ -43,7 +43,7 @@ gulp.task('sass', () => {
 
 //Jade Task
 gulp.task('jade', () => {
-    return gulp.src("app/views/**")
+    return gulp.src('app/views/**/*.jade')
         .pipe(jade())
         .pipe(gulp.dest('public/views/'));
 });
@@ -57,9 +57,9 @@ gulp.task('bower', () => {
 //Watch Task
 gulp.task('watch', () => {
     gulp.watch('public/css/*.scss', ['sass']);
-    gulp.watch('app/views/**', ['jade']);
     gulp.watch('app/**/*.js', ['jshint']);
-    gulp.watch('public/**/**').on('change', browserSync.reload);
+    gulp.watch(['public/**/**', 'app/views/**/*.jade'])
+        .on('change', browserSync.reload);
 });
 
 //Server Task
