@@ -28,10 +28,7 @@ gulp.task('mochaTest', () => {
 
 //Nodemon task
 gulp.task('nodemon', () => {
-    nodemon({
-        script: 'server.js',
-        ext: 'js'
-    })
+    nodemon({ script: 'server.js', ext: 'js' });
 });
 
 //Sass Task
@@ -51,7 +48,7 @@ gulp.task('jade', () => {
 //Bower Task
 gulp.task('bower', () => {
     bower()
-        .pipe(gulp.dest('./public/lib/'))
+        .pipe(gulp.dest('./public/lib/'));
 });
 
 //Watch Task
