@@ -23,7 +23,10 @@ gulp.task('jshint', () => {
 
 gulp.task('mochaTest', () => {
     gulp.src('test/**/*.js', { read: false })
-        .pipe(mocha({ reporter: 'spec' }));
+        .pipe(mocha({ reporter: 'spec' }))
+        .once('end', () => {
+            process.exit();
+        });
 });
 
 //Nodemon task
