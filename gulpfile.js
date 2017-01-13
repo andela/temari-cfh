@@ -7,8 +7,6 @@ const sass = require('gulp-sass');
 const bower = require('gulp-bower');
 const jade = require('gulp-jade');
 
-//Default task(s).
-gulp.task('default', ['jshint', 'server', 'watch', 'sass']);
 
 //jshint task
 gulp.task('jshint', () => {
@@ -73,3 +71,6 @@ gulp.task('server', ['nodemon'], () => {
 
 //Test task.
 gulp.task('test', ['mochaTest']);
+
+//Default task(s).
+gulp.task('default', ['jshint', 'server', 'watch', 'sass']);
