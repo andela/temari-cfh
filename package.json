@@ -14,7 +14,7 @@
     },
     "scripts": {
         "start": "gulp",
-        "test": "gulp test"
+        "test": "echo \"Error: no test specified\""
     },
     "dependencies": {
         "express": "~3.4.0",
