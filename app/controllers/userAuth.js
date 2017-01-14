@@ -6,7 +6,6 @@ var moment = require('moment');
 
 module.exports.login = function(req, res) {
   var body = req.body;
-  console.log(body);
   if (body.email && body.password) {
     User.findOne({ "email": body.email }, function(err, user) {
       if (err) {
