@@ -7,7 +7,7 @@ var moment = require('moment');
 module.exports.login = function(req, res) {
   var body = req.body;
   if (body.email && body.password) {
-    User.findOne({ "email": body.email }, function(err, user) {
+    User.findOne({ 'email': body.email }, function(err, user) {
       if (err) {
         res.status(500).send(err);
       }
