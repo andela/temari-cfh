@@ -1,8 +1,12 @@
 var jwt = require('jsonwebtoken');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var secret = 'ttv7yttvytftfftytftt';
+var dotEnv = require('dotenv');
 var moment = require('moment');
+
+dotEnv.config();
+
+var secret = process.env.SECRET_TOKEN_KEY;
 
 module.exports.login = function(req, res) {
   var body = req.body;
