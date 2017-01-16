@@ -1,4 +1,9 @@
+"use strict";
+
+//Include gulp
 const gulp = require('gulp');
+
+//Include gulp plugins
 const browserSync = require('browser-sync');
 const jshint = require('gulp-jshint');
 const mocha = require('gulp-mocha');
@@ -8,7 +13,7 @@ const bower = require('gulp-bower');
 const jade = require('gulp-jade');
 
 
-//jshint task
+//Include gulp tasks
 gulp.task('jshint', () => {
     return gulp.src([
             'gulpfile.js',
