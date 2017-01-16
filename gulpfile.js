@@ -13,7 +13,11 @@ const bower = require('gulp-bower');
 const jade = require('gulp-jade');
 
 
-//Include gulp tasks
+/*
+ **Include gulp tasks
+ */
+
+//jshint task
 gulp.task('jshint', () => {
     return gulp.src([
             'gulpfile.js',
