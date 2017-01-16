@@ -1,20 +1,15 @@
 language: node_js
 node_js:
-
   - "6"
   - "6.1"
   - "5.11"
 
 services:
   - mongodb
+  before_script:
+    - sleep 15
+    - mongo mydb_test --eval 'db.addUser("travis", "test");'
 
-before_script:
-  - sleep 15
-  - mongo mydb_test --eval 'db.addUser("travis", "test");'
-
-- '6'
-- '6.1'
-- '5.11'
 deploy:
   provider: heroku
   api_key:
