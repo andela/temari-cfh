@@ -13,8 +13,8 @@
         "callbackURL": "http://cfh.io/auth/twitter/callback"
     },
     "github": {
-        "clientID": "c28f43a83a9e8dc15895",
-        "clientSecret": "1462d8ef18c65df4054cbe8366c93c7339776bd7",
+        "clientID": "APP_ID",
+        "clientSecret": "APP_SECRET",
         "callbackURL": "https://temari-cfh-test.herokuapp.com/auth/github/callback"
     },
     "google": {
