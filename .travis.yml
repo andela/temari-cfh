@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-- '6'
-- '6.1'
-- '5.11'
+  - "6"
+  - "6.1"
+  - "5.11"
 deploy:
   provider: heroku
   api_key:
