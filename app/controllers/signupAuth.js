@@ -5,7 +5,7 @@ var moment = require('moment');
 
 
 // get jwt secret
-var secret = process.env.JWT_SECRET || 'super duper secret';
+var secret = process.env.JWT_SECRET || 'Very might secret';
 
 module.exports.signup = function (req, res) {
   var body = req.body;
@@ -14,7 +14,9 @@ module.exports.signup = function (req, res) {
     return res.json({success: false,
       message: 'Incomplete information. name, email and password are required.'
     });
-  }else{
+  }
+
+
     var newUser = new User({
       name: req.body.name,
       email: req.body.email,
@@ -22,45 +24,24 @@ module.exports.signup = function (req, res) {
     });
 
     newUser.save(function (err, user){
-      if(err){res.send(err);
-        //return res.status(401).json({success: false, 
-          //message: 'User already exists.'});
-      }else{
-      var expires = moment().add(7,'hours').valueOf();
-      var token = jwt.sign({
-        userId: user._id,
-        exp: expires
+      if(err){
+        return res.send(err);
+      }
+      
+      if (!err) {
+        var expires = moment().add(7,'hours').valueOf();
+        var token = jwt.sign({
+          userId: user._id,
+          exp: expires
       }, secret);
       res.json({success: true, message: 'Successfully created new user.',
         token: token,
         expires: expires});
     }
-    });
-  }
 
-  /*User.findOne({
-    email: req.body.email,
-    password: req.body.password
-  }, function (err, existingUser) {
-    if (existingUser) {
-      return res.send(409, {
-        message: 'User already exist.'
-      });
-    } 
-
-    var user = new User(req.body);
     
-        var expires = moment().add(7,'hours').valueOf();
-        var token = jwt.sign({
-          userId: user._id,
-          exp: expires,
-        }, secret);
-        res.send({
-          //
-          token: token,
-          expires:expires
-        });
-      
-      });*/
+    });
+
+  
 
 };
