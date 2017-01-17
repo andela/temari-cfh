@@ -23,7 +23,8 @@ module.exports = function(config) {
         'test/client/*.js',
         'public/js/**/*.js',
         'public/lib/**/*.js',
-        'app/controllers/*js'
+        'app/controllers/*js',
+        'app/models/*.js'
 
 
     ],
