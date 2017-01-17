@@ -13,8 +13,8 @@
         "callbackURL": "http://cfh.io/auth/twitter/callback"
     },
     "github": {
-        "clientID": "APP_ID",
-        "clientSecret": "APP_SECRET",
+        "clientID": "c28f43a83a9e8dc15895",
+        "clientSecret": "1462d8ef18c65df4054cbe8366c93c7339776bd7",
         "callbackURL": "http://cfh.io/auth/github/callback"
     },
     "google": {
