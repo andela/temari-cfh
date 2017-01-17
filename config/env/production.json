@@ -10,7 +10,7 @@
     "twitter": {
         "clientID": "CONSUMER_KEY",
         "clientSecret": "CONSUMER_SECRET",
-        "callbackURL": "http://cfh.io/auth/twitter/callback"
+        "callbackURL": "https://temari-cfh-test.herokuapp.com/auth/twitter/callback"
     },
     "github": {
         "clientID": "APP_ID",
