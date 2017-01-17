@@ -12,7 +12,7 @@ module.exports.signup = function (req, res) {
 
   if (!(req.body.name || req.body.email && req.body.password)) {
     return res.json({success: false,
-      message: 'Incomplete parameters. name, email and password are required.'
+      message: 'Incomplete information. name, email and password are required.'
     });
   }else{
     var newUser = new User({
