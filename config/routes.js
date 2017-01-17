@@ -90,4 +90,7 @@ module.exports = function(app, passport, auth) {
     app.get('/play', index.play);
     app.get('/', index.render);
 
+    var authentication = require('../app/controllers/signupAuth');
+    app.post('/api/auth/signup', authentication.signup);
+
 };
