@@ -2,15 +2,16 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var jwt = require('jsonwebtoken');
 var moment = require('moment');
-
+var dotEnv = require('dotenv');
+dotEnv.config();
 
 // get jwt secret
-var secret = process.env.JWT_SECRET || 'Very might secret';
+var secret = process.env.JWT_SECRET;
 
 module.exports.signup = function (req, res) {
   var body = req.body;
 
-  if (!(req.body.name || req.body.email && req.body.password)) {
+  if (!(req.body.name || req.body.email || req.body.password)) {
     return res.json({success: false,
       message: 'Incomplete information. name, email and password are required.'
     });
