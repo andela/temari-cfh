@@ -15,7 +15,7 @@
     "github": {
         "clientID": "c28f43a83a9e8dc15895",
         "clientSecret": "1462d8ef18c65df4054cbe8366c93c7339776bd7",
-        "callbackURL": "http://cfh.io/auth/github/callback"
+        "callbackURL": "https://temari-cfh-test.herokuapp.com/auth/github/callback"
     },
     "google": {
         "clientID": "APP_ID",
