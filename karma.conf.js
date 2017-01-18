@@ -20,13 +20,32 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     
     files: [
-        'test/client/*.js',
-        'public/js/**/*.js',
-        'public/lib/**/*.js',
+
+        'public/lib/jquery/build/release.js',
+        'public/lib/jquery/build/release-notes.js',
+        'public/lib/jquery/speed/benchmark.js',
+        'public/lib/jquery/speed/benchmarker.js',
+        'public/lib/jquery/speed/jquery-basis.js',
+        'public/lib/jquery/src/ajax/*.js',
+        'public/lib/jquery/src/*.js',
+        'public/lib/jquery/test/data/*.js',
+        'public/lib/jquery/*.js',
+        'public/lib/underscore/test/vendor/*.js',
+        'public/lib/underscore/test/*.js',
+        'public/lib/bootstrap/js/bootstrap.js',
+        'public/lib/bootstrap/js/bootstrap.min.js',
+        'public/lib/angular/angular.js',
+        'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+        'public/lib/angular-ui-utils/modules/route.js',
+        'public/js/init.js',
+        'public/js/app.js',
+        'public/js/directives.js',
+        'public/js/filters.js',
+        'public/js/services/global.js',
+        'public/js/services/socket.js',
         'app/controllers/*js',
-        'app/models/*.js'
-
-
+        'app/models/*.js',
+        'test/client/demoTest.spec.js'
     ],
 
 
@@ -79,7 +98,7 @@ module.exports = function(config) {
     // available browser launchers: 
     https://npmjs.org/browse/keyword/karma-launcher */
     
-    browsers: ['Chrome', 'phantomJs', 'firefox'],
+    browsers: ['Chrome', 'Firefox'], // 'PhantomJS']
 
 
     // Continuous Integration mode
