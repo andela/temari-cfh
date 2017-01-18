@@ -20,6 +20,6 @@
     "google": {
         "clientID": "APP_ID",
         "clientSecret": "APP_SECRET",
-        "callbackURL": "http://cfh.io/auth/google/callback"
+        "callbackURL": "https://temari-cfh-test.herokuapp.com/auth/google/callback"
     }
 }
