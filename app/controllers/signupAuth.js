@@ -1,14 +1,16 @@
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
-var jwt = require('jsonwebtoken');
-var moment = require('moment');
-var dotEnv = require('dotenv');
+'use strict';
+
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
+const jwt = require('jsonwebtoken');
+const moment = require('moment');
+const dotEnv = require('dotenv');
 dotEnv.config();
 
 // get jwt secret
-var secret = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET;
 
-module.exports.signup = function (req, res) {
+module.exports.signup = (req, res) => {
   var body = req.body;
 
   if (!(req.body.name || req.body.email || req.body.password)) {
@@ -24,7 +26,7 @@ module.exports.signup = function (req, res) {
       password: req.body.password
     });
 
-    newUser.save(function (err, user){
+    newUser.save( (err, user) =>{
       if(err){
         return res.send(err);
       }
