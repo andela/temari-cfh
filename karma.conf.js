@@ -21,31 +21,14 @@ module.exports = function(config) {
     
     files: [
 
-        'public/lib/jquery/build/release.js',
-        'public/lib/jquery/build/release-notes.js',
-        'public/lib/jquery/speed/benchmark.js',
-        'public/lib/jquery/speed/benchmarker.js',
-        'public/lib/jquery/speed/jquery-basis.js',
-        'public/lib/jquery/src/ajax/*.js',
-        'public/lib/jquery/src/*.js',
-        'public/lib/jquery/test/data/*.js',
-        'public/lib/jquery/*.js',
-        'public/lib/underscore/test/vendor/*.js',
-        'public/lib/underscore/test/*.js',
+        'public/lib/jquery/jquery.js',
+        'public/lib/underscore/underscore-min.js',
         'public/lib/bootstrap/js/bootstrap.js',
-        'public/lib/bootstrap/js/bootstrap.min.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/angular-ui-utils/modules/route.js',
-        'public/js/init.js',
-        'public/js/app.js',
-        'public/js/directives.js',
-        'public/js/filters.js',
-        'public/js/services/global.js',
-        'public/js/services/socket.js',
-        'app/controllers/*js',
-        'app/models/*.js',
-        'test/client/demoTest.spec.js'
+        'public/js/**/**.js',
+        'test/client/**/**.js'
     ],
 
 
@@ -84,14 +67,14 @@ module.exports = function(config) {
      possible values: config.LOG_DISABLE || config.LOG_ERROR ||
      config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG */
     
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
 
 
     /* enable / disable watching file and executing 
     tests whenever any file changes
     */
     
-    autoWatch: true,
+    autoWatch: false,
 
 
     /* start these browsers
