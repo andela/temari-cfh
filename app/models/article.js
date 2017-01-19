@@ -6,31 +6,27 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Answer Schema
+ * Article Schema
  */
-var AnswerSchema = new Schema({
-  id: {
-    type: Number
+var ArticleSchema = new Schema({
+  title: {
+    type: String
   },
-  text: {
+  content: {
     type: String,
     default: '',
     trim: true
   },
-  official: {
-    type: Boolean
-  },
-  expansion: {
-    type: String,
-    default: '',
-    trim: true
-  }
+  user: [{
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }]
 });
 
 /**
  * Statics
  */
-AnswerSchema.statics = {
+ArticleSchema.statics = {
   load: function(id, cb) {
     this.findOne({
       id: id
@@ -38,4 +34,4 @@ AnswerSchema.statics = {
   }
 };
 
-mongoose.model('Answer', AnswerSchema);
+mongoose.model('Article', ArticleSchema);

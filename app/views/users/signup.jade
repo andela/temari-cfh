@@ -2,13 +2,13 @@ extends auth
 
 block auth
   #main-bod
-      //Fixed Logo & Menu Bar Start 
+      //Fixed Logo & Menu Bar Start
       #top-part
          .wpb-top-bar
            #navver.mod-contain
               .row
                 //
-                   Logo 
+                   Logo
                 .wpb-logo-container
                   #landing-logo
                     span#first-word Cards
@@ -24,11 +24,11 @@ block auth
           .container
             #main-text.row
               //
-                 Teaser Text Start 
+                 Teaser Text Start
               .wpb-text
                 h3#slogan Sign Up / Sign In
               //
-                 Teaser Text End 
+                 Teaser Text End
 
 
   div.sign-body
@@ -37,17 +37,17 @@ block auth
         .control-group
           label.control-label(for='name') Full name
           .controls
-            input#name(type='text', name="name", placeholder='Full name', value=user.name)
+            input#name(type='text', name="name", placeholder='Full name', value="user.name")
 
         .control-group
           label.control-label(for='email') Email
           .controls
-            input#email(type='text', name="email", placeholder='Email', value=user.email)
+            input#email(type='text', name="email", placeholder='Email', value="user.email")
 
         .control-group
           label.control-label(for='username') Username
           .controls
-            input#username(type='text', name="username", placeholder='Username', value=user.username)
+            input#username(type='text', name="username", placeholder='Username', value="user.username")
 
         .control-group
           label.control-label(for='password') Password
@@ -62,7 +62,7 @@ block auth
         .form-actions
           a.show-sign-up(href='/app')
             button.btn.btn-primary(type='submit') Sign up
-            &nbsp;
+            | &nbsp;
             | or&nbsp;
             a.show-login(href="/signin") login
 
