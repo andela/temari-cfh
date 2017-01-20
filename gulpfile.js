@@ -18,11 +18,11 @@ const bower = require('gulp-bower');
 //jshint task
 gulp.task('jshint', () => {
   return gulp.src([
-    'gulpfile.js',
-    'app/**/*.js',
-    'test/**/*.js',
-    'public/js/**/*.js'
-  ]).pipe(jshint())
+      'gulpfile.js',
+      'app/**/*.js',
+      'test/**/*.js',
+      'public/js/**/*.js'
+    ]).pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish', { beep: true }));
 });
 
