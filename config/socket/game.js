@@ -40,7 +40,7 @@ function Game(gameID, io) {
     stateResults: 6
   };
   // setTimeout ID that triggers the czar judging state
-  // Used to automatically run czar judging if players don't pick before time limit
+  // Automatically runs czar judging if players don't pick before time limit
   // Gets cleared if players finish picking before time limit.
   this.choosingTimeout = 0;
   // setTimeout ID that triggers the result state
@@ -309,7 +309,8 @@ Game.prototype.pickCards = function(thisCardArray, thisPlayer) {
           }
           console.log('card', i, 'is at index', cardIndex);
           if (cardIndex !== null) {
-            tableCard.push(this.players[playerIndex].hand.splice(cardIndex, 1)[0]);
+            tableCard.push(
+              this.players[playerIndex].hand.splice(cardIndex, 1)[0]);
           }
           console.log('table object at', cardIndex, ':', tableCard);
         }
@@ -369,15 +370,19 @@ Game.prototype.removePlayer = function(thisPlayer) {
       // If players are currently picking a card, advance to a new round.
       if (this.state === 'waiting for players to pick') {
         clearTimeout(this.choosingTimeout);
-        this.sendNotification('The Czar left the game! Starting a new round.');
+        this.sendNotification(
+          'The Czar left the game! Starting a new round.');
         return this.stateChoosing(this);
       } else if (this.state === 'waiting for czar to decide') {
         // If players are waiting on a czar to pick, auto pick.
-        this.sendNotification('The Czar left the game! First answer submitted wins!');
+        this.sendNotification(
+          'The Czar left the game! First answer submitted wins!');
         this.pickWinning(this.table[0].card[0].id, thisPlayer, true);
       }
     } else {
-      // Update the czar's position if the removed player is above the current czar
+      /*  Update the czar's position
+       **  if the removed player is above the current czar
+       */
       if (playerIndex < this.czar) {
         this.czar--;
       }

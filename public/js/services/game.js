@@ -28,12 +28,6 @@ angular.module('mean.system')
     var self = this;
     var joinOverrideTimeout = 0;
 
-    var addToNotificationQueue = function(msg) {
-      notificationQueue.push(msg);
-      if (!timeout) { // Start a cycle if there isn't one
-        setNotification();
-      }
-    };
     var setNotification = function() {
       // If notificationQueue is empty, stop
       if (notificationQueue.length === 0) {
@@ -46,6 +40,14 @@ angular.module('mean.system')
         timeout = $timeout(setNotification, 1300);
       }
     };
+
+    var addToNotificationQueue = function(msg) {
+      notificationQueue.push(msg);
+      if (!timeout) { // Start a cycle if there isn't one
+        setNotification();
+      }
+    };
+
 
     var timeSetViaUpdate = false;
     var decrementTime = function() {
