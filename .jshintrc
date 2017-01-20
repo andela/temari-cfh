@@ -18,7 +18,8 @@
     "smarttabs": true,
     "globals": {
         "require": false,
-        "process": false
+        "process": false,
+        "expect": true
     },
     "jasmine": true
 }

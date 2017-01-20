@@ -1,3 +1,4 @@
 jshint:
-  config_file: .jshintrc
-  fail_on_violations: true
+  config_file: .jshintrc;
+
+fail_on_violations: true
