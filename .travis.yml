@@ -15,5 +15,4 @@ deploy:
   app:
     master: temari-cfc
     staging: temari-cfc-staging
-
 sudo: required

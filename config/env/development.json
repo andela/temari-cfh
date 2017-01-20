@@ -1,4 +1,5 @@
 {
+    "port": 3000,
     "app": {
         "name": "Cards for Humanity - Development"
     },
