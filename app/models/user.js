@@ -45,26 +45,30 @@ var validatePresenceOf = function(value) {
 
 // the below 4 validations only apply if you are signing up traditionally
 UserSchema.path('name').validate(function(name) {
-    // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) { return true; }
+  // if you are authenticating by any of the oauth strategies, don't validate
+  if (authTypes.indexOf(this.provider) !== -1) {
+    return true; }
   return name.length;
 }, 'Name cannot be blank');
 
 UserSchema.path('email').validate(function(email) {
-    // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) { return true; }
+  // if you are authenticating by any of the oauth strategies, don't validate
+  if (authTypes.indexOf(this.provider) !== -1) {
+    return true; }
   return email.length;
 }, 'Email cannot be blank');
 
 UserSchema.path('username').validate(function(username) {
-    // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) { return true; }
+  // if you are authenticating by any of the oauth strategies, don't validate
+  if (authTypes.indexOf(this.provider) !== -1) {
+    return true; }
   return username.length;
 }, 'Username cannot be blank');
 
 UserSchema.path('hashedPassword').validate(function(hashedPassword) {
-    // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) { return true; }
+  // if you are authenticating by any of the oauth strategies, don't validate
+  if (authTypes.indexOf(this.provider) !== -1) {
+    return true; }
   return hashedPassword.length;
 }, 'Password cannot be blank');
 
@@ -73,22 +77,26 @@ UserSchema.path('hashedPassword').validate(function(hashedPassword) {
  * Pre-save hook
  */
 UserSchema.pre('save', function(next) {
-  if (!this.isNew) { return next(); }
+  if (!this.isNew) {
+    return next(); }
 
-  if (!validatePresenceOf(this.password) && authTypes.indexOf(this.provider) === -1) { next(new Error('Invalid password')); } else { next(); }
+  if (!validatePresenceOf(this.password) &&
+    authTypes.indexOf(this.provider) === -1) {
+    next(new Error('Invalid password'));
+  } else { next(); }
 });
 
 /**
  * Methods
  */
 UserSchema.methods = {
-    /**
-     * Authenticate - check if the passwords are the same
-     *
-     * @param {String} plainText
-     * @return {Boolean}
-     * @api public
-     */
+  /**
+   * Authenticate - check if the passwords are the same
+   *
+   * @param {String} plainText
+   * @return {Boolean}
+   * @api public
+   */
   authenticate: function(plainText) {
     if (!plainText || !this.hashedPassword) {
       return false;
@@ -96,15 +104,16 @@ UserSchema.methods = {
     return bcrypt.compareSync(plainText, this.hashedPassword);
   },
 
-    /**
-     * Encrypt password
-     *
-     * @param {String} password
-     * @return {String}
-     * @api public
-     */
+  /**
+   * Encrypt password
+   *
+   * @param {String} password
+   * @return {String}
+   * @api public
+   */
   encryptPassword: function(password) {
-    if (!password) { return ''; }
+    if (!password) {
+      return ''; }
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   }
 };

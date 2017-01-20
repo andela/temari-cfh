@@ -3,7 +3,7 @@ angular.module('mean.system')
     var _this = this;
     _this._data = {
       user: window.user,
-      authenticated: !! window.user
+      authenticated: !!window.user
     };
 
     return _this._data;
@@ -12,11 +12,11 @@ angular.module('mean.system')
     return {
       getAvatars: function() {
         return $q.all([
-          $http.get('/avatars')
-        ])
-        .then(function(results) {
-          return results[0].data;
-        });
+            $http.get('/avatars')
+          ])
+          .then(function(results) {
+            return results[0].data;
+          });
       }
     };
   }])
@@ -24,17 +24,18 @@ angular.module('mean.system')
     return {
       userDonated: function(donationObject) {
         return $q.all([
-          $http.post('/donations', donationObject)
-        ])
-        .then(function(results) {
-          console.log('userDonated success', results);
-        });
+            $http.post('/donations', donationObject)
+          ])
+          .then(function(results) {
+            console.log('userDonated success', results);
+          });
       }
     };
   }])
   .factory('MakeAWishFactsService', [function() {
     return {
       getMakeAWishFacts: function() {
+        /* jshint ignore:start */
         var facts = ['Health professionals who treat wish kids, including nurses and doctors, overwhelmingly believe that the wish experience can improve a wish kids’ physical health.',
           'Most health professionals say a wish come true has the potential to be a positive turning point in the child’s battle for health.',
           'Parents and volunteers observe that a wish come true makes kids feel stronger and more energetic.',
@@ -58,7 +59,9 @@ angular.module('mean.system')
           'Make-A-Wish needs 2.5 billion frequent flier miles to meet all the travel needs for wish kids and their families.',
           'Nearly 75 percent of wish experiences involve travel.',
           'The Walt Disney Company is involved in 40 percent of the wishes Make-A-Wish grants.',
-          'As of August 2012, the average cost of a wish was $8,141.'];
+          'As of August 2012, the average cost of a wish was $8,141.'
+        ];
+        /* jshint ignore:end */
         var shuffleIndex = facts.length;
         var temp;
         var randNum;

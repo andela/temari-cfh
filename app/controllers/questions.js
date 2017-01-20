@@ -34,26 +34,28 @@ exports.show = function(req, res) {
  * List of Questions
  */
 exports.all = function(req, res) {
-  Question.find({ official: true, numAnswers: { $lt: 3 } }).select('-_id').exec(function(err, questions) {
-    if (err) {
-      res.render('error', {
-        status: 500
-      });
-    } else {
-      res.jsonp(questions);
-    }
-  });
+  Question.find({ official: true, numAnswers: { $lt: 3 } })
+    .select('-_id').exec(function(err, questions) {
+      if (err) {
+        res.render('error', {
+          status: 500
+        });
+      } else {
+        res.jsonp(questions);
+      }
+    });
 };
 
 /**
  * List of Questions (for Game class)
  */
 exports.allQuestionsForGame = function(cb) {
-  Question.find({ official: true, numAnswers: { $lt: 3 } }).select('-_id').exec(function(err, questions) {
-    if (err) {
-      console.log(err);
-    } else {
-      cb(questions);
-    }
-  });
+  Question.find({ official: true, numAnswers: { $lt: 3 } })
+    .select('-_id').exec(function(err, questions) {
+      if (err) {
+        console.log(err);
+      } else {
+        cb(questions);
+      }
+    });
 };
