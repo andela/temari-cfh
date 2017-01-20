@@ -20,7 +20,7 @@ module.exports = function(passport) {
     }, function(err, user) {
       user.email = null;
       user.facebook = null;
-      user.hashed_password = null;
+      user.hashedPassword = null;
       done(err, user);
     });
   });
@@ -48,7 +48,7 @@ module.exports = function(passport) {
           });
         }
         user.email = null;
-        user.hashed_password = null;
+        user.hashedPassword = null;
         return done(null, user);
       });
     }
@@ -75,8 +75,10 @@ module.exports = function(passport) {
             twitter: profile._json
           });
           user.save(function(err) {
-            if (err) console.log(err);
-            return done(err, user);
+            if (err) {
+              console.log(err);
+              return done(err, user);
+            }
           });
         } else {
           return done(err, user);
@@ -108,9 +110,11 @@ module.exports = function(passport) {
             facebook: profile._json
           });
           user.save(function(err) {
-            if (err) console.log(err);
-            user.facebook = null;
-            return done(err, user);
+            if (err) {
+              console.log(err);
+              user.facebook = null;
+              return done(err, user);
+            }
           });
         } else {
           user.facebook = null;
@@ -142,8 +146,10 @@ module.exports = function(passport) {
             github: profile._json
           });
           user.save(function(err) {
-            if (err) console.log(err);
-            return done(err, user);
+            if (err) {
+              console.log(err);
+              return done(err, user);
+            }
           });
         } else {
           return done(err, user);
@@ -174,8 +180,10 @@ module.exports = function(passport) {
             google: profile._json
           });
           user.save(function(err) {
-            if (err) console.log(err);
-            return done(err, user);
+            if (err) {
+              console.log(err);
+              return done(err, user);
+            }
           });
         } else {
           return done(err, user);

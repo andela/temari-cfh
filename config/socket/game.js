@@ -401,15 +401,18 @@ Game.prototype.pickWinning = function(thisCard, thisPlayer, autopicked) {
     });
     if (cardIndex !== -1) {
       this.winningCard = cardIndex;
-      var winnerIndex = this._findPlayerIndexBySocket(this.table[cardIndex].player);
-      this.sendNotification(this.players[winnerIndex].username + ' has won the round!');
+      var winnerIndex =
+        this._findPlayerIndexBySocket(this.table[cardIndex].player);
+      this.sendNotification(this.players[winnerIndex].username +
+        ' has won the round!');
       this.winningCardPlayer = winnerIndex;
       this.players[winnerIndex].points++;
       clearTimeout(this.judgingTimeout);
       this.winnerAutopicked = autopicked;
       this.stateResults(this);
     } else {
-      console.log('WARNING: czar', thisPlayer, 'picked a card that was not on the table.');
+      console.log('WARNING: czar', thisPlayer,
+        'picked a card that was not on the table.');
     }
   } else {
     // TODO: Do something?

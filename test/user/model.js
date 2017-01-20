@@ -31,13 +31,14 @@ describe('<Unit Test>', function() {
         });
       });
 
-      it('should be able to show an error when try to save without name', function(done) {
-        user.name = '';
-        user.save(function(err) {
-          should.exist(err);
-          done();
+      it('should be able to show an error when try to save without name',
+        function(done) {
+          user.name = '';
+          user.save(function(err) {
+            should.exist(err);
+            done();
+          });
         });
-      });
     });
     after(function(done) {
       User.remove().then(function() {
