@@ -96,4 +96,8 @@ module.exports = function(app, passport, auth) {
   //search route
     const search = require('../app/controllers/api/search');
     app.get('/api/search/users/:email', search.users);
+
+  //mail route
+  const mail = require('../app/controllers/api/mailer');
+    app.post('/api/mail/user', mail.emailInvite);
 };

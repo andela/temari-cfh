@@ -9,6 +9,7 @@ angular.module('mean.system')
       $scope.modalShown = false;
       $scope.game = game;
       $scope.pickedCards = [];
+      $scope.inviteList = [];
       var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
       $scope.makeAWishFact = makeAWishFacts.pop();
 
@@ -211,8 +212,25 @@ angular.module('mean.system')
         game.joinGame();
       }
 
-    
-
+  $scope.inviteUsers = function () {  
+      $http({
+         method: 'POST',
+         url: '/api/mail/user',
+         headers: { 'Content-Type': 'application/json' },
+         data: {
+           email: $scope.email,
+           link: document.URL
+         }
+       })
+       .success(function(response) {
+         $scope.model = '';
+         $scope.inviteList.push($scope.email);
+       })
+       .error(function (response) {
+         $scope.message = 'Could not send invite';
+       });
+     };
+  
 $scope.searchUsers = function () {
     $http.get(`/api/search/users/${$scope.email}`)
       .success(function(data, status, headers, config) {
@@ -227,5 +245,5 @@ $scope.searchUsers = function () {
     $scope.email = word;
   };
 
-      }
-      ]);
+}
+]);
