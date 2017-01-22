@@ -100,6 +100,15 @@ angular.module('mean.system')
           game.state === 'awaiting players';
       };
 
+    $scope.customGameCreator = function () {
+    if (game.players[0] === undefined) {
+      return false;
+    } else if (window.user === null) {
+      return false;
+    }
+    return true;
+  };
+
       $scope.isPremium = function($index) {
         return game.players[$index].premium;
       };

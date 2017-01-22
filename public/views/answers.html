@@ -21,6 +21,21 @@
 </div>
 <div id="info-container" ng-show="game.state === 'awaiting players'">
   <div id="inner-info">
+    <div id="searchArea" ng-show="isCustomGame() === true">
+      <div id="show-search" ng-show="customGameCreator() === true">
+    <div class="row">
+      <h3> Search for friends and Send Invite ..... </h3>
+  <div class="col-lg-8 col-md-offset-2">
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Invite!</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Search for...">
+    </div>
+  </div>
+</div>
+</div>
+</div>
     <div id="lobby-how-to-play">How To Play</div>
     <ol id="oh-el">
       <li>Each player begins with, and will always have, 10 white answer cards.</li>
