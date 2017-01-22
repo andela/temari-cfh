@@ -92,4 +92,8 @@ module.exports = function(app, passport, auth) {
 
   var authn = require('../app/controllers/userAuth');
   app.post('/api/auth/login', authn.login);
+
+  //search route
+    const search = require('../app/controllers/api/search');
+    app.get('/api/search/users/:email', search.users);
 };

@@ -1,8 +1,8 @@
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', '$dialog',
+    '$location', 'MakeAWishFactsService', '$dialog','$http',
     function($scope, game, $timeout, $location,
-      MakeAWishFactsService, $dialog) {
+      MakeAWishFactsService, $dialog , $http) {
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
       $scope.showTable = false;
@@ -100,7 +100,7 @@ angular.module('mean.system')
           game.state === 'awaiting players';
       };
 
-    $scope.customGameCreator = function () {
+         $scope.customGameCreator = function () {
     if (game.players[0] === undefined) {
       return false;
     } else if (window.user === null) {
@@ -136,7 +136,8 @@ angular.module('mean.system')
       $scope.winnerPicked = function() {
         return game.winningCard !== -1;
       };
-
+      
+    
       $scope.startGame = function() {
         game.startGame();
       };
@@ -210,5 +211,21 @@ angular.module('mean.system')
         game.joinGame();
       }
 
-    }
-  ]);
+    
+
+$scope.searchUsers = function () {
+    $http.get(`/api/search/users/${$scope.email}`)
+      .success(function(data, status, headers, config) {
+        $scope.searchResult = data;
+      })
+      .error(function (data, status, headers, config) {
+        $scope.noResult = status;
+      });
+  };
+
+  $scope.selectList = function (word) {
+    $scope.email = word;
+  };
+
+      }
+      ]);

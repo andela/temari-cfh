@@ -30,9 +30,12 @@
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">Invite!</button>
       </span>
-      <input type="text" class="form-control" placeholder="Search for...">
+      <input type="text" class="form-control" placeholder="Search for..." ng-model="email" ng-keyup="searchUsers()">
     </div>
   </div>
+<div class="search-result" ng-if="email !== ''">
+<div ng-class="{'item-focus': hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-repeat="result in searchResult" ng-click="selectList(result.email)" ng-model="email">{{result.email}}</div>
+</div>
 </div>
 </div>
 </div>
