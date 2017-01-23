@@ -1,6 +1,7 @@
 var async = require('async');
 
 module.exports = function(app, passport, auth) {
+
     //User Routes
     var users = require('../app/controllers/users');
     app.get('/signin', users.signin);
@@ -92,5 +93,8 @@ module.exports = function(app, passport, auth) {
 
     var authentication = require('../app/controllers/signupAuth');
     app.post('/api/auth/signup', authentication.signup);
+
+    var authn = require('../app/controllers/userAuth');
+    app.post('/api/auth/login', authn.login);
 
 };
