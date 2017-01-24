@@ -1,9 +1,13 @@
-var async = require('async');
+var users = require('../app/controllers/users');
+var answers = require('../app/controllers/answers');
+var index = require('../app/controllers/index');
+var authentication = require('../app/controllers/signupAuth');
+var validation = require('../app/controllers/userAuth');
 
-module.exports = function(app, passport, auth) {
+module.exports = function (app, passport, auth) {
 
     //User Routes
-    var users = require('../app/controllers/users');
+
     app.get('/signin', users.signin);
     app.get('/signup', users.signup);
     app.get('/chooseavatars', users.checkAvatar);
@@ -69,7 +73,6 @@ module.exports = function(app, passport, auth) {
     app.param('userId', users.user);
 
     // Answer Routes
-    var answers = require('../app/controllers/answers');
     app.get('/answers', answers.all);
     app.get('/answers/:answerId', answers.show);
     // Finish with setting up the answerId param
@@ -87,14 +90,13 @@ module.exports = function(app, passport, auth) {
     app.get('/avatars', avatars.allJSON);
 
     //Home route
-    var index = require('../app/controllers/index');
     app.get('/play', index.play);
     app.get('/', index.render);
 
-    var authentication = require('../app/controllers/signupAuth');
+    //Signup routes
     app.post('/api/auth/signup', authentication.signup);
 
-    var authn = require('../app/controllers/userAuth');
-    app.post('/api/auth/login', authn.login);
+    //Signin routes
+    app.post('/api/auth/login', validation.login);
 
 };
