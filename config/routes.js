@@ -6,7 +6,7 @@ const avatars = require('../app/controllers/avatars');
 const authentication = require('../app/controllers/signupAuth');
 const validation = require('../app/controllers/userAuth');
 
-module.exports = function (app, passport, auth) {
+module.exports = (app, passport, auth) => {
 
   // User Routes
 
