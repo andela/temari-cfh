@@ -6,7 +6,8 @@ const moment = require('moment');
 
 const secret = process.env.SECRET_TOKEN_KEY;
 
-exports.signup = (req, res) => {
+
+module.exports.signup = (req, res) => {
   const body = req.body;
 
   if (!(body.name || body.email || body.password)) {
@@ -22,11 +23,11 @@ exports.signup = (req, res) => {
 
   newUser.save((err, user) => {
     if (err) {
-      res.send(err);
+      res.status(400).json({ success: false, message: 'cannot leave parameter empty' });
     } else {
       const expires = moment().add(7, 'days').valueOf();
-      const token = jwt.sign({ userId: user._id, exp: expires }, secret);
-      res.json({ success: true, message: 'Successfully created new user.', tok: token, exp: expires });
+      const token = jwt.sign({ id: user.id, exp: expires }, 'secret');
+      res.json({ success: true, message: 'Successfully created new user.', token, expires });
     }
   });
 };
