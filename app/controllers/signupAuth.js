@@ -1,48 +1,33 @@
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
-var jwt = require('jsonwebtoken');
-var moment = require('moment');
-var dotEnv = require('dotenv');
-dotEnv.config();
+const mongoose = require('mongoose');
 
-// get jwt secret
-var secret = process.env.JWT_SECRET;
+const User = mongoose.model('User');
+const jwt = require('jsonwebtoken');
+const moment = require('moment');
 
-module.exports.signup = function (req, res) {
-  var body = req.body;
+const secret = process.env.SECRET_TOKEN_KEY;
 
-  if (!(req.body.name || req.body.email || req.body.password)) {
-    return res.json({success: false,
+
+module.exports.signup = (req, res) => {
+  const body = req.body;
+
+  if (!(body.name || body.email || body.password)) {
+    return res.json({ success: false,
       message: 'Incomplete information. name, email and password are required.'
     });
   }
+  const newUser = new User({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  });
 
-
-    var newUser = new User({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password
-    });
-
-    newUser.save(function (err, user){
-      if(err){
-        return res.send(err);
-      }
-      
-      if (!err) {
-        var expires = moment().add(7,'hours').valueOf();
-        var token = jwt.sign({
-          userId: user._id,
-          exp: expires
-      }, secret);
-      res.json({success: true, message: 'Successfully created new user.',
-        token: token,
-        expires: expires});
+  newUser.save((err, user) => {
+    if (err) {
+      res.status(400).json({ success: false, message: 'cannot leave parameter empty' });
+    } else {
+      const expires = moment().add(7, 'days').valueOf();
+      const token = jwt.sign({ id: user.id, exp: expires }, 'secret');
+      res.json({ success: true, message: 'Successfully created new user.', token, expires });
     }
-
-    
-    });
-
-  
-
+  });
 };
