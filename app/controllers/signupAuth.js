@@ -23,11 +23,17 @@ module.exports.signup = (req, res) => {
 
   newUser.save((err, user) => {
     if (err) {
-      res.status(400).json({ success: false, message: 'cannot leave parameter empty' });
+      res.status(400).json({
+        success: false,
+        message: 'cannot leave parameter empty'
+      });
     } else {
       const expires = moment().add(7, 'days').valueOf();
       const token = jwt.sign({ id: user.id, exp: expires }, 'secret');
-      res.json({ success: true, message: 'Successfully created new user.', token, expires });
+      res.json({
+        success: true,
+        message: 'Successfully created new user.', token, expires
+      });
     }
   });
 };
