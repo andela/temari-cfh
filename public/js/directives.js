@@ -81,7 +81,15 @@ angular.module('mean.directives', [])
       templateUrl: '/views/timer.html',
       link: function(scope, elem, attr) {}
     };
-  }).directive('landing', function() {
+  })
+  .directive('invitelist', function() {
+    return {
+      restrict: 'EA',
+      templateUrl: '/views/invite-list.html',
+      link: function(scope, elem, attr) {}
+    };
+  })
+  .directive('landing', function() {
     return {
       restrict: 'EA',
       link: function(scope, elem, attr) {

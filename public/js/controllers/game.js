@@ -1,8 +1,9 @@
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', '$dialog','$http',
+    '$location', 'MakeAWishFactsService','$http',
     function($scope, game, $timeout, $location,
-      MakeAWishFactsService, $dialog , $http) {
+      MakeAWishFactsService , $http) {
+      $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
       $scope.showTable = false;
@@ -185,7 +186,7 @@ angular.module('mean.system')
               setTimeout(function() {
                 var link = document.URL;
                 var txt =
-                  'Give the following link to your ' +
+                  'If you insist, Give the following link to your ' +
                   'friends so they can join your game: ';
                 $('#lobby-how-to-play').text(txt);
                 $('#oh-el')
@@ -212,7 +213,17 @@ angular.module('mean.system')
         game.joinGame();
       }
 
-  $scope.inviteUsers = function () {  
+  $scope.inviteUsers = function () {
+  $scope.hideDiv = true;
+    if($scope.inviteList.length === game.playerMaxLimit - 1 ){
+          $('#modalView').modal('show');
+        return;
+    }
+    if($scope.inviteList.includes($scope.email)){
+                $('#modalView1').modal('show');
+        return;
+    }
+    
       $http({
          method: 'POST',
          url: '/api/mail/user',
@@ -225,13 +236,19 @@ angular.module('mean.system')
        .success(function(response) {
          $scope.model = '';
          $scope.inviteList.push($scope.email);
+         $scope.isMailSent = true;
+         
        })
        .error(function (response) {
          $scope.message = 'Could not send invite';
        });
-     };
+       $scope.emailAddress = '';
+    };
+
   
 $scope.searchUsers = function () {
+  $cope.isMailSent = false;
+  $scope.hideDiv = true;
     $http.get(`/api/search/users/${$scope.email}`)
       .success(function(data, status, headers, config) {
         $scope.searchResult = data;
@@ -246,4 +263,11 @@ $scope.searchUsers = function () {
   };
 
 }
-]);
+])
+.controller('ModalController', ['$scope', '$dialog', function($scope, $dialog) {
+  var $ctrl = this;
+
+  $scope.open = function() {
+    $('#modalView').modal('show');
+  };
+}]);
