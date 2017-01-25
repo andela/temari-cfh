@@ -1,3 +1,4 @@
+/* eslint no-unused-vars:0*/
 const mongoose = require('mongoose');
 
 const User = mongoose.model('User');

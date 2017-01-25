@@ -1,3 +1,6 @@
+/* eslint padded-blocks: ["error", { "classes": "never" }]*/
+/* eslint no-unused-vars:0*/
+
 const users = require('../app/controllers/users');
 const answers = require('../app/controllers/answers');
 const index = require('../app/controllers/index');
