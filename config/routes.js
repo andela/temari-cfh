@@ -1,10 +1,10 @@
-var users = require('../app/controllers/users');
-var answers = require('../app/controllers/answers');
-var index = require('../app/controllers/index');
-var questions = require('../app/controllers/questions');
-var avatars = require('../app/controllers/avatars');
-var authentication = require('../app/controllers/signupAuth');
-var validation = require('../app/controllers/userAuth');
+const users = require('../app/controllers/users');
+const answers = require('../app/controllers/answers');
+const index = require('../app/controllers/index');
+const questions = require('../app/controllers/questions');
+const avatars = require('../app/controllers/avatars');
+const authentication = require('../app/controllers/signupAuth');
+const validation = require('../app/controllers/userAuth');
 
 module.exports = function (app, passport, auth) {
 
