@@ -17,7 +17,7 @@ module.exports.signup = (req, res) => {
     email: req.body.email,
     password: req.body.password
   });
-  newUser.save((err, User) => {
+  newUser.save((err, user) => {
     if (err) {
       return res.status(400).json({
         success: false,
@@ -26,7 +26,7 @@ module.exports.signup = (req, res) => {
     }
     const expires = moment().add(7, 'days').valueOf();
     const token = jwt.sign({
-      id: User.id,
+      id: user.id,
       exp: expires
     }, 'secret');
     res.json({
