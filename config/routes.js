@@ -1,7 +1,3 @@
-/* eslint no-undef:0 */
-/* eslint no-unused-vars:0 */
-/* eslint padded-blocks:0 */
-
 const users = require('../app/controllers/users');
 const answers = require('../app/controllers/answers');
 const questions = require('../app/controllers/questions');
