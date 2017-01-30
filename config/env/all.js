@@ -1,6 +1,6 @@
 const path = require('path');
 
-const rootPath = path.resolve(__dirname + '/../..');
+const rootPath = path.normalize(path.resolve(__dirname, '/../..'));
 // const keys = rootPath + '/keys.txt';
 
 module.exports = {
