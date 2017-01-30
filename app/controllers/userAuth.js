@@ -15,14 +15,14 @@ module.exports.login = (req, res) => {
     });
   }
 
-  User.findOne({ 'email': body.email }, (err, user) => {
+  User.findOne({ email: body.email }, (err, user) => {
     if (err) {
       return res.status(500).send(err);
     }
     if (user && user.authenticate(body.password)) {
       const expires = moment().add('days', 7).valueOf();
       const token = jwt.sign({
-        iss: user._id,
+        iss: user.id,
         exp: expires,
       }, secret);
       return res.json({
@@ -32,11 +32,10 @@ module.exports.login = (req, res) => {
           email: user.email
         }
       });
-    } else {
-      res.status(400).json({
-        success: false,
-        message: 'Authentication failed for user'
-      });
     }
+    res.status(400).json({
+      success: false,
+      message: 'Authentication failed for user'
+    });
   });
 };
