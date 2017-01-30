@@ -21,14 +21,14 @@ module.exports.signup = (req, res) => {
     if (err) {
       return res.status(400).json({
         success: false,
-        message: 'cannot leave parameter empty'
+        message: 'cannot leave field empty'
       });
     }
     const expires = moment().add(7, 'days').valueOf();
     const token = jwt.sign({
       id: user.id,
       exp: expires
-    }, 'secret');
+    }, secret);
     res.json({
       success: true,
       message: 'Successfully created new user.',
