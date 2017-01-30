@@ -1,5 +1,3 @@
-/* eslint no-unused-vars:0 */
-
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
@@ -31,7 +29,7 @@ module.exports.signup = (req, res) => {
     const token = jwt.sign({
       id: user.id,
       exp: expires
-    }, 'secret');
+    }, secret);
     res.json({
       success: true,
       message: 'Successfully created new user.',
