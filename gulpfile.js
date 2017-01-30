@@ -1,3 +1,5 @@
+'use strict';
+
 //Include gulp
 const gulp = require('gulp');
 
