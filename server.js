@@ -1,3 +1,9 @@
+//if test env, load example file
+let env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+if (env === 'development' || !env) {
+    require('dotenv').config();
+}
 /**
  * Module dependencies.
  */
@@ -16,22 +22,14 @@ const mongoose = require('mongoose');
  */
 
 //Load configurations
-
-//if test env, load example file
-let env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
-if (env === 'development' || !env) {
-    require('dotenv').config();
-}
-
 //Bootstrap db connection
 mongoose.connect(config.db);
 
 //Bootstrap models
-let models_path = __dirname + '/app/models';
+let models_path = `${__dirname}/app/models`;
 let walk = function (path) {
     fs.readdirSync(path).forEach(function (file) {
-        let newPath = path + '/' + file;
+        let newPath = `${path}/${file}`;
         let stat = fs.statSync(newPath);
 
         if (stat.isFile()) {
@@ -61,7 +59,7 @@ require('./config/routes')(app, passport, auth);
 
 //Start the app by listening on <port>
 const server = app.listen(config.port, function() {
-    console.log('Express app started on port ' + config.port);
+    console.log(`Express app started on port ${config.port}`);
 });
 
 const ioObj = io.listen(server, { log: false });

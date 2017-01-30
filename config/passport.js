@@ -1,23 +1,23 @@
-var mongoose = require('mongoose'),
-  LocalStrategy = require('passport-local').Strategy,
-  TwitterStrategy = require('passport-twitter').Strategy,
-  FacebookStrategy = require('passport-facebook').Strategy,
-  GitHubStrategy = require('passport-github').Strategy,
-  GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
-  User = mongoose.model('User'),
-  config = require('./config');
+const mongoose = require('mongoose');
+const LocalStrategy = require('passport-local').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+const GitHubStrategy = require('passport-github').Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const User = mongoose.model('User');
+const config = require('./config');
 
 
-module.exports = function(passport) {
+module.exports = (passport) => {
   //Serialize sessions
-  passport.serializeUser(function(user, done) {
+  passport.serializeUser((user, done) => {
     done(null, user.id);
   });
 
-  passport.deserializeUser(function(id, done) {
+  passport.deserializeUser((id, done) => {
     User.findOne({
       _id: id
-    }, function(err, user) {
+    }, (err, user) => {
       user.email = null;
       user.facebook = null;
       user.hashedPassword = null;
@@ -27,13 +27,13 @@ module.exports = function(passport) {
 
   //Use local strategy
   passport.use(new LocalStrategy({
-      usernameField: 'email',
-      passwordField: 'password'
-    },
-    function(email, password, done) {
+    usernameField: 'email',
+    passwordField: 'password'
+  },
+    (email, password, done) => {
       User.findOne({
         email: email
-      }, function(err, user) {
+      }, (err, user) => {
         if (err) {
           return done(err);
         }
@@ -56,14 +56,14 @@ module.exports = function(passport) {
 
   //Use twitter strategy
   passport.use(new TwitterStrategy({
-      consumerKey: process.env.TWITTER_CONSUMER_KEY,
-      consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-      callbackURL: process.env.TWITTER_CALLBACK_URL
-    },
-    function(token, tokenSecret, profile, done) {
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    callbackURL: process.env.TWITTER_CALLBACK_URL
+  },
+    (token, tokenSecret, profile, done) => {
       User.findOne({
         'twitter.id_str': profile.id
-      }, function(err, user) {
+      }, (err, user) => {
         if (err) {
           return done(err);
         }
@@ -74,7 +74,7 @@ module.exports = function(passport) {
             provider: 'twitter',
             twitter: profile._json
           });
-          user.save(function(err) {
+          user.save((err) => {
             if (err) {
               console.log(err);
               return done(err, user);
@@ -89,14 +89,14 @@ module.exports = function(passport) {
 
   //Use facebook strategy
   passport.use(new FacebookStrategy({
-      clientID: process.env.FB_CLIENT_ID,
-      clientSecret: process.env.FB_CLIENT_SECRET,
-      callbackURL: process.env.FB_CLIENT_CALLBACK_URL
-    },
-    function(accessToken, refreshToken, profile, done) {
+    clientID: process.env.FB_CLIENT_ID,
+    clientSecret: process.env.FB_CLIENT_SECRET,
+    callbackURL: process.env.FB_CLIENT_CALLBACK_URL
+  },
+    (accessToken, refreshToken, profile, done) => {
       User.findOne({
         'facebook.id': profile.id
-      }, function(err, user) {
+      }, (err, user) => {
         if (err) {
           return done(err);
         }
@@ -109,7 +109,7 @@ module.exports = function(passport) {
             provider: 'facebook',
             facebook: profile._json
           });
-          user.save(function(err) {
+          user.save((err) => {
             if (err) {
               console.log(err);
               user.facebook = null;
@@ -126,14 +126,14 @@ module.exports = function(passport) {
 
   //Use github strategy
   passport.use(new GitHubStrategy({
-      clientID: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: process.env.GITHUB_CALLBACK_URL
-    },
-    function(accessToken, refreshToken, profile, done) {
+    clientID: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackURL: process.env.GITHUB_CALLBACK_URL
+  },
+    (accessToken, refreshToken, profile, done) => {
       User.findOne({
         'github.id': profile.id
-      }, function(err, user) {
+      }, (err, user) => {
         if (err) {
           return done(err);
         }
@@ -145,7 +145,7 @@ module.exports = function(passport) {
             provider: 'github',
             github: profile._json
           });
-          user.save(function(err) {
+          user.save((err) => {
             if (err) {
               console.log(err);
               return done(err, user);
@@ -160,14 +160,14 @@ module.exports = function(passport) {
 
   //Use google strategy
   passport.use(new GoogleStrategy({
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: process.env.GOOGLE_CLIENT_CALLBACK_URL
-    },
-    function(accessToken, refreshToken, profile, done) {
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    callbackURL: process.env.GOOGLE_CLIENT_CALLBACK_URL
+  },
+    (accessToken, refreshToken, profile, done) => {
       User.findOne({
         'google.id': profile.id
-      }, function(err, user) {
+      }, (err, user) => {
         if (err) {
           return done(err);
         }
@@ -179,7 +179,7 @@ module.exports = function(passport) {
             provider: 'google',
             google: profile._json
           });
-          user.save(function(err) {
+          user.save((err) => {
             if (err) {
               console.log(err);
               return done(err, user);

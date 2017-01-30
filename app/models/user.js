@@ -1,17 +1,17 @@
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
-  bcrypt = require('bcryptjs'),
-  _ = require('underscore'),
-  authTypes = ['github', 'twitter', 'facebook', 'google'];
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs');
+const _ = require('underscore');
+const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 
 /**
  * User Schema
  */
-var UserSchema = new Schema({
+const UserSchema = new Schema({
   name: String,
   email: String,
   username: String,
@@ -29,46 +29,49 @@ var UserSchema = new Schema({
 /**
  * Virtuals
  */
-UserSchema.virtual('password').set(function(password) {
+UserSchema.virtual('password').set((password) => {
   this._password = password;
   this.hashedPassword = this.encryptPassword(password);
-}).get(function() {
+}).get(() => {
   return this._password;
 });
 
 /**
  * Validations
  */
-var validatePresenceOf = function(value) {
-  return value && value.length;
-};
+const validatePresenceOf = (value) => value && value.length;
+
 
 // the below 4 validations only apply if you are signing up traditionally
-UserSchema.path('name').validate(function(name) {
+UserSchema.path('name').validate((name) => {
   // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) {
-    return true; }
+  if (authTypes.includes(this.provider)) {
+    return true;
+  }
   return name.length;
 }, 'Name cannot be blank');
 
-UserSchema.path('email').validate(function(email) {
+UserSchema.path('email').validate((email) => {
   // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) {
-    return true; }
+  if (authTypes.includes(this.provider)) {
+    return true;
+  }
   return email.length;
 }, 'Email cannot be blank');
 
-UserSchema.path('username').validate(function(username) {
+UserSchema.path('username').validate((username) => {
   // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) {
-    return true; }
+  if (authTypes.includes(this.provider)) {
+    return true;
+  }
   return username.length;
 }, 'Username cannot be blank');
 
-UserSchema.path('hashedPassword').validate(function(hashedPassword) {
+UserSchema.path('hashedPassword').validate((hashedPassword) => {
   // if you are authenticating by any of the oauth strategies, don't validate
-  if (authTypes.indexOf(this.provider) !== -1) {
-    return true; }
+  if (authTypes.includes(this.provider)) {
+    return true;
+  }
   return hashedPassword.length;
 }, 'Password cannot be blank');
 
@@ -76,12 +79,13 @@ UserSchema.path('hashedPassword').validate(function(hashedPassword) {
 /**
  * Pre-save hook
  */
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', (next) => {
   if (!this.isNew) {
-    return next(); }
+    return next();
+  }
 
   if (!validatePresenceOf(this.password) &&
-    authTypes.indexOf(this.provider) === -1) {
+    !authTypes.includes(this.provider)) {
     next(new Error('Invalid password'));
   } else { next(); }
 });
@@ -97,7 +101,7 @@ UserSchema.methods = {
    * @return {Boolean}
    * @api public
    */
-  authenticate: function(plainText) {
+  authenticate(plainText) {
     if (!plainText || !this.hashedPassword) {
       return false;
     }
@@ -111,9 +115,10 @@ UserSchema.methods = {
    * @return {String}
    * @api public
    */
-  encryptPassword: function(password) {
+  encryptPassword(password) {
     if (!password) {
-      return ''; }
+      return '';
+    }
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   }
 };

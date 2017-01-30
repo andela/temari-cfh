@@ -5,7 +5,7 @@ const User = mongoose.model('User');
 const moment = require('moment');
 const secret = process.env.SECRET_TOKEN_KEY;
 
-module.exports.login = function(req, res) {
+module.exports.login = (req, res) => {
   let body = req.body;
 
   if (!body.email && !body.password) {
@@ -15,7 +15,7 @@ module.exports.login = function(req, res) {
     });
   }
 
-  User.findOne({ 'email': body.email }, function(err, user) {
+  User.findOne({ 'email': body.email }, (err, user) => {
     if (err) {
       return res.status(500).send(err);
     }
