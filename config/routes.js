@@ -7,7 +7,6 @@ const authentication = require('../app/controllers/signupAuth');
 const validation = require('../app/controllers/userAuth');
 
 module.exports = (app, passport, auth) => {
-
   // User Routes
 
   app.get('/signin', users.signin);
