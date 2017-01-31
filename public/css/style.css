@@ -1,7 +1,13 @@
  .clear {
    clear:both;
  }
-
+.invite{
+border: 1px solid thick;
+width: 200px;
+height: 400px;
+margin-left: 10px;
+font-size: 14px;
+}
  .uppercase {
    text-transform: uppercase;
  }

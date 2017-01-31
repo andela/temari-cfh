@@ -27,40 +27,46 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           <h3 class="modal-title" id="exampleModalLabel" style="color:black">Only a maximum of 12 players are allowed per game, You cannot invite any other person.</h3>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
+</div>
 
-  <div class="modal fade" tabindex="-1" role="dialog" id="modalView1">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="exampleModalLabel2" style="color:black">Player has been previously invited</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="inner-info">
-    <div id="searchArea" ng-show="isCustomGame() === true">
-      <div id="show-search" ng-show="customGameCreator() === true">
-        <div class="row">
-          <h3> Search for friends and Send Invite ..... </h3>
-          <div class="col-lg-8 col-md-offset-2">
-            <div class="input-group">
-              <span class="input-group-btn">
+<div class="modal fade" tabindex="-1" role="dialog" id="modalView1">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="exampleModalLabel2" style="color:black">Player has been previously invited</h4>
+</div>
+</div>
+</div>
+</div>
+<div id="inner-info">
+  <div id="searchArea" ng-show="isCustomGame() === true">
+    <div id="show-search" ng-show="customGameCreator() === true">
+      <div class="row">
+        <h3> Search for friends and Send Invite ..... </h3>
+        <div class="col-lg-8 col-md-offset-2">
+          <div class="input-group">
+            <span class="input-group-btn">
         <button class="btn btn-default" type="button" ng-click="inviteUsers()" ng-model="button" >Invite!</button>
       </span>
-              <input ng-value="" name="email" type="text" id="invite" class="form-control" placeholder="Search for..." ng-model="emailAddress" ng-keyup="searchUsers()">
-            </div>
+            <!--<input ng-value="" ng-click="newMail()" name="email" type="text" id="invite" class="form-control" placeholder="Search for..." ng-model="emailAddress" ng-keyup="searchUsers()">-->
+            <input type="text" class="form-control" ng-model="email" ng-click="newMail()" ng-keyup="searchUsers()" placeholder="Search and enter an email address to invite">
+
           </div>
-          <div class="search-result" ng-show="email.$pristine">
-            <div id="searchResult" ng-class="{'tem-focus': hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-repeat="result in searchResult"
-              ng-click="selectList(result.email)" ng-model="email">{{result.email}}</div>
-          </div>
-          <p ng-if="isMailSent">Mail sent successfully</p>
         </div>
+        <div class="search-result" ng-if="email !== ''">
+          <!--<div id="searchResult" style="color:white" ng-class="{'tem-focus': hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-repeat="result in searchResult"
+            ng-model="email">{{result.email}} </div>
+          </div>-->
+          <div ng-class="{'item-focus': hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-repeat="result in searchResult"
+            ng-click="selectList(result.email)" ng-model="email">{{result.email}}
+          </div>
+
+        </div>
+        <p ng-if="isMailSent">Mail sent successfully</p>
       </div>
     </div>
     <div id="lobby-how-to-play">How To Play</div>
