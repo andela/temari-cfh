@@ -246,10 +246,9 @@ angular.module('mean.system')
       $scope.selectList = (word) => {
         $scope.email = word;
       };
-
     }
   ])
-  .controller('ModalController', ['$scope', '$dialog', function ($scope, $dialog) {
+  .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
     var $ctrl = this;
 
     $scope.open = function () {
