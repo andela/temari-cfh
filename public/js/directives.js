@@ -50,7 +50,7 @@ angular.module('mean.directives', [])
                   endStyle);
               }
               curQ.text = curQuestionArr.join('');
-              /* Clean up the last punctuation mark in the 
+              /* Clean up the last punctuation mark in the
                ** question if there already is one in the answer
                */
               if (shouldRemoveQuestionPunctuation) {
@@ -82,7 +82,7 @@ angular.module('mean.directives', [])
       link: function(scope, elem, attr) {}
     };
   })
-  .directive('invitelist', function() {
+  .directive('inviteList', function() {
     return {
       restrict: 'EA',
       templateUrl: '/views/invite-list.html',

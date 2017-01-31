@@ -1,8 +1,8 @@
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$http',
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser',
     function ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser, $http) {
+      MakeAWishFactsService, sendMail, searchUser) {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
@@ -219,22 +219,24 @@ angular.module('mean.system')
           $('#modalView').modal('show');
           return;
         }
+
         if ($scope.inviteList.includes($scope.email)) {
           $('#modalView1').modal('show');
           return;
         }
 
-
-        sendMail.postMail($scope.email, document.URL).then((res) => {
+        sendMail.postMail($scope.email, document.URL).then(() => {
           $scope.isMailSent = true;
           $scope.model = '';
           $scope.inviteList.push($scope.email);
           $scope.email = '';
         });
       };
+
       $scope.newMail = () => {
         $scope.isMailSent = false;
       };
+
       $scope.searchUsers = () => {
         $scope.isMailSent = false;
         $scope.hideDiv = true;

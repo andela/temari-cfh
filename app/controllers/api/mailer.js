@@ -28,9 +28,9 @@ exports.emailInvite = (req, res) => {
 
   sg.API(request, (error, response) => {
     if (error) {
-      res.json({ status: error });
+      res.json(error);
       return;
     }
-    res.json({ status: response.response });
+    res.json(response.response);
   });
 };

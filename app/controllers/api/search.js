@@ -12,7 +12,8 @@ exports.users = (req, res) => {
       .exec((err, result) => {
         if (err) {
           return res.json(err);
-        } else if (!result) {
+        }
+        if (!result) {
           return res.status(404).send('No data found');
         }
         res.json(result);
