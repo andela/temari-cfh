@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
+const parse = require('mongoose-parse');
 
 const User = mongoose.model('User');
 const secret = process.env.SECRET_TOKEN_KEY;
@@ -20,10 +21,7 @@ module.exports.signup = (req, res) => {
   });
   newUser.save((err, user) => {
     if (err) {
-      return res.status(400).json({
-        success: false,
-        message: 'cannot leave parameter empty'
-      });
+      return parse(err);
     }
     const expires = moment().add(7, 'days').valueOf();
     const token = jwt.sign({
