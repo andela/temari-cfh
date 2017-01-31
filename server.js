@@ -1,3 +1,4 @@
+'use strict';
 //if test env, load example file
 let env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
