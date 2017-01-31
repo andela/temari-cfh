@@ -1,39 +1,36 @@
-require('dotenv').config();
+const helper = require('sendgrid').mail;
 
-const nodemailer = require('nodemailer');
+const sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
 exports.emailInvite = (req, res) => {
-const gameLink = req.body.link;
+  const gameLink = req.body.link;
   const email = req.body.email;
   const link = `${gameLink}&email=${email}`;
-   var transporter = nodemailer.createTransport({
-        service: 'Gmail',
-        auth: {
-            user: process.env.USERNAME,
-            pass: process.env.PASSW,
-        }
-    });
+  const fromEmail = new helper.Email('info@temari-cfh.com');
+  const toEmail = new helper.Email(email);
+  const subject = 'Invitation to join Temari-cfh game!';
+  const data = `<img src="https://goo.gl/aN3NWR" height="50"
+  width="300"><hr/>You have been invited by <strong><a>${req.user.name}</a>
+  </strong> to join a game in cards for humanity<br/><br/>Cards for Humanity is
+  a fast-paced online version of the popular card game,Cards Against Humanity,
+  that gives you the opportunity to donate to children in need - all while
+  remaining as despicable and awkward as you naturally are.<br/> <h3>Click on
+  this link <a href="${link}">here</a> to join the game now.<h3><br/>`;
+  const content = new helper.Content('text/html', data);
+  const mail = new helper.Mail(fromEmail, subject, toEmail, content);
 
 
-const mailOptions = {
-    from: 'mariam@gmail.com',
-    to: req.body.email,
-    subject: 'Invitation to join CFH Game',
-    html: `<h3> Cards for Humanity(CFH) </h3><br/><hr/>
-    You have been invited by <a>${req.user.name}</a> 
-    to join a game in cards for humanity<br/>It is a 
-    gracious way to give back to the human race.<br/>
-    <h3>click on this link <a href="${link}">here</a>
-    <h3> to join the game now.<br/>`
-  };
+  const request = sg.emptyRequest({
+    method: 'POST',
+    path: '/v3/mail/send',
+    body: mail.toJSON(),
+  });
 
-  transporter.sendMail(mailOptions, (error, info) => {
+  sg.API(request, (error, response) => {
     if (error) {
-      res.json({ status: 'error' });
-    } else {
-      res.json({ status: info.response, user: req.user });
-    
-      
+      res.json({ status: error });
+      return;
     }
+    res.json({ status: response.response });
   });
 };
