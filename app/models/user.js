@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Module dependencies.
  */
@@ -29,10 +30,10 @@ const UserSchema = new Schema({
 /**
  * Virtuals
  */
-UserSchema.virtual('password').set(function(password) {
+UserSchema.virtual('password').set(function (password) {
   this._password = password;
   this.hashedPassword = this.encryptPassword(password);
-}).get(function() {
+}).get(function () {
   return this._password;
 });
 

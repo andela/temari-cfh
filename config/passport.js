@@ -1,3 +1,4 @@
+'use strict';
 const mongoose = require('mongoose');
 const LocalStrategy = require('passport-local').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;

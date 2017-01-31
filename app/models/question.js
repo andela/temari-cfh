@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Module dependencies.
  */
@@ -35,7 +36,7 @@ const QuestionSchema = new Schema({
  * Statics
  */
 QuestionSchema.statics = {
-  load:(id, cb) => {
+  load: (id, cb) => {
     this.findOne({
       id: id
     }).select('-_id').exec(cb);

@@ -1,8 +1,9 @@
+'use strict';
 /**
  * Module dependencies.
  */
 const mongoose = require('mongoose');
-const  config = require('../../config/config');
+const config = require('../../config/config');
 const Schema = mongoose.Schema;
 
 /**
@@ -27,7 +28,7 @@ const ArticleSchema = new Schema({
  * Statics
  */
 ArticleSchema.statics = {
-  load:(id, cb) => {
+  load: (id, cb) => {
     this.findOne({
       id: id
     }).select('-_id').exec(cb);

@@ -1,3 +1,4 @@
+'use strict';
 /**
  * List of Avatars
  */
@@ -21,7 +22,7 @@ avatars = ['/img/chosen/E01.png',
 exports.allJSON = (req, res) => {
   // Only return the first 12
   // The last 4 are reserved for guests
-  res.jsonp(avatars.slice(0,12));
+  res.jsonp(avatars.slice(0, 12));
 };
 
 exports.all = () => {

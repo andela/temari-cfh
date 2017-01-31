@@ -1,5 +1,6 @@
- class Player {
-   constructor(socket) {
+'use strict';
+class Player {
+  constructor(socket) {
     this.socket = socket;
     this.hand = [];
     this.points = 0;
@@ -8,7 +9,7 @@
     this.avatar = null;
     this.userID = null;
     this.color = null;
-   }
+  }
 }
 
 module.exports = Player;
