@@ -14,17 +14,13 @@ const bower = require('gulp-bower');
  */
 
 // eslint task
-gulp.task('eslint', () => {
-  gulp.src([
-    'gulpfile.js',
-    'app/**/*.js',
-    'test/**/*.js',
-    'public/js/**/*.js'
-  ]).pipe(eslint())
-    .pipe(eslint.format(), {
-      beep: true
-    });
+gulp.task('lint', () => {
+  gulp.src(['**/*.js', '!node_modules/**'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });
+
 
 gulp.task('mochaTest', () => {
   gulp.src('test/**/*.js', {
@@ -80,4 +76,4 @@ gulp.task('server', ['nodemon'], () => {
 gulp.task('test', ['mochaTest']);
 
 // Default task(s).
-gulp.task('default', ['eslint', 'server', 'watch']);
+gulp.task('default', ['server', 'watch', 'lint']);
