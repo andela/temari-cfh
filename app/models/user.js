@@ -1,8 +1,13 @@
+'use strict';
+/**
+ * Module dependencies.
+ */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 const _ = require('underscore');
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
+
 
 /**
  * User Schema
@@ -35,10 +40,11 @@ UserSchema.virtual('password').set(function (password) {
 /**
  * Validations
  */
-const validatePresenceOf = value => value && value.length;
+const validatePresenceOf = (value) => value && value.length;
+
 
 // the below 4 validations only apply if you are signing up traditionally
-UserSchema.path('name').validate(function (name) {
+UserSchema.path('name').validate((name) => {
   // if you are authenticating by any of the oauth strategies, don't validate
   if (authTypes.includes(this.provider)) {
     return true;
@@ -46,7 +52,7 @@ UserSchema.path('name').validate(function (name) {
   return name.length;
 }, 'Name cannot be blank');
 
-UserSchema.path('email').validate(function (email) {
+UserSchema.path('email').validate((email) => {
   // if you are authenticating by any of the oauth strategies, don't validate
   if (authTypes.includes(this.provider)) {
     return true;
@@ -54,7 +60,7 @@ UserSchema.path('email').validate(function (email) {
   return email.length;
 }, 'Email cannot be blank');
 
-UserSchema.path('username').validate(function (username) {
+UserSchema.path('username').validate((username) => {
   // if you are authenticating by any of the oauth strategies, don't validate
   if (authTypes.includes(this.provider)) {
     return true;
@@ -62,7 +68,7 @@ UserSchema.path('username').validate(function (username) {
   return username.length;
 }, 'Username cannot be blank');
 
-UserSchema.path('hashedPassword').validate(function (hashedPassword) {
+UserSchema.path('hashedPassword').validate((hashedPassword) => {
   // if you are authenticating by any of the oauth strategies, don't validate
   if (authTypes.includes(this.provider)) {
     return true;
@@ -74,7 +80,7 @@ UserSchema.path('hashedPassword').validate(function (hashedPassword) {
 /**
  * Pre-save hook
  */
-UserSchema.pre('save', function (next) {
+UserSchema.pre('save', (next) => {
   if (!this.isNew) {
     return next();
   }
