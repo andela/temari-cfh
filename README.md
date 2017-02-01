@@ -1,3 +1,7 @@
+[![houndci](https://img.shields.io/badge/protected%20by-hound-orange.svg)](https://img.shields.io/badge/protected%20by-hound-orange.svg)
+[![Build Status](https://travis-ci.org/andela/temari-cfh.svg?branch=master)](https://travis-ci.org/andela/temari-cfh)
+[![Coverage Status](https://coveralls.io/repos/github/andela/temari-cfh/badge.svg?branch=develop)](https://coveralls.io/github/andela/temari-cfh?branch=develop)
+
 Cards for Humanity - [http://cfh.io](http://cfh.io)
 ===========
 Cards for Humanity is a fast-paced online version of the popular card game, Cards Against Humanity, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are.
