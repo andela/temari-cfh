@@ -4,16 +4,17 @@ const questions = require('../app/controllers/questions');
 const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 const authentication = require('../app/controllers/signupAuth');
+const validation = require('../app/controllers/userAuth');
 
-module.exports = function (app, passport, auth) {
-  //User Routes
+module.exports = (app, passport, auth) => {
+  // User Routes
 
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
   app.get('/chooseavatars', users.checkAvatar);
   app.get('/signout', users.signout);
 
-  //Setting up the users api
+  // Setting up the users api
   app.post('/users', users.create);
   app.post('/users/avatars', users.avatars);
 
@@ -28,7 +29,7 @@ module.exports = function (app, passport, auth) {
   app.get('/users/me', users.me);
   app.get('/users/:userId', users.show);
 
-  //Setting the facebook oauth routes
+  // Setting the facebook oauth routes
   app.get('/auth/facebook', passport.authenticate('facebook', {
     scope: ['email'],
     failureRedirect: '/signin'
@@ -38,7 +39,7 @@ module.exports = function (app, passport, auth) {
     failureRedirect: '/signin'
   }), users.authCallback);
 
-  //Setting the github oauth routes
+  // Setting the github oauth routes
   app.get('/auth/github', passport.authenticate('github', {
     failureRedirect: '/signin'
   }), users.signin);
@@ -47,7 +48,7 @@ module.exports = function (app, passport, auth) {
     failureRedirect: '/signin'
   }), users.authCallback);
 
-  //Setting the twitter oauth routes
+  // Setting the twitter oauth routes
   app.get('/auth/twitter', passport.authenticate('twitter', {
     failureRedirect: '/signin'
   }), users.signin);
@@ -56,7 +57,7 @@ module.exports = function (app, passport, auth) {
     failureRedirect: '/signin'
   }), users.authCallback);
 
-  //Setting the google oauth routes
+  // Setting the google oauth routes
   app.get('/auth/google', passport.authenticate('google', {
     failureRedirect: '/signin',
     scope: [
@@ -69,7 +70,7 @@ module.exports = function (app, passport, auth) {
     failureRedirect: '/signin'
   }), users.authCallback);
 
-  //Finish with setting up the userId param
+  // Finish with setting up the userId param
   app.param('userId', users.user);
 
   // Answer Routes
@@ -80,22 +81,20 @@ module.exports = function (app, passport, auth) {
   app.param('answerId', answers.answer);
 
   // Question Routes
-
   app.get('/questions', questions.all);
   app.get('/questions/:questionId', questions.show);
   // Finish with setting up the questionId param
   app.param('questionId', questions.question);
 
   // Avatar Routes
-
   app.get('/avatars', avatars.allJSON);
 
-  //Home route
-
+  // Home route
   app.get('/play', index.play);
   app.get('/', index.render);
 
-
   app.post('/api/auth/signup', authentication.signup);
+
+  app.post('/api/auth/login', validation.login);
 
 };

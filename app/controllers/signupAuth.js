@@ -33,6 +33,5 @@ module.exports.signup = (req, res) => {
       token,
       expires
     });
-
   });
 };
