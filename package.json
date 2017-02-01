@@ -68,6 +68,8 @@
     "underscore": "~1.5.2",
     "view-helpers": "~0.1.3",
     "webpack": "^1.14.0"
+    "underscore": "~1.5.2",
+    "view-helpers": "~0.1.3"
   },
   "devDependencies": {
     "eslint": "^3.14.1",
