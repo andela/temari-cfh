@@ -112,7 +112,6 @@ module.exports = (passport) => {
           });
           user.save((err) => {
             if (err) {
-              console.log(err);
               user.facebook = null;
               return done(err, user);
             }
@@ -148,7 +147,6 @@ module.exports = (passport) => {
           });
           user.save((err) => {
             if (err) {
-              console.log(err);
               return done(err, user);
             }
           });
@@ -182,7 +180,6 @@ module.exports = (passport) => {
           });
           user.save((err) => {
             if (err) {
-              console.log(err);
               return done(err, user);
             }
           });

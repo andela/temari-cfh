@@ -33,9 +33,12 @@ const AnswerSchema = new Schema({
  */
 AnswerSchema.statics = {
   load: (id, cb) => {
-    this.findOne({
+    this
+    .findOne({
       id: id
-    }).select('-_id').exec(cb);
+    })
+    .select('-_id')
+    .exec(cb);
   }
 };
 

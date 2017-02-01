@@ -1,5 +1,4 @@
 'use strict';
-const async = require('async');
 
 module.exports = (app, passport, auth) => {
   //User Routes

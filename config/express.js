@@ -45,7 +45,7 @@ module.exports = (app, passport, mongoose) => {
 
   //express/mongo session storage
   app.use(express.session({
-    secret: 'MEAN',
+    secret: process.env.SECRET_TOKEN_KEY,
     store: new mongoStore({
       url: config.db,
       collection: 'sessions',

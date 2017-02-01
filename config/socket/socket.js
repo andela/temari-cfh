@@ -26,7 +26,8 @@ module.exports = (io) => {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards, socket.id);
       } else {
-        console.log('Received pickCard from', socket.id, 'but game does not appear to exist!');
+        console.log('Received pickCard from',
+         socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -34,7 +35,8 @@ module.exports = (io) => {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card, socket.id);
       } else {
-        console.log('Received pickWinning from', socket.id, 'but game does not appear to exist!');
+        console.log('Received pickWinning from',
+         socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -51,8 +53,9 @@ module.exports = (io) => {
 
     socket.on('startGame', () => {
       if (allGames[socket.gameID]) {
-        const thisGame = allGames[socket.gameID];
-        console.log('comparing', thisGame.players[0].socket.id, 'with', socket.id);
+        let thisGame = allGames[socket.gameID];
+        console.log('comparing', thisGame.players[0]
+        .socket.id, 'with', socket.id);
         if (thisGame.players.length >= thisGame.playerMinLimit) {
           // Remove this game from gamesNeedingPlayers so new players can't join it.
           gamesNeedingPlayers.forEach((game, index) => {
@@ -76,8 +79,8 @@ module.exports = (io) => {
     });
   });
 
-  var joinGame = (socket, data) => {
-    const player = new Player(socket);
+  let joinGame = (socket, data) => {
+    let player = new Player(socket);
     data = data || {};
     player.userID = data.userID || 'unauthenticated';
     if (data.userID !== 'unauthenticated') {
@@ -113,7 +116,7 @@ module.exports = (io) => {
     console.log(socket.id, 'is requesting room', requestedGameId);
     if (requestedGameId.length && allGames[requestedGameId]) {
       console.log('Room', requestedGameId, 'is valid');
-      const game = allGames[requestedGameId];
+      let game = allGames[requestedGameId];
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect
       // the new game ID, causing the view to reload.
@@ -150,11 +153,11 @@ module.exports = (io) => {
 
   };
 
-  var fireGame = (player, socket) => {
+  let fireGame = (player, socket) => {
     let game;
     if (gamesNeedingPlayers.length <= 0) {
       gameID += 1;
-      const gameIDStr = gameID.toString();
+      let gameIDStr = gameID.toString();
       game = new Game(gameIDStr, io);
       allPlayers[socket.id] = true;
       game.players.push(player);
@@ -198,7 +201,7 @@ module.exports = (io) => {
       }
     }
     console.log(socket.id, 'has created unique game', uniqueRoom);
-    const game = new Game(uniqueRoom, io);
+    let game = new Game(uniqueRoom, io);
     allPlayers[socket.id] = true;
     game.players.push(player);
     allGames[uniqueRoom] = game;
@@ -212,7 +215,7 @@ module.exports = (io) => {
   var exitGame = (socket) => {
     console.log(socket.id, 'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
-      const game = allGames[socket.gameID];
+      let game = allGames[socket.gameID];
       console.log(socket.id, 'has left game', game.gameID);
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
