@@ -1,8 +1,13 @@
-var async = require('async');
+const users = require('../app/controllers/users');
+const answers = require('../app/controllers/answers');
+const questions = require('../app/controllers/questions');
+const avatars = require('../app/controllers/avatars');
+const index = require('../app/controllers/index');
+const authentication = require('../app/controllers/signupAuth');
 
-module.exports = function(app, passport, auth) {
+module.exports = function (app, passport, auth) {
   //User Routes
-  var users = require('../app/controllers/users');
+
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
   app.get('/chooseavatars', users.checkAvatar);
@@ -68,28 +73,29 @@ module.exports = function(app, passport, auth) {
   app.param('userId', users.user);
 
   // Answer Routes
-  var answers = require('../app/controllers/answers');
+
   app.get('/answers', answers.all);
   app.get('/answers/:answerId', answers.show);
   // Finish with setting up the answerId param
   app.param('answerId', answers.answer);
 
   // Question Routes
-  var questions = require('../app/controllers/questions');
+
   app.get('/questions', questions.all);
   app.get('/questions/:questionId', questions.show);
   // Finish with setting up the questionId param
   app.param('questionId', questions.question);
 
   // Avatar Routes
-  var avatars = require('../app/controllers/avatars');
+
   app.get('/avatars', avatars.allJSON);
 
   //Home route
-  var index = require('../app/controllers/index');
+
   app.get('/play', index.play);
   app.get('/', index.render);
 
-  var authn = require('../app/controllers/userAuth');
-  app.post('/api/auth/login', authn.login);
+
+  app.post('/api/auth/signup', authentication.signup);
+
 };
