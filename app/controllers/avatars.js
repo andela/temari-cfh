@@ -1,7 +1,8 @@
+'use strict';
 /**
  * List of Avatars
  */
-avatars = ['/img/chosen/E01.png',
+const avatars = ['/img/chosen/E01.png',
   '/img/chosen/F01.png',
   '/img/chosen/FA04.png',
   '/img/chosen/FB03.png',
@@ -18,12 +19,12 @@ avatars = ['/img/chosen/E01.png',
   '/img/chosen/N04.png',
   '/img/chosen/N05.png'];
 
-exports.allJSON = function(req, res) {
+exports.allJSON = (req, res) => {
   // Only return the first 12
   // The last 4 are reserved for guests
-  res.jsonp(avatars.slice(0,12));
+  res.jsonp(avatars.slice(0, 12));
 };
 
-exports.all = function() {
+exports.all = () => {
   return avatars;
 };

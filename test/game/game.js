@@ -1,3 +1,4 @@
+'use strict';
 var should = require('should');
 var io = require('socket.io-client');
 
@@ -31,7 +32,7 @@ describe('Game Server', function() {
   });
 
   it('Should send a game update upon receiving request to joinGame',
-    function(done) {
+    function (done) {
       var client1 = io.connect(socketURL, options);
       var disconnect = function() {
         client1.disconnect();
@@ -129,7 +130,7 @@ describe('Game Server', function() {
     });
 
   it('Should automatically start game when 6 players are in a game',
-    function(done) {
+    function (done) {
       var client1, client2, client3, client4, client5, client6;
       client1 = io.connect(socketURL, options);
       var disconnect = function() {

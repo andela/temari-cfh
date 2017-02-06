@@ -1,14 +1,15 @@
+'use strict';
 /**
  * Module dependencies.
  */
-var mongoose = require('mongoose'),
-  config = require('../../config/config'),
-  Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const config = require('../../config/config');
+const Schema = mongoose.Schema;
 
 /**
  * Answer Schema
  */
-var AnswerSchema = new Schema({
+const AnswerSchema = new Schema({
   id: {
     type: Number
   },
@@ -31,10 +32,13 @@ var AnswerSchema = new Schema({
  * Statics
  */
 AnswerSchema.statics = {
-  load: function(id, cb) {
-    this.findOne({
+  load: (id, cb) => {
+    this
+    .findOne({
       id: id
-    }).select('-_id').exec(cb);
+    })
+    .select('-_id')
+    .exec(cb);
   }
 };
 

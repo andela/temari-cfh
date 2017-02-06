@@ -1,13 +1,13 @@
 /**
  * Module dependencies.
  */
-var should = require('should'),
-  app = require('../../server'),
-  mongoose = require('mongoose'),
-  User = mongoose.model('User');
+const should = require('should');
+const app = require('../../server');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 //Globals
-var user;
+let user;
 
 //The tests
 describe('<Unit Test>', function() {
@@ -25,14 +25,14 @@ describe('<Unit Test>', function() {
 
     describe('Method Save', function() {
       it('should be able to save without problems', function(done) {
-        user.save(function(err) {
+        user.save(function (err) {
           should.not.exist(err);
           done();
         });
       });
 
       it('should be able to show an error when try to save without name',
-        function(done) {
+        function (done) {
           user.name = '';
           user.save(function(err) {
             should.exist(err);
@@ -41,7 +41,7 @@ describe('<Unit Test>', function() {
         });
     });
     after(function(done) {
-      User.remove().then(function() {
+      User.remove().then(function () {
         done();
       });
     });
