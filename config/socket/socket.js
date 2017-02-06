@@ -94,7 +94,8 @@ module.exports = (io) => {
         if (!user) {
           // If the user's ID isn't found (rare)
           player.username = 'Guest';
-          player.avatar = avatars[Math.floor(Math.random() * 4) + 12];
+          player.avatar = avatars[Math.floor(Math
+          .random()*4)+12];
         } else {
           player.username = user.name;
           player.premium = user.premium || 0;
@@ -110,7 +111,7 @@ module.exports = (io) => {
     }
   };
 
-  var getGame = (player, socket, requestedGameId, createPrivate) => {
+  let getGame = (player, socket, requestedGameId, createPrivate) => {
     requestedGameId = requestedGameId || '';
     createPrivate = createPrivate || false;
     console.log(socket.id, 'is requesting room', requestedGameId);
@@ -187,7 +188,7 @@ module.exports = (io) => {
     }
   };
 
-  var createGameWithFriends = (player, socket) => {
+  let createGameWithFriends = (player, socket) => {
     let isUniqueRoom = false;
     let uniqueRoom = '';
     // Generate a random 6-character game ID
@@ -212,7 +213,7 @@ module.exports = (io) => {
     game.sendUpdate();
   };
 
-  var exitGame = (socket) => {
+  let exitGame = (socket) => {
     console.log(socket.id, 'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
       let game = allGames[socket.gameID];

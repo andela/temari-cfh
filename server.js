@@ -27,7 +27,7 @@ const mongoose = require('mongoose');
 mongoose.connect(config.db);
 
 //Bootstrap models
-let models_path = `${__dirname}/app/models`;
+let modelsPath = `${__dirname}/app/models`;
 let walk = function (path) {
     fs.readdirSync(path).forEach(function (file) {
         let newPath = `${path}/${file}`;
@@ -43,7 +43,7 @@ let walk = function (path) {
     });
 };
 
-walk(models_path);
+walk(modelsPath);
 
 //bootstrap passport config
 require('./config/passport')(passport);

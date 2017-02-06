@@ -35,7 +35,9 @@ exports.show = (req, res) => {
  * List of Answers
  */
 exports.all = (req, res) => {
-    Answer.find({ official: true }).select('-_id').exec((err, answers) => {
+    Answer.find({ official: true })
+    .select('-_id')
+    .exec((err, answers) => {
         if (err) {
             res.render('error', {
                 status: 500
@@ -50,7 +52,9 @@ exports.all = (req, res) => {
  * List of Answers (for Game class)
  */
 exports.allAnswersForGame = (cb) => {
-    Answer.find({ official: true }).select('-_id').exec((err, answers) => {
+    Answer.find({ official: true })
+    .select('-_id')
+    .exec((err, answers) => {
         if (err) {
             console.log(err);
         } else {

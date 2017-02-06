@@ -231,18 +231,18 @@ class Game {
   stateDissolveGame() {
     this.state = 'game dissolved';
     this.sendUpdate();
-  };
+  }
 
   getQuestions(cb) {
     questions.allQuestionsForGame((data) => {
       cb(null, data);
-    });
+    })
   };
 
   getAnswers(cb) {
     answers.allAnswersForGame((data) => {
       cb(null, data);
-    });
+    })
   };
 
   shuffleCards(cards) {
@@ -273,7 +273,7 @@ class Game {
         }
       }
     }
-  };
+  }
 
   _findPlayerIndexBySocket(thisPlayer) {
     let playerIndex = -1;
@@ -283,7 +283,7 @@ class Game {
       }
     });
     return playerIndex;
-  };
+  }
 
   pickCards(thisCardArray, thisPlayer) {
     // Only accept cards when we expect players to pick a card
@@ -300,7 +300,8 @@ class Game {
           }
         });
         if (!previouslySubmitted) {
-          // Find the indices of the cards in the player's hand (given the card ids)
+          // Find the indices of the cards in the player's hand
+          // (given the card ids)
           let tableCard = [];
           for (let i = 0; i < thisCardArray.length; i++) {
             let cardIndex = null;
@@ -334,7 +335,7 @@ class Game {
     } else {
       console.log('NOTE:', thisPlayer, 'picked a card during', this.state);
     }
-  };
+  }
 
   getPlayer(thisPlayer) {
     const playerIndex = this._findPlayerIndexBySocket(thisPlayer);
@@ -343,7 +344,7 @@ class Game {
     } else {
       return {};
     }
-  };
+  }
 
   removePlayer(thisPlayer) {
     const playerIndex = this._findPlayerIndexBySocket(thisPlayer);
@@ -393,7 +394,7 @@ class Game {
 
       this.sendUpdate();
     }
-  };
+  }
 
   pickWinning(thisCard, thisPlayer, autopicked) {
     autopicked = autopicked || false;
@@ -410,7 +411,8 @@ class Game {
         this.winningCard = cardIndex;
         const winnerIndex =
           this._findPlayerIndexBySocket(this.table[cardIndex].player);
-        this.sendNotification(`${this.players[winnerIndex].username} has won the round!`);
+        this.sendNotification(`${this.players[winnerIndex]
+          .username} has won the round!`);
         this.winningCardPlayer = winnerIndex;
         this.players[winnerIndex].points++;
         clearTimeout(this.judgingTimeout);
@@ -424,14 +426,14 @@ class Game {
       // TODO: Do something?
       this.sendUpdate();
     }
-  };
+  }
 
   killGame() {
     console.log('Killing game', this.gameID);
     clearTimeout(this.resultsTimeout);
     clearTimeout(this.choosingTimeout);
     clearTimeout(this.judgingTimeout);
-  };
+  }
 };
 
 module.exports = Game;
