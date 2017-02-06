@@ -1,5 +1,5 @@
 angular.module('mean.system')
-  .factory('Global', [function() {
+  .factory('Global', [function () {
     var _this = this;
     _this._data = {
       user: window.user,
@@ -8,33 +8,62 @@ angular.module('mean.system')
 
     return _this._data;
   }])
-  .factory('AvatarService', ['$http', '$q', function($http, $q) {
+  .factory('AvatarService', ['$http', '$q', function ($http, $q) {
     return {
-      getAvatars: function() {
+      getAvatars: function () {
         return $q.all([
-            $http.get('/avatars')
-          ])
-          .then(function(results) {
+          $http.get('/avatars')
+        ])
+          .then(function (results) {
             return results[0].data;
           });
       }
     };
   }])
-  .factory('DonationService', ['$http', '$q', function($http, $q) {
+  .factory('DonationService', ['$http', '$q', function ($http, $q) {
     return {
-      userDonated: function(donationObject) {
+      userDonated: function (donationObject) {
         return $q.all([
-            $http.post('/donations', donationObject)
-          ])
-          .then(function(results) {
+          $http.post('/donations', donationObject)
+        ])
+          .then(function (results) {
             console.log('userDonated success', results);
           });
       }
     };
   }])
-  .factory('MakeAWishFactsService', [function() {
+  .factory('sendMail', ['$http', '$q', ($http, $q) => {
     return {
-      getMakeAWishFacts: function() {
+      postMail: (email, gameUrl) => {
+        const deferred = $q.defer();
+        $http.post('/api/mail/user', { email: email, link: gameUrl },
+          { headers: { 'Content-Type': 'application/json' } })
+          .success((res) => {
+            deferred.resolve(res);
+          }).error((err) => {
+            deferred.reject(err);
+          });
+        return deferred.promise;
+      }
+    };
+  }])
+  .factory('searchUser', ['$http', '$q', ($http, $q) => {
+    return {
+      getUsers: (email) => {
+        const deferred = $q.defer();
+        $http.get(`/api/search/users/${email}`)
+          .success((data, status, headers, config) => {
+            deferred.resolve(data, status, headers, config);
+          }).error((err) => {
+            deferred.reject(err);
+          });
+        return deferred.promise;
+      }
+    };
+  }])
+  .factory('MakeAWishFactsService', [function () {
+    return {
+      getMakeAWishFacts: function () {
         /* jshint ignore:start */
         var facts = ['Health professionals who treat wish kids, including nurses and doctors, overwhelmingly believe that the wish experience can improve a wish kids’ physical health.',
           'Most health professionals say a wish come true has the potential to be a positive turning point in the child’s battle for health.',
