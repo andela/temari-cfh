@@ -1,4 +1,4 @@
-
+{
   "name": "cardsforhumanity",
   "description": "A Game For Horrible People Desperately Trying To Do Good",
   "version": "1.0.0",
@@ -60,6 +60,7 @@
     "passport-google-oauth": "~0.1.5",
     "passport-local": "~0.1.6",
     "passport-twitter": "~1.0.2",
+    "sendgrid": "^4.7.1",
     "should": "^11.2.0",
     "sinon": "~1.7.3",
     "socket.io": "~0.9.16",
@@ -67,9 +68,7 @@
     "supertest": "^3.0.0",
     "underscore": "~1.5.2",
     "view-helpers": "~0.1.3",
-    "webpack": "^1.14.0",
-    "underscore": "~1.5.2",
-    "view-helpers": "~0.1.3"
+    "webpack": "^1.14.0"
   },
   "devDependencies": {
     "eslint": "^3.14.1",
