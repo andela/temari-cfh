@@ -1,11 +1,25 @@
  .clear {
    clear:both;
  }
-
+.invite{
+border: 1px solid thick;
+width: 200px;
+margin-left: 10px;
+font-size: 14px;
+}
  .uppercase {
    text-transform: uppercase;
  }
-
+.search-result {
+   position: static;
+   float: none;
+   display: block;
+   min-width: 160px;
+   z-index: 1000;
+   color: white;
+   height: 100px;
+   overflow-y: scroll;
+ }
  #landing-charity {
    width: 300px !important;
    margin-left: 15px !important;
