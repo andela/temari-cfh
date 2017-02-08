@@ -8,6 +8,14 @@ node_js:
 services:
   - mongodb
 
+script: npm test
+
+after_script:
+  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls.js
+
+after_success:
+- npm run coveralls
+
 deploy:
   provider: heroku
   api_key:
@@ -16,9 +24,4 @@ deploy:
     master: temari-cfc
     staging: temari-cfc-staging
 sudo: required
-after_script:
-  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls.js
-script: npm test
 
-after_success:
-- npm run coveralls
