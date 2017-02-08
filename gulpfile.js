@@ -58,7 +58,8 @@ gulp.task('bower', () => {
 // Watch Task
 gulp.task('watch', () => {
   gulp.watch('public/css/*.scss', ['sass']);
-  gulp.watch(['app/**/*.js', 'public/js/**/*.js'], ['lint']);
+  gulp.watch(['app/**/*.js', 'public/js/**/*.js'], ['lint'])
+    .on('change', browserSync.reload);
   gulp.watch(['app/views/**/*.jade', 'public/**/**.*'])
     .on('change', browserSync.reload);
 });

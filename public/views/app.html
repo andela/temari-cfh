@@ -14,6 +14,32 @@
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </span>
   </div>
+  <!-- Start Game Modal Section start-->
+  <div class="container">
+  <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" data-backdrop="static">Open Modal</button>
+
+    <div class="modal fade modal-lg" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" style="text-align: center; font-family: Roboto"><strong>GAME INFORMATION</strong></h4>
+          </div>
+          <div class="modal-body">
+            <h4 style="text-align: center; font-family: Roboto">READY WHEN YOU ARE</h4>
+            <h4 style="text-align: center; font-family: Roboto">click on START to continue</h4>
+            <h4 style="text-align: center; font-family: Roboto">click on BACK to return to the homepage</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-success" style="text-align: center">START</button>
+            <button type="button" class="btn btn-secondary btn-danger" style="text-align: center">BACK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Start Game Modal Section end -->
   <div id="gameplay-container">
     <div id="upper-gameplay-container">
       <div id="menu-timeremaining-container">
