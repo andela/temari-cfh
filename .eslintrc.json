@@ -19,6 +19,7 @@
     "no-param-reassign": 0,
     "comma-dangle": 0,
     "import/no-unresolved": 0,
+    "quotes": [2, "single", { "allowTemplateLiterals": true}],
     "curly": ["error", "multi-line"],
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
     "valid-jsdoc": ["error", {
