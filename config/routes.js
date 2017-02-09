@@ -92,6 +92,7 @@ module.exports = (app, passport, auth) => {
   // Home route
   app.get('/play', index.play);
   app.get('/', index.render);
+  app.get('/gametour', index.gameTour);
 
   app.post('/api/auth/signup', authentication.signup);
 
