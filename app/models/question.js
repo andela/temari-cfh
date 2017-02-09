@@ -1,15 +1,11 @@
-/**
- * Module dependencies.
- */
-var mongoose = require('mongoose'),
-  config = require('../../config/config'),
-  Schema = mongoose.Schema;
+// Module dependencies.
+const mongoose = require('mongoose');
+const config = require('../../config/config');
 
+const Schema = mongoose.Schema;
 
-/**
- * Question Schema
- */
-var QuestionSchema = new Schema({
+// Question Schema
+const QuestionSchema = new Schema({
   id: {
     type: Number
   },
@@ -31,13 +27,11 @@ var QuestionSchema = new Schema({
   }
 });
 
-/**
- * Statics
- */
+// Statics
 QuestionSchema.statics = {
-  load: function(id, cb) {
+  load: (id, cb) => {
     this.findOne({
-      id: id
+      id
     }).select('-_id').exec(cb);
   }
 };

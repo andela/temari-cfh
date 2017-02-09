@@ -1,10 +1,9 @@
-const mongoose = require('mongoose'),
-  config = require('../../config/config'),
-  Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const config = require('../../config/config');
 
-/**
- * Game Schema
- */
+const Schema = mongoose.Schema;
+
+// Game Schema
 const GameHistorySchema = new Schema({
   gameID: { type: String, required: true },
   started: { type: Date, default: Date.now },
