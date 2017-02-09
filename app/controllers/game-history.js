@@ -32,7 +32,7 @@ exports.updateGame = (request, response) => {
     $and: [
       { gameID: gameId }, { creator: gameCreator }
     ]
-  }
+  };
   gameHistory.findOne(query, (error, history) => {
     if (error) {
       return response.status(500)
@@ -46,7 +46,7 @@ exports.updateGame = (request, response) => {
     history.winner = request.body.winner;
     history.ended = request.body.ended;
     history.rounds = request.body.rounds;
-    history.save((error, history) => {
+    history.save(() => {
       if (error) {
         return response.status(500)
           .json({ message: 'An error occured while updating this data' });
@@ -67,7 +67,7 @@ exports.patchGame = (request, response) => {
     $and: [
       { gameID: gameId }, { creator: gameCreator }
     ]
-  }
+  };
   gameHistory.findOne(query, (error, history) => {
     if (error) {
       return response.status(500)
@@ -79,7 +79,7 @@ exports.patchGame = (request, response) => {
     }
 
     history.players = request.body.players;
-    history.save((error, history) => {
+    history.save(() => {
       if (error) {
         return response.status(500)
           .json({ message: 'An error occured while updating this data' });
@@ -96,8 +96,8 @@ exports.patchGame = (request, response) => {
 exports.deleteGame = (request, response) => {
   const gameCreator = request.body.creator;
   const gameId = request.params.id;
-  const query = { gameID: gameId }
-  gameHistory.findOneAndRemove(query, error => {
+  const query = { gameID: gameId };
+  gameHistory.findOneAndRemove(query, (error) => {
     if (error) {
       return response.status(500)
         .json({ message: 'An error occured while deleting this data' });
