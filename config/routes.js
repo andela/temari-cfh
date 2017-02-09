@@ -97,7 +97,7 @@ module.exports = (app, passport, auth) => {
 
 
   // search route
-  
+
   app.get('/api/search/users/:email', search.users);
 
   // mail route
