@@ -1,12 +1,18 @@
+sudo: true
+
 language: node_js
 
-node_js:
-  - "6"
-  - "6.1"
-  - "5.11"
+node_js: "6"
 
 services:
   - mongodb
+
+script: npm test
+after_script:
+  - cat ./coverage/lcov.info | ./node_modules/.bin/coveralls.js
+
+after_success:
+- npm run coveralls
 
 deploy:
   provider: heroku
@@ -15,4 +21,5 @@ deploy:
   app:
     master: temari-cfc
     staging: temari-cfc-staging
-sudo: required
+
+

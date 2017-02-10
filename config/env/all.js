@@ -1,6 +1,7 @@
 const path = require('path');
+
 const rootPath = path.normalize(__dirname + '/../..');
-//const keys = rootPath + '/keys.txt';
+// const keys = rootPath + '/keys.txt';
 
 module.exports = {
 <<<<<<< HEAD
@@ -9,7 +10,7 @@ module.exports = {
     db: process.env.MONGOHQ_URL
 =======
   root: rootPath,
-  port: process.env.PORT || 3000,
+  port: process.env.PORT,
   db: process.env.MONGOHQ_URL,
   app: { name: 'Cards for Humanity' }
 >>>>>>> develop

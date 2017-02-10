@@ -1,31 +1,34 @@
 <!-- Brand and toggle get grouped for better mobile display -->
-<div class="navbar-header">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
-  <a class="navbar-brand" href="/">Cards For Humanity</a>
-</div>
-<!-- Collect the nav links, forms, and other content for toggling -->
-<div class="collapse navbar-collapse navbar-ex1-collapse">
-  <ul class="nav navbar-nav">
-    <li data-ng-repeat="item in menu" data-ng-show="global.user" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}"><a href="#!/{{item.link}}">{{item.title}}</a></li>
-  </ul>
-  <ul class="nav navbar-nav navbar-right" data-ng-hide="global.authenticated">
-    <li><a href="signup">Sign up</a></li>
-    <li class="divider-vertical"></li>
-    <li><a href="signin">Sign in</a>
-  </ul>
-  <ul class="nav navbar-nav navbar-right" data-ng-show="global.authenticated">
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{global.user.name}} <b class="caret"></b></a>
-      <ul class="dropdown-menu">
-        <li><a href="/signout">Sign out</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</div>
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header page-scroll">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+    </button>
+    <a class="navbar-brand" href="index.html">CFH</a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">How to play</a>
+      </li>
+      <li>
+        <a href="#">Sign Up</a>
+      </li>
+      <li>
+        <a href="#">Sign In</a>
+      </li>
+    </ul>
+  </div>
+  <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
 <!-- /.navbar-collapse -->
