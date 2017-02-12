@@ -1189,6 +1189,14 @@
       margin-top: 80px;
    }
 
+   #startGameModal {
+    top:50%;
+    left:50%;
+    outline: none;
+    width: 400px;
+    height: 200px;
+   }
+
    .landing-card {
       position: relative;
       display: block;
