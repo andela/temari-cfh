@@ -1,8 +1,9 @@
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', '$dialog',
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$dialog',
     ($scope, game, $timeout, $location,
-      MakeAWishFactsService, $dialog) => {
+      MakeAWishFactsService, sendMail, searchUser, $dialog) => {
+      $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
       $scope.showTable = false;
@@ -13,6 +14,7 @@ angular.module('mean.system')
       $scope.makeAWishFact = makeAWishFacts.pop();
 
       $scope.pickCard = (card) => {
+        $scope.inviteList = [];
         if (!$scope.hasPickedCards) {
           if ($scope.pickedCards.indexOf(card.id) < 0) {
             $scope.pickedCards.push(card.id);
@@ -73,23 +75,32 @@ angular.module('mean.system')
       };
 
       $scope.showFirst = card => game.curQuestion.numAnswers > 1 &&
-          $scope.pickedCards[0] === card.id;
+        $scope.pickedCards[0] === card.id;
 
       $scope.showSecond = card => game.curQuestion.numAnswers > 1 &&
-          $scope.pickedCards[1] === card.id;
+        $scope.pickedCards[1] === card.id;
 
       $scope.isCzar = () => game.czar === game.playerIndex;
 
       $scope.isPlayer = $index => $index === game.playerIndex;
 
       $scope.isCustomGame = () => !(/^\d+$/).test(game.gameID) &&
-          game.state === 'awaiting players';
+        game.state === 'awaiting players';
 
       $scope.isPremium = $index => game.players[$index].premium;
 
       $scope.currentCzar = $index => $index === game.czar;
 
       $scope.winningColor = ($index) => {
+        $scope.customGameCreator = () => {
+          if (game.players[0] === undefined) {
+            return false;
+          } else if (window.user === null) {
+            return false;
+          }
+          return true;
+        };
+
         if (game.winningCardPlayer !== -1 && $index ===
           game.winningCard) {
           return $scope.colors[game.players[game.winningCardPlayer].color];
@@ -156,7 +167,7 @@ angular.module('mean.system')
               setTimeout(() => {
                 const link = document.URL;
                 const txt =
-                  'Give the following link to your ' +
+                  'If you insist, Give the following link to your ' +
                   'friends so they can join your game: ';
                 $('#lobby-how-to-play').text(txt);
                 $('#oh-el')
@@ -174,7 +185,7 @@ angular.module('mean.system')
       });
 
       if ($location.search().game && !(/^\d+$/).test($location
-          .search().game)) {
+        .search().game)) {
         console.log('joining custom game');
         game.joinGame('joinGame', $location.search().game);
       } else if ($location.search().custom) {
@@ -182,5 +193,48 @@ angular.module('mean.system')
       } else {
         game.joinGame();
       }
+
+      $scope.inviteUsers = () => {
+        $scope.hideDiv = true;
+        if ($scope.inviteList.length === game.playerMaxLimit - 1) {
+          $('#modalView').modal('show');
+          return;
+        }
+
+        if ($scope.inviteList.includes($scope.email)) {
+          $('#modalView1').modal('show');
+          return;
+        }
+
+        sendMail.postMail($scope.email, document.URL).then(() => {
+          $scope.isMailSent = true;
+          $scope.model = '';
+          $scope.inviteList.push($scope.email);
+          $scope.email = '';
+        });
+      };
+
+      $scope.newMail = () => {
+        $scope.isMailSent = false;
+      };
+
+      $scope.searchUsers = () => {
+        $scope.isMailSent = false;
+        $scope.hideDiv = true;
+        searchUser.getUsers($scope.email).then((data) => {
+          $scope.searchResult = data;
+        });
+      };
+
+      $scope.selectList = (word) => {
+        $scope.email = word;
+      };
     }
-  ]);
+  ])
+  .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
+    const $ctrl = this;
+
+    $scope.open = () => {
+      $('#modalView').modal('show');
+    };
+  }]);
