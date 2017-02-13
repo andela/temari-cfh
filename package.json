@@ -13,6 +13,8 @@
     "npm": "3.10.x"
   },
   "scripts": {
+
+    "karma-start": "./node_modules/karma/bin/karma start",
     "start": "gulp",
     "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha ./test/**/*.js",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
