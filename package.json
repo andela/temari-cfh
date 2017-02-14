@@ -9,12 +9,13 @@
     "url": "https://github.com/cardsforhumanity/cardsforhumanity.git"
   },
   "engines": {
-    "node": "6.9 .x",
+    "node": "6.9.4",
     "npm": "3.10.x"
   },
   "scripts": {
     "start": "gulp",
-    "test": "gulp test",
+    "test": "./node_modules/istanbul/lib/cli.js cover ./node_modules/.bin/_mocha ./test/**/*.js",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "postinstall": "gulp bower"
   },
   "dependencies": {
@@ -39,6 +40,7 @@
     "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",
     "gulp-eslint": "^3.0.1",
+    "gulp-istanbul": "^1.1.1",
     "gulp-jade": "^1.1.0",
     "gulp-mocha": "^3.0.1",
     "gulp-nodemon": "^2.2.1",
@@ -48,9 +50,13 @@
     "jsonwebtoken": "^7.2.1",
     "karma": "^1.4.1",
     "karma-chrome-launcher": "^2.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-coveralls": "^1.1.2",
     "karma-firefox-launcher": "^1.0.0",
     "karma-jasmine": "^1.1.0",
     "mean-logger": "~0.0.1",
+    "mocha": "^3.2.0",
+    "mocha-lcov-reporter": "^1.2.0",
     "moment": "^2.17.1",
     "mongoose": "^4.7.9",
     "mongoose-parse": "^1.0.1",
@@ -60,6 +66,7 @@
     "passport-google-oauth": "~0.1.5",
     "passport-local": "~0.1.6",
     "passport-twitter": "~1.0.2",
+    "sendgrid": "^4.7.1",
     "should": "^11.2.0",
     "sinon": "~1.7.3",
     "socket.io": "~0.9.16",
@@ -70,7 +77,9 @@
     "webpack": "^1.14.0"
   },
   "devDependencies": {
-    "eslint": "^3.14.1",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint": "^3.15.0",
+    "eslint-plugin-import": "^2.2.0",
+    "gulp-istanbul": "^1.1.1",
+    "istanbul": "^0.4.5"
   }
 }

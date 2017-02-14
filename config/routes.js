@@ -5,8 +5,13 @@ const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 const authentication = require('../app/controllers/signupAuth');
 const validation = require('../app/controllers/userAuth');
+<<<<<<< HEAD
 const GameHistory = require('../app/controllers/game-history');
 
+=======
+const search = require('../app/controllers/api/search');
+const mail = require('../app/controllers/api/mailer');
+>>>>>>> f264b02000b6be733d9afa88ec8b8b03433c496a
 
 module.exports = (app, passport, auth) => {
   // User Routes
@@ -95,7 +100,19 @@ module.exports = (app, passport, auth) => {
   app.get('/play', index.play);
   app.get('/', index.render);
 
+<<<<<<< HEAD
   // authentication and validation routes
+=======
+
+  // search route
+
+  app.get('/api/search/users/:email', search.users);
+
+  // mail route
+
+  app.post('/api/mail/user', mail.emailInvite);
+
+>>>>>>> f264b02000b6be733d9afa88ec8b8b03433c496a
   app.post('/api/auth/signup', authentication.signup);
   app.post('/api/auth/login', validation.login);
 
