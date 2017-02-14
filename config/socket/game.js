@@ -1,7 +1,7 @@
 var async = require('async');
 var _ = require('underscore');
-var questions = require(__dirname + '/../../app/controllers/questions.js');
-var answers = require(__dirname + '/../../app/controllers/answers.js');
+var questions = require(`${__dirname}/../../app/controllers/questions.js`);
+var answers = require(`${__dirname}/../../app/controllers/answers.js`);
 var guestNames = [
   'Disco Potato',
   'Silver Blister',
@@ -55,7 +55,7 @@ function Game(gameID, io) {
 
 Game.prototype.payload = function () {
   var players = [];
-  this.players.forEach(function (player, index) {
+  this.players.forEach((player, index) => {
     players.push({
       hand: player.hand,
       points: player.points,
@@ -70,7 +70,7 @@ Game.prototype.payload = function () {
   });
   return {
     gameID: this.gameID,
-    players: players,
+    players,
     czar: this.czar,
     state: this.state,
     round: this.round,
@@ -91,16 +91,16 @@ Game.prototype.sendNotification = function (msg) {
 // Currently called on each joinGame event from socket.js
 // Also called on removePlayer IF game is in 'awaiting players' state
 Game.prototype.assignPlayerColors = function () {
-  this.players.forEach(function (player, index) {
+  this.players.forEach((player, index) => {
     player.color = index;
   });
 };
 
 Game.prototype.assignGuestNames = function () {
-  var self = this;
-  this.players.forEach(function (player) {
+  const self = this;
+  this.players.forEach((player) => {
     if (player.username === 'Guest') {
-      var randIndex = Math.floor(Math.random() * self.guestNames.length);
+      const randIndex = Math.floor(Math.random() * self.guestNames.length);
       player.username = self.guestNames.splice(randIndex, 1)[0];
       if (!self.guestNames.length) {
         self.guestNames = guestNames.slice();
@@ -124,7 +124,7 @@ Game.prototype.prepareGame = function () {
     this.getQuestions,
     this.getAnswers
   ],
-    function (err, results) {
+    (err, results) => {
       if (err) {
         console.log(err);
       }
@@ -146,12 +146,12 @@ Game.prototype.sendUpdate = function () {
   this.io.sockets.in(this.gameID).emit('gameUpdate', this.payload());
 };
 
-Game.prototype.stateDrawCards = function(self) {
+Game.prototype.stateDrawCards = function (self) {
   self.state = "waiting for czar to draw cards";
   self.sendUpdate();
-  self.drawCardsTimeout = setTimeout(function() {
+  self.drawCardsTimeout = setTimeout(() => {
     self.stateChoosing(self);
-  }, self.timeLimits.stateDrawCards*1000);
+  }, self.timeLimits.stateDrawCards * 1000);
 };
 
 Game.prototype.stateChoosing = function (self) {
@@ -163,7 +163,7 @@ Game.prototype.stateChoosing = function (self) {
   self.winnerAutopicked = false;
   self.curQuestion = self.questions.pop();
   if (!self.questions.length) {
-    self.getQuestions(function (err, data) {
+    self.getQuestions((err, data) => {
       self.questions = data;
     });
   }
@@ -177,7 +177,7 @@ Game.prototype.stateChoosing = function (self) {
   }
   self.sendUpdate();
 
-  self.choosingTimeout = setTimeout(function () {
+  self.choosingTimeout = setTimeout(() => {
     self.stateJudging(self);
   }, self.timeLimits.stateChoosing * 1000);
 };
@@ -190,7 +190,7 @@ Game.prototype.selectFirst = function () {
     this.players[winnerIndex].points++;
     this.winnerAutopicked = true;
     this.stateResults(this);
-    this.sendNotification(this.players[winnerIndex].username+' has won the round!');
+    this.sendNotification(`${this.players[winnerIndex].username} has won the round!`);
     this.sendUpdate();
   } else {
     this.stateDrawCards(this);
@@ -206,7 +206,7 @@ Game.prototype.stateJudging = function (self) {
     self.selectFirst();
   } else {
     self.sendUpdate();
-    self.judgingTimeout = setTimeout(function () {
+    self.judgingTimeout = setTimeout(() => {
       // Automatically select the first submitted card when time runs out.
       self.selectFirst();
     }, self.timeLimits.stateJudging * 1000);
