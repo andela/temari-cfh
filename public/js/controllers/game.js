@@ -2,7 +2,7 @@ angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
     '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$dialog',
     function ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser) {
+      MakeAWishFactsService, sendMail, searchUser, $dialog) {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
