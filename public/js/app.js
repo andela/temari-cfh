@@ -31,7 +31,8 @@ angular.module('mean', [
         templateUrl: '/views/choose-avatar.html'
       })
       .when('/gametour', {
-        templateUrl: '/views/game-tour.html'
+        templateUrl: '/views/game-tour.html',
+        controller: 'OnboardController'
       })
       .otherwise({
         redirectTo: '/'
