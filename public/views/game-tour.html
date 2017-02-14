@@ -1,36 +1,7 @@
-<!--<style>
-  body {
-    background-color: #ddd;
-  }
-</style>-->
-<div ng-controller="GameController">
-  <div  style="background-color: #000;color: #ddd">
-    <style>
-      .cfh-header .mdl-navigation__link {
-        color: #000;
-      }
-    </style>
-    <div >
-      <span >
-        <a href="/" style="text-decoration: none; color: #fff">Cards For Humanity</a>
-      </span>
-      <!-- Add spacer, to align navigation to the right in desktop-->
-      <div class="cfh-header-spacer mdl-layout-spacer"></div>
-      <!-- Navigation-->
-      <div >
-        <nav >
-          <a id="home" href="/#!/#top" >
-            <div>
-              <strong>Home</strong>
-            </div>
-          </a>
-
-          <a href ng-show="userName" id="requests" class="mdl-navigation__link mdl-typography--text-uppercase" ng-click="openFriends()">
-            <div class="mdl-tooltip" data-mdl-for="requests">
-              <strong>Send Invites</strong>
-            </div>
-          </a>
-          <div id="menu-container" ng-controller="GameController">
+</script>
+<div ng-controller="OnboardController">
+<div id="app-container" ng-controller="GameController">
+  <div id="menu-container">
     <div id="logo" class= "hero-welcome">
       <span id="first-word">Cards</span>
       <span id="second-word"> for</span>
@@ -44,105 +15,42 @@
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
     </span>
   </div>
-          <a ng-if="userName" id="signout" href="/signout" class="mdl-navigation__link mdl-typography--text-uppercase">
-            <div class="mdl-tooltip" data-mdl-for="signout">
-              <strong>Signout</strong>
-            </div>
-          </a>
-        </nav>
-      </div>
-      <div class="android-mobile-title mdl-layout-title text-logo-mobile">
-        <a href="/" style="text-decoration: none; color: #FFF;font-family: Montserrat; float:left;margin-top: 4px; margin-left:-15px; display: inline-block">CFH</a>
-        <a ng-show="userName" id="signoutmob" href="/signout" style="display: inline-block;float: right">
-          <span class="mdl-tooltip" data-mdl-for="signoutmob">
-            <strong>Signout</strong>
-          </span>
-        </a>
-        <!--<a href="#" id='abandon-buttonmob' ng-click="abandonGame()" style="display: inline-block;float: right">
-          <span class="mdl-tooltip" data-mdl-for="abandon-buttonmob">
-            Abandon <strong>Game</strong>
-          </span>
-        </a>-->
-        <a href ng-show="userName" id="requestsmob" ng-click="openFriends()" style="display: inline-block;float: right">
-          <div class="mdl-tooltip" data-mdl-for="requestsmob">
-            <strong>Send Invites</strong>
-          </div>
-        </a>
-        <a ng-show="userName" href id="notificationsmob" ng-click="openNotifications()" style="display: inline-block;float: right">
-          <span ng-show="friends.gameInvites.length > 0" class="material-icons mdl-badge mdl-badge--overlap" data-badge="{{friends.gameInvites.length}}">
-            notifications
-          </span>
-          <i ng-hide="friends.gameInvites.length > 0" class="material-icons">notifications</i>
-          <div class="mdl-tooltip" data-mdl-for="notificationsmob">
-            <strong>Notifications</strong>
-          </div>
-        </a>
+  <div id="gameplay-container">
+    <div id = "startGame" ng-click="startGame()">
+      <div id="player-count">{{game.players.length}} / 12 </div>
+      <div id="the-word-players"> Players </div>
+    </div>
+    <div id="loading-container">
+      <div id="loading-gif"></div>
+    </div>
+    <div id="start-game-container">
+      <div id = 'start-game-button'>
+        Start Game with {{game.players.length}} players
       </div>
     </div>
-  </div>
-  <div class="cfh-drawer mdl-layout__drawer">
-    <span class="mdl-layout-title">
-      <a href="/" style="text-decoration: none; color: #fff">Cards For Humanity</a>
-    </span>
-    <nav class="mdl-navigation">
-      <a href="/#!/#top" class="mdl-navigation__link">HOME</a>
-      <a href ng-click="openNotifications()" class="mdl-navigation__link" ng-show="userName">NOTIFICATIONS
-        <span ng-show="friends.gameInvites.length > 0" class="mdl-badge" data-badge="{{friends.gameInvites.length}}"></span>
-      </a>
-      <a href class="mdl-navigation__link" ng-show="userName" id="requests" ng-click="openFriends()">
-      SEND INVITES
-      </a>
-      <a href="#" id='abandon-game-button' ng-click="abandonGame()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Abandon Game</a>
-      <a ng-show="userName" href="/signout" class="mdl-navigation__link mdl-typography--text-uppercase">SIGN OUT</a>
-    </nav>
-  </div>
-  <div class="cfh-content mdl-layout__content" style="margin-top: 60px">
-    <div id="app-container" style="margin: 0 auto">
-      <div class="game mdl-grid">
-        <div class="mdl-cell mdl-cell--9-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
-          <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet time-remaining mdl-card mdl-shadow--4dp" id="time-card">
-              <!--<timer></timer>-->
-              <span id="timer-status-round" ng-show="showTime"> Time Remaining</span>
+    <div id="upper-gameplay-container">
+      <div id="menu-timeremaining-container">
+        <div id="menu-container">
+          <span id="menu-button">Menu</span>
+        </div>
+        <div id="timer-container">
+          <timer></timer>
+          <span id="timer-status-round" ng-show="showTime"> Time Remaining</span>
               <div id="time" ng-show="showTime">20</div>
-            </div>
+        </div>
+      </div>
+      <div id="question-container-outer">
+        <question></question>
+      </div>
+    </div>
 
-            <div class="mdl-cell mdl-cell--9-col mdl-cell--12-col-tablet question-box mdl-card mdl-shadow--4dp">
-              <!--<question></question>-->
-              <div id="question-container-inner">
-                <div class="card longBlack">
-                  <span id="question" ng-show="showQuestion">Can you guess who amongst this men is not the president of the world ?
-                  </span>
 
-                  <div id="find-players" ng-show="true">
-                    <div id="finding-players" ng-show="awaitingPlayers">Finding Players</div>
-                    <div id="player-count-container" ng-show="awaitingPlayers">
-                      <div id="player-count">{{playerCount}} / 12 </div>
-                      <!--<div id="the-word-players"> Players </div>-->
-                    </div>
-                    <div id="loading-container" ng-show="awaitingPlayers">
-                      <!--<div id="loading-gif"><img ng-src="../img/loader.gif"/></div>-->
-                      <div class="mdl-progress mdl-js-progress mdl-progress__indeterminate is-active">
-                      </div>
-                    </div>
-                    <div class="start-game-container">
-                      <button id="start-game-button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-default" ng-show="showStartButton">
-                      Start with 3 players
-                      </button>
-                    </div>
-                  </div>
-                  <!-- Game Over Stuff -->
-                </div>
-              </div>
-              <!-- end questions -->
-            </div>
-
-            <div class="mdl-cell mdl-cell--12-col answer-box">
-              <div class="mdl-card mdl-shadow--4dp game-cards card-for-game">
+<div >
+              <div class="game-cards card-for-game" ng-show="showquestion">
                 <!--<answers></answers>-->
                 <div ng-cloak id="cards-container" ng-show="showQuestion">
-                  <div id="cards" class='hand mdl-grid'>
-                    <div ng-style="{'cursor':'pointer'}" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col  mdl-cell--4-col-phone mdl-cell--4-col-tablet" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                  <div id="cards">
+                    <div ng-style="{'cursor':'pointer'}" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
                       <div class="the-card">
                         <div class="transbox">
                           <p>Grace Ike</p>
@@ -150,7 +58,7 @@
                       </div>
                     </div>
 
-                    <div ng-style="{'cursor':'pointer'}" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col  mdl-cell--4-col-phone mdl-cell--4-col-tablet" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                    <div ng-style="{'cursor':'pointer'}"  id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
                       <div class="the-card">
                         <div class="transbox">
                           <p>Otoloye Oyeniran</p>
@@ -158,7 +66,7 @@
                       </div>
                     </div>
 
-                    <div ng-style="{'cursor':'pointer'}" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col  mdl-cell--4-col-phone mdl-cell--4-col-tablet" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                    <div ng-style="{'cursor':'pointer'}"  id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
                       <div class="the-card">
                         <div class="transbox">
                           <p>Oreoluwa Aboluwarin</p>
@@ -166,7 +74,7 @@
                       </div>
                     </div>
 
-                    <div ng-style="{'cursor':'pointer'}" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col  mdl-cell--4-col-phone mdl-cell--4-col-tablet" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                    <div ng-style="{'cursor':'pointer'}"  id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
                       <div class="the-card">
                         <div class="transbox">
                           <p>Chiamaka Nwosu</p>
@@ -174,7 +82,7 @@
                       </div>
                     </div>
 
-                    <div ng-style="{'cursor':'pointer'}" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col  mdl-cell--4-col-phone mdl-cell--4-col-tablet" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                    <div ng-style="{'cursor':'pointer'}"  id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
                       <div class="the-card">
                         <div class="transbox">
                           <p>Olayemi Awofadeju</p>
@@ -187,7 +95,7 @@
 
                 <div ng-cloak id="cards-container" ng-show="showQuestion">
                   <div id="cards" class='hand mdl-grid'>
-                    <div ng-style="{'cursor':'pointer'}" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col  mdl-cell--4-col-phone mdl-cell--4-col-tablet" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                    <div ng-style="{'cursor':'pointer'}" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
                       <div class="the-card">
                         <div class="transbox">
                           <p>Mariam Abdussalam</p>
@@ -197,30 +105,31 @@
                   </div>
                 </div>
 
-                <div id="game-end-container" ng-show="gameEnd">
+                <div id="game-end-container" ng-show = "gameEnd">
                   <div id="inner-info-exit">
-                    <div class="game-end-answer-text" ng-show="game.state ==='game dissolved' && game.gameWinner === -1" class="mdl-cell mdl-cell--12-col" style="padding: 20px">
+                    <div class="game-end-answer-text" ng-show="game.state ==='game dissolved' && game.gameWinner === -1" style="padding: 20px">
+                      <img src ="img/lobby.png" id=""/>
                       <h2>What would you like to do now?</h2>
                       You might consider donating to charity to atone for the horrifying answers you've submitted. Donating will also place a lovely crown on your avatar's head.
                     </div>
-                    <div class="game-end-answer-text" ng-show="game.state === 'game ended' || game.gameWinner !== -1" class="mdl-grid">
-                      <div class="mdl-cell mdl-cell--12-col">
+                    <div class="game-end-answer-text" ng-show="game.state === 'game ended' || game.gameWinner !== -1">
+                      <div >
                         <h2>What would you like to do now?</h2>
-                        <div id='inner-text-container' class="mdl-grid">
-                          <div class="mdl-cell mdl-cell--6-col">
+                        <div id='inner-text-container'>
+                          <div >
                             <p>Help yourself to another game or help a child in need? Donating will also place a lovely crown on your avatar's head.</p>
                             <a href>
-                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button-default" id="join-new-game">
+                              <button id="join-new-game" ng-show = >
                           Join a New Game
                           </button>
                             </a>
                             <a href>
-                              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="return-to-lobby">
-                          Sign up
+                              <button id="return-to-lobby">
+                          Return to lobby
                           </button>
                             </a>
                           </div>
-                          <div class="mdl-cell mdl-cell--6-col">
+                          <div >
                             <div id="charity-widget-container">
                               <!-- This is real -->
                               <a href id="crowdriseStaticLink-fundraiser-121142" title="Fundraising Websites on Crowdrise">Fundraising Websites - Crowdrise</a>
@@ -236,70 +145,53 @@
                 <!-- end answers here -->
               </div>
             </div>
-          </div>
-        </div>
+            <answers></answers>
+  </div>
+  <div ng-cloak id="cards-container" ng-hide="game.state === 'game ended' || game.state ==='game dissolved'">
+  <div id="social-bar-container">
+ <img src="img/1jlprr.gif" width="25" height="25"/>
 
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone players">
-          <!--<player></player>-->
-
-          <div id="player-container" class="player mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp" style="padding: 7px;min-height: 75px;">
-            <div class="mdl-card__title" style="height:30px; margin-top: -7px;">
-              <h2 style="margin-right: 12px;font-size: 14px; font-weight: bold">High flyer</h2>
-              <span ng-show="showCzar" style="background-color:#fff;padding:3px;margin-right: 12px;" id="is-czar">CZAR</span>
-              <span id="player-star">
-                <img src="../img/11.png" width="25" height="25"/>
-              </span>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <span id="player-score" style="color: #000;font-size: 20px;font-weight: bold;">
-                {{playerScore}}/5
-              </span>
-              <span ng-show="isPremium($index)">
-                <img ng-src="img/king.png" id="king">
-              </span>
-              <img ng-src="../img/chosen/jennifer.gif" width="35" height="35" style="float: right; margin-top: -5px" id="player-avatar" />
-            </div>
-          </div>
-
-          <div id="player-container" ng-show="showOtherPlayers" class="player mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp" style="padding: 7px;min-height: 75px;">
-            <div class="mdl-card__title" style="height:30px; margin-top: -7px;">
-              <h2 style="margin-right: 12px;font-size: 14px; font-weight: bold"> Queen of Hearts</h2>
-              <span ng-hide="showCzar" style="background-color:#fff;padding:3px;margin-right: 12px;" id="is-czar">CZAR</span>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <span id="player-score" style="color: #000;font-size: 20px;font-weight: bold;">
-                0/5
-              </span>
-              <span ng-show="isPremium($index)">
-                <img ng-src="img/king.png" id="king">
-              </span>
-              <img ng-src="../img/chosen/andina.gif" width="35" height="35" style="float: right; margin-top: -5px" id="player-avatar" />
-            </div>
-          </div>
-
-          <div id="player-container" ng-show="showOtherPlayers" class="player mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp" style="padding: 7px;min-height: 75px;">
-            <div class="mdl-card__title" style="height:30px; margin-top: -7px;">
-              <h2 style="margin-right: 12px;font-size: 14px; font-weight: bold">Knight of honor</h2>
-              <span ng-hide="showCzar" style="background-color:#fff;padding:3px;margin-right: 12px;" id="is-czar">CZAR</span>
-            </div>
-            <div class="mdl-card__actions mdl-card--border">
-              <span id="player-score" style="color: #000;font-size: 20px;font-weight: bold;">
-                0/5
-              </span>
-              <span ng-show="isPremium($index)">
-                <img ng-src="img/king.png" id="king">
-              </span>
-              <img ng-src="../img/chosen/eduardo.gif" width="35" height="35" style="float: right; margin-top: -5px" id="player-avatar" />
-            </div>
-          </div>
-
-          <!-- End of players -->
-        </div>
-
-      </div>
-
-        </div>
+    <player></player>
+    <div id="player-container" ng-repeat="player in game.players" style="background-color:{{colors[player.color]}}">
+  <div id="above-czar-container">
+    <div id="avatar_">
+      <span ng-show="isPremium($index)">
+        <img ng-src="img/king.png" id="king">
+      </span>
+      <img ng-src="{{player.avatar}}" />
+    </div>
+    <div id="player-container-inner">
+      <div id="player-name">
+        <h4>{{player.username | upperFirstLetter}}</h4></div>
+      <div id="player-score">
+        <h2>{{player.points}}/{{game.pointLimit}}</h2></div>
+      <div ng-show="isPlayer($index)" id="player-star">
+        <img src="../img/11.png" />
       </div>
     </div>
   </div>
+  <div id="czar-container" ng-show="currentCzar($index)">
+    <span id='the-czar'>CZAR</span>
+  </div>
+</div>
+  </div>
+  <div id="cards" class='hand'>
+    <span ng-show="winnerPicked()"></span>
+
+    <div ng-style="{'cursor':'pointer'}" class="card smallest" id='answers' ng-click="pickCard(card)" ng-hide="showTable || isCzar()" ng-repeat="card in game.players[game.playerIndex].hand" ng-animate="{enter:'animated fadeInUp', leave: 'animated fadeInOut'}">
+      <span ng-bind-html-unsafe="card.text"></span>
+      <span id='selection-number' ng-show="showFirst(card)"> 1 </span>
+      <span id='selection-number' ng-show="showSecond(card)"> 2 </span>
+    </div>
+    <span ng-repeat="answer in game.table">
+        <div class="card smallest" ng-style="pointerCursorStyle()" id='table' ng-click="pickWinning(answer)" ng-show="showTable || isCzar()"
+        ng-repeat="card in answer.card" ng-animate="{enter:'animated bounceInLeft'}" style="background-color:{{winningColor($parent.$index)}}">
+            <span ng-bind-html-unsafe="card.text"></span>
+    <span id='selection-number' ng-show="firstAnswer($index)"> 1 </span>
+    <span id='selection-number' ng-show="secondAnswer($index)"> 2 </span>
+  </div>
+  </span>
+</div>
+</div>
+</div>
 </div>

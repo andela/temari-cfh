@@ -1,0 +1,241 @@
+
+<div ng-controller="OnboardController">
+  <div  style="background-color: #000;color: #ddd">
+    <div >
+      <!-- Navigation-->
+      <div >
+        <div id="menu-container" ng-controller="GameController">
+    <div id="logo">
+      <span id="first-word">Cards</span>
+      <span id="second-word"> for</span>
+      <span id="third-word">Humanity</span>
+      <a id="home" href="/#!/#top" >
+            <div>
+              <strong>Home</strong>
+            </div>
+          </a>
+    </div>
+    <div id="abandon-game-button" class= ng-click="abandonGame()">
+      Abandon Game
+    </div>
+    <span id="tweet-container">
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://cfh.io" data-text="Cards for Humanity: A Game for Horrible People Desperately Trying to do Good" data-related="CFH_App">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    </span>
+  </div>
+      </div>
+
+        </a>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 60px">
+    <div id="app-container" style="margin: 0 auto">
+      <div >
+        <div >
+          <div >
+            <div  id="time-card">
+              <!--<timer></timer>-->
+
+            </div>
+            <div id = "inner-timer-container">
+  <span id="timer-status-round" ng-hide="game.state === 'winner has been chosen' || game.state === 'waiting for czar to decide'" ng-show="showTime"> Time Remaining</span>
+  <!--<span id="timer-status-czar-choosing" ng-show="game.state === 'winner has been chosen'"> Next Round In</span>
+  <span id="timer-status-czar-choosing" ng-show="game.state === 'waiting for czar to decide'"> Czar Choosing</span>-->
+  <div id="time" ng-bind="game.time" ng-show="ShowTime">20</div>
+</div>
+
+            <div>
+              <!--<question></question>-->
+              <div id="question-container-inner">
+                <div class="card longBlack">
+                  <span id="question" ng-show="showQuestion">Can you guess who amongst this men is not the president of the world ?
+                  </span>
+
+                  <div id="find-players" ng-show="true">
+                    <div id="finding-players" ng-show="awaitingPlayers">Finding Players</div>
+                    <div id="player-count-container" ng-show="awaitingPlayers">
+                      <div id="player-count">{{gamePlayerLength}} / 12 </div>
+                      <!--<div id="the-word-players"> Players </div>-->
+                    </div>
+                    <div id="loading-container" ng-show="awaitingPlayers">
+                      <!--<div id="loading-gif"><img ng-src="../img/loader.gif"/></div>-->
+                    </div>
+                    <div class="start-game-container">
+                      <button id="start-game-button" ng-show="showStartButton">
+                      Start with 3 players
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Game Over Stuff -->
+                </div>
+              </div>
+              <!-- end questions -->
+            </div>
+
+            <div >
+              <div class="game-cards card-for-game">
+                <!--<answers></answers>-->
+                <div ng-cloak id="cards-container" ng-show="showQuestion">
+                  <div id="cards">
+                    <div ng-style="{'cursor':'pointer'}" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                      <div class="the-card">
+                        <div class="transbox">
+                          <p>Grace Ike</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div ng-style="{'cursor':'pointer'}"  id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                      <div class="the-card">
+                        <div class="transbox">
+                          <p>Otoloye Oyeniran</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div ng-style="{'cursor':'pointer'}"  id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                      <div class="the-card">
+                        <div class="transbox">
+                          <p>Oreoluwa Aboluwarin</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div ng-style="{'cursor':'pointer'}"  id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                      <div class="the-card">
+                        <div class="transbox">
+                          <p>Chiamaka Nwosu</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div ng-style="{'cursor':'pointer'}"  id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                      <div class="the-card">
+                        <div class="transbox">
+                          <p>Olayemi Awofadeju</p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div ng-cloak id="cards-container" ng-show="showQuestion">
+                  <div id="cards" class='hand mdl-grid'>
+                    <div ng-style="{'cursor':'pointer'}" id='answers' style="padding: 10px;border-radius:5px;min-height:217px;">
+                      <div class="the-card">
+                        <div class="transbox">
+                          <p>Mariam Abdussalam</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="game-end-container" ng-show="gameEnd">
+                  <div id="inner-info-exit">
+                    <div class="game-end-answer-text" ng-show="game.state ==='game dissolved' && game.gameWinner === -1" class="mdl-cell mdl-cell--12-col" style="padding: 20px">
+                      <h2>What would you like to do now?</h2>
+                      You might consider donating to charity to atone for the horrifying answers you've submitted. Donating will also place a lovely crown on your avatar's head.
+                    </div>
+                    <div class="game-end-answer-text" ng-show="game.state === 'game ended' || game.gameWinner !== -1" class="mdl-grid">
+                      <div >
+                        <h2>What would you like to do now?</h2>
+                        <div id='inner-text-container'>
+                          <div >
+                            <p>Help yourself to another game or help a child in need? Donating will also place a lovely crown on your avatar's head.</p>
+                            <a href>
+                              <button id="join-new-game">
+                          Join a New Game
+                          </button>
+                            </a>
+                            <a href>
+                              <button id="return-to-lobby">
+                          Sign up
+                          </button>
+                            </a>
+                          </div>
+                          <div >
+                            <div id="charity-widget-container">
+                              <!-- This is real -->
+                              <a href id="crowdriseStaticLink-fundraiser-121142" title="Fundraising Websites on Crowdrise">Fundraising Websites - Crowdrise</a>
+                              <script type="text/javascript" src="https://www.crowdrise.com/widgets/donate/fundraiser/121142/?callback=userDonationCb"></script>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- end answers here -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!--<player></player>-->
+
+          <div id="player-container"  style="padding: 7px;min-height: 75px;">
+            <div class="mdl-card__title" style="height:30px; margin-top: -7px;">
+              <h2 style="margin-right: 12px;font-size: 14px; font-weight: bold">Raging Bagel</h2>
+              <span ng-show="showCzar" style="background-color:#fff;padding:3px;margin-right: 12px;" id="is-czar">CZAR</span>
+              <span id="player-star">
+                <img src="../img/11.png" width="25" height="25"/>
+              </span>
+            </div>
+            <div >
+              <span id="player-score" style="color: #000;font-size: 20px;font-weight: bold;">
+                {{playerScore}}/5
+              </span>
+              <span ng-show="isPremium($index)">
+                <img ng-src="img/king.png" id="king">
+              </span>
+              <img ng-src="../img/chosen/jennifer.gif" width="35" height="35" style="float: right; margin-top: -5px" id="player-avatar" />
+            </div>
+          </div>
+
+          <div id="player-container" ng-show="showOtherPlayers"  style="padding: 7px;min-height: 75px;">
+            <div  style="height:30px; margin-top: -7px;">
+              <h2 style="margin-right: 12px;font-size: 14px; font-weight: bold"> Urgent Drip</h2>
+              <span ng-hide="showCzar" style="background-color:#fff;padding:3px;margin-right: 12px;" id="is-czar">CZAR</span>
+            </div>
+            <div >
+              <span id="player-score" style="color: #000;font-size: 20px;font-weight: bold;">
+                0/5
+              </span>
+              <span ng-show="isPremium($index)">
+                <img ng-src="img/king.png" id="king">
+              </span>
+              <img ng-src="../img/chosen/andina.gif" width="35" height="35" style="float: right; margin-top: -5px" id="player-avatar" />
+            </div>
+          </div>
+
+          <div id="player-container" ng-show="showOtherPlayers" style="padding: 7px;min-height: 75px;">
+            <div style="height:30px; margin-top: -7px;">
+              <h2 style="margin-right: 12px;font-size: 14px; font-weight: bold">Loving Spoon</h2>
+              <span ng-hide="showCzar" style="background-color:#fff;padding:3px;margin-right: 12px;" id="is-czar">CZAR</span>
+            </div>
+            <div>
+              <span id="player-score" style="color: #000;font-size: 20px;font-weight: bold;">
+                0/5
+              </span>
+              <span ng-show="isPremium($index)">
+                <img ng-src="img/king.png" id="king">
+              </span>
+              <img ng-src="../img/chosen/eduardo.gif" width="35" height="35" style="float: right; margin-top: -5px" id="player-avatar" />
+            </div>
+          </div>
+
+          <!-- End of players -->
+        </div>
+
+      </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
