@@ -95,8 +95,17 @@ module.exports = (app, passport, auth) => {
   app.get('/play', index.play);
   app.get('/', index.render);
 
-  // authentication and validation routes
+
+  // search route
+
+  app.get('/api/search/users/:email', search.users);
+
+  // mail route
+
+  app.post('/api/mail/user', mail.emailInvite);
+
   app.post('/api/auth/signup', authentication.signup);
+
   app.post('/api/auth/login', validation.login);
 
   // game history

@@ -4,14 +4,14 @@
 module.exports = function(config) {
   config.set({
 
-    /* base path that will be used to resolve all patterns 
+    /* base path that will be used to resolve all patterns
     (eg. files, exclude) */
 
     basePath: '',
 
 
     /* frameworks to use
-     available frameworks: 
+     available frameworks:
      https://npmjs.org/browse/keyword/karma-adapter */
 
     frameworks: ['jasmine'],
@@ -21,14 +21,8 @@ module.exports = function(config) {
 
     files: [
 
-      'public/lib/jquery/jquery.js',
-      'public/lib/underscore/underscore-min.js',
-      'public/lib/bootstrap/js/bootstrap.js',
-      'public/lib/angular/angular.js',
-      'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-      'public/lib/angular-ui-utils/modules/route.js',
-      'public/js/**/**.js',
-      'test/client/**/**.js'
+      'test/src/**/*.js',
+      'test/unit/TestSpec.js'
     ],
 
 
@@ -36,20 +30,30 @@ module.exports = function(config) {
     exclude: [],
 
 
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-coverage',
+      'karma-coveralls'
+    ],
     /* preprocess matching files before serving them to the browser
-     available preprocessors: 
+     available preprocessors:
      https://npmjs.org/browse/keyword/karma-preprocessor */
 
-    preprocessors: {},
+    preprocessors: { 'app/**/*.js': ['coverage'] },
 
 
     /* test results reporter to use
      possible values: 'dots', 'progress'
-     available reporters: 
+     available reporters:
      https://npmjs.org/browse/keyword/karma-reporter */
 
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage', 'coveralls', 'verbose'],
 
+    coverageReporter: {
+      type: 'lcov',
+      dir: 'coverage/'
+    },
 
     // web server port
 
@@ -68,7 +72,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
 
-    /* enable / disable watching file and executing 
+    /* enable / disable watching file and executing
     tests whenever any file changes
     */
 
@@ -76,10 +80,10 @@ module.exports = function(config) {
 
 
     /* start these browsers
-    // available browser launchers: 
+    // available browser launchers:
     https://npmjs.org/browse/keyword/karma-launcher */
 
-    browsers: ['Chrome', 'Firefox'], //'PhantomJS']
+    browsers: ['Chrome', 'Firefox'],
 
 
     // Continuous Integration mode
