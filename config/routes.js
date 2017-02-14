@@ -5,6 +5,7 @@ const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 const authentication = require('../app/controllers/signupAuth');
 const validation = require('../app/controllers/userAuth');
+const GameHistory = require('../app/controllers/game-history');
 const search = require('../app/controllers/api/search');
 const mail = require('../app/controllers/api/mailer');
 
@@ -95,17 +96,22 @@ module.exports = (app, passport, auth) => {
   app.get('/play', index.play);
   app.get('/', index.render);
 
-
   // search route
-
   app.get('/api/search/users/:email', search.users);
 
   // mail route
-
   app.post('/api/mail/user', mail.emailInvite);
 
+  // authentication and validation routes
   app.post('/api/auth/signup', authentication.signup);
-
   app.post('/api/auth/login', validation.login);
 
+  // game history
+  app.get('/api/games/history/:email', GameHistory.getUserGames);
+  app.get('/api/games/:id/history', GameHistory.getGame);
+  app.post('/api/games/:id/start', GameHistory.createGame);
+  app.patch('/api/games/:id/update', GameHistory.patchGame);
+  app.put('/api/games/:id/end', GameHistory.updateGame);
+  app.delete('/api/games/:id/delete', GameHistory.deleteGame);
 };
+
