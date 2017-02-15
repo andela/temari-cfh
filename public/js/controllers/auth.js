@@ -1,6 +1,6 @@
 /**
- * @param {object} $scope for holding data that bind view
- * @param {object} $location angularjs wrapper around window.location
+ * @param {string} '$scope' for holding data that bind view
+ * @param {string} $location angularjs wrapper around window.location
  * @param {object} Auth service for authentications
  * @param {object} localStorageService accessing local data storage
  * @return {object} returns an object
