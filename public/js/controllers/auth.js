@@ -1,6 +1,11 @@
 /**
- * Created by chiamakanwosu on 15/02/2017.
+ * @param {object} $scope for holding data that bind view
+ * @param {object} $location angularjs wrapper around window.location
+ * @param {object} Auth service for authentications
+ * @param {object} localStorageService accessing local data storage
+ * @return {object} returns an object
  */
+
 angular.module('auth.controllers', [])
   .controller('signinController', [
     '$scope', '$location', 'Auth', 'localStorageService',

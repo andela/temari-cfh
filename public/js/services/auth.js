@@ -1,8 +1,10 @@
 /**
- * Created by chiamakanwosu on 15/02/2017.
+ * @param {string} $q for handling promises
+ * @param {string} $http for making ajax requests
+ * @return {object} returns an object
  */
 angular.module('auth.service', [])
-  .factory('Auth', ['$q', '$http', '$timeout', ($q, $http, $timeout) => {
+  .factory('Auth', ['$q', '$http', ($q, $http) => {
     const signup = (userInfo) => {
       const promise = $q.defer();
 
@@ -38,7 +40,6 @@ angular.module('auth.service', [])
     };
 
     const signout = () => {
-      console.log('signup called');
     };
 
     return {
