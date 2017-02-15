@@ -1,38 +1,43 @@
 angular.module('mean', [
-    'ngCookies',
-    'ngResource',
-    'ui.bootstrap',
-    'ui.route',
-    'mean.system',
-    'mean.directives'
-  ])
+  'ngCookies',
+  'ngResource',
+  'ui.bootstrap',
+  'ui.route',
+  'mean.system',
+  'mean.directives',
+  'auth.controllers',
+  'auth.service',
+  'LocalStorageModule'
+])
   .config(['$routeProvider',
     function($routeProvider) {
-      $routeProvider.
-      when('/', {
-        templateUrl: 'views/index.html'
-      }).
-      when('/app', {
-        templateUrl: '/views/app.html',
-      }).
-      when('/privacy', {
-        templateUrl: '/views/privacy.html',
-      }).
-      when('/bottom', {
-        templateUrl: '/views/bottom.html'
-      }).
-      when('/signin', {
-        templateUrl: '/views/signin.html'
-      }).
-      when('/signup', {
-        templateUrl: '/views/signup.html'
-      }).
-      when('/choose-avatar', {
-        templateUrl: '/views/choose-avatar.html'
-      }).
-      otherwise({
-        redirectTo: '/'
-      });
+      $routeProvider
+        .when('/', {
+          templateUrl: 'views/index.html'
+        })
+        .when('/app', {
+          templateUrl: '/views/app.html',
+        })
+        .when('/privacy', {
+          templateUrl: '/views/privacy.html',
+        })
+        .when('/bottom', {
+          templateUrl: '/views/bottom.html'
+        })
+        .when('/signin', {
+          templateUrl: '/views/signin.html',
+          controller: 'signinController',
+        })
+        .when('/signup', {
+          templateUrl: '/views/signup.html',
+          controller: 'signupController',
+        })
+        .when('/choose-avatar', {
+          templateUrl: '/views/choose-avatar.html'
+        })
+        .otherwise({
+          redirectTo: '/'
+        });
     }
   ]).config(['$locationProvider',
     function($locationProvider) {

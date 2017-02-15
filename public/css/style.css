@@ -97,13 +97,18 @@ button.social-signin.github {
     margin:0 auto;
 }
 
-.sign-in-left input[type='submit']{
+.sign-in-left input[type='submit'] {
     width:100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     background: #813772;
     color: white;
     line-height: 4px;
 
+}
+
+.signin-btn {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    background: #813772 !important;
 }
 
 /* signup style */

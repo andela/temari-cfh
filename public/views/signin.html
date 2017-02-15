@@ -42,20 +42,25 @@
   <div class="col-md-2"></div>
   <div id="sign-in-box" class="col-md-8">
     <div class="col-md-5 sign-in-left">
-      <div class="sign-error" ng-show="showError() === 'invalid'">
+      <div class="sign-error" ng-hide="true">
         Please check your username/password and try again.
       </div>
 
-      <form class="signup form-horizontal" action='/users/session' method="post">
+      <form class="signup form-horizontal" ng-submit="signin(userInfo)" novalidate name="signinForm">
         <h3 class="sign-in-title">Sign in</h3>
 
         <div class="control-group">
-          <input class="col-md-12" type="text" name="email" placeholder="E-mail" /><br>
-          <input class="col-md-12" type="password" name="password" placeholder="Password" required novalidate /><br>
+          <input class="col-md-12" type="email" name="email" placeholder="E-mail" ng-model="userInfo.email" required/><br>
+          <input class="col-md-12" type="password" name="password" placeholder="Password" required ng-model="userInfo.password"/><br>
         </div>
 
+        <div class="col-xs-12 alert alert-warning" ng-show="error.show">{{error.msg}}</div>
+
         <div class="form-actions top-margin">
-          <input class="col-md-12 btn" type="submit" name="signin_submit" value="Sign in" required novalidate /><br>
+          <button class="btn btn-primary btn-block signin-btn" ng-disabled="signinForm.$invalid || processing">
+            <i class="icon fa fa-spinner fa-spin" ng-show="processing"></i>
+            Sign in
+          </button>
         </div>
       </form>
 
@@ -74,7 +79,6 @@
   <div class="col-md-2"></div>
 
 </div>
-
 
 
 
