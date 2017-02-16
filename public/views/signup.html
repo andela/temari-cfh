@@ -58,7 +58,6 @@
                  placeholder="Password" required ng-model="userInfo.password" /><br>
         </div>
         <div class="col-xs-12 alert alert-warning" ng-show="error.show">{{error.msg}}</div>
-
         <div class="form-actions top-margin">
           <button class="btn btn-primary btn-block signin-btn" ng-disabled="signupForm.$invalid || processing">
             <i class="icon fa fa-spinner fa-spin" ng-show="processing"></i>
@@ -67,7 +66,6 @@
         </div>
       </form>
     </div>
-
     <div class="col-md-2">
       <div class="or-wrap-signup"><span>OR</span></div>
     </div>
@@ -82,7 +80,6 @@
       <div class="col-md-12"><a href="/auth/google"><button class="social-signin google">Google+</button></a></div>
       <div class="col-md-12"><a href="auth/github"><button class="social-signin github">Github</button></a></div>
     </div>
-
   </div>
   <div class="col-md-2"></div>
 </div>

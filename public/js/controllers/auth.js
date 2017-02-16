@@ -45,7 +45,6 @@ angular.module('auth.controllers', [])
       fullname: '',
       email: '',
       password: '',
-
     };
 
     $scope.error = {
@@ -58,7 +57,7 @@ angular.module('auth.controllers', [])
       Auth.signup(userInfo).then(
         (data) => {
           $scope.processing = false;
-          $location.path('/signin');
+          $location.path('/app');
         },
         (err) => {
           $scope.error.msg = 'Invalid username or password';

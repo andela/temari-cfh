@@ -45,17 +45,13 @@
       <div class="sign-error" ng-hide="true">
         Please check your username/password and try again.
       </div>
-
       <form class="signup form-horizontal" ng-submit="signin(userInfo)" novalidate name="signinForm">
         <h3 class="sign-in-title">Sign in</h3>
-
         <div class="control-group">
           <input class="col-md-12" type="email" name="email" placeholder="E-mail" ng-model="userInfo.email" required/><br>
           <input class="col-md-12" type="password" name="password" placeholder="Password" required ng-model="userInfo.password"/><br>
         </div>
-
         <div class="col-xs-12 alert alert-warning" ng-show="error.show">{{error.msg}}</div>
-
         <div class="form-actions top-margin">
           <button class="btn btn-primary btn-block signin-btn" ng-disabled="signinForm.$invalid || processing">
             <i class="icon fa fa-spinner fa-spin" ng-show="processing"></i>
@@ -63,7 +59,6 @@
           </button>
         </div>
       </form>
-
     </div>
     <div class="col-md-2">
       <div class="or-wrap"><span>OR</span></div>
@@ -77,7 +72,6 @@
     </div>
   </div>
   <div class="col-md-2"></div>
-
 </div>
 
 
