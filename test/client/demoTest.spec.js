@@ -1,3 +1,4 @@
+
 'use strict';
 global.expect = require('chai').expect;
 
@@ -9,3 +10,4 @@ describe('Demo test', function() {
     expect(true).to.equal(true);
   });
 });
+
