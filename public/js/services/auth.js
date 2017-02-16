@@ -1,7 +1,8 @@
 /**
- * @param {string} $q for handling promises
- * @param {string} $http for making ajax requests
- * @return {object} returns an object
+ * This is the auth service.
+ * @param {string} $q for promises.
+ * @param {string} $http for ajax.
+ * @returns {object} The service public API.
  */
 angular.module('auth.service', [])
   .factory('Auth', ['$q', '$http', ($q, $http) => {

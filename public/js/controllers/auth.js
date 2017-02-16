@@ -1,9 +1,10 @@
 /**
- * @param {string} '$scope' for holding data that bind view
- * @param {string} $location angularjs wrapper around window.location
- * @param {object} Auth service for authentications
- * @param {object} localStorageService accessing local data storage
- * @return {object} returns an object
+ * This is our controller.
+ * @param {string} $scope for binding controller to view.
+ * @param {string} $location for manipulating the window location.
+ * @param {string} Auth authentication service.
+ * @param {string} localStorageService for storing jwt token
+ * @returns {null}
  */
 
 angular.module('auth.controllers', [])
