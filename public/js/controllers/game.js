@@ -248,6 +248,9 @@ angular.module('mean.system')
       $scope.selectList = (word) => {
         $scope.email = word;
       };
+      $scope.drawCard = () => {
+        game.drawCard();
+      };
     }
   ])
   .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
