@@ -274,7 +274,7 @@ Game.prototype.shuffleCards = function (cards) {
 
 Game.prototype.dealAnswers = function (maxAnswers) {
   maxAnswers = maxAnswers || 10;
-  var storeAnswers = function (err, data) {
+  let storeAnswers = function (err, data) {
     this.answers = data;
   };
   for (let i = 0; i < this.players.length; i += 1) {
