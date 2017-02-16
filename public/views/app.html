@@ -1,15 +1,13 @@
-<!--<script type="text/javascript">
+<script type="text/javascript">
     $(window).load(function(){
         $('#responsive').modal('show');
     });
-</script>-->
+</script>
 <div id="app-container" ng-controller="GameController">
   <div id="menu-container">
     <div id="logo">
-      <!--<span id="first-word">Cards</span>
-      <span id="second-word"> for</span>
-      <span id="third-word">Humanity</span>-->
       <a href="#" style="color:antiquewhite" >CFH</a>
+      <span ng-show="userName">
     </div>
     <div id='abandon-game-button' ng-click="abandonGame()">
       Abandon Game
@@ -42,16 +40,15 @@
   <div class="modal fade" id="responsive" data-backdrop="static" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content" style="background-color:azure">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title" style="text-align: center; font-weight: bold">Welcome!</h3>
+          <h3 class="modal-title" style="text-align: center; font-weight: bold; font-family: Verdana">Welcome!</h3>
         </div>
         <div class="modal-body">
-          <h4 style="text-align: center; font-weight: bold">You are about to start a new game session...</h4>
+          <h4 style="text-align: center; font-weight: bold; font-family: Verdana">You are about to start a new game session...</h4>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal">CONTINUE</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="text-align: center; font-weight: bold; font-family: Verdana">CONTINUE</button>
         </div>
       </div>
     </div>
