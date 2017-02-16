@@ -74,7 +74,7 @@ module.exports = function(io) {
       exitGame(socket);
     });
 
-    socket.on('drawCard', function() {
+    socket.on('drawCard', () => {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].drawCard();
       }
@@ -234,5 +234,4 @@ module.exports = function(io) {
     }
     socket.leave(socket.gameID);
   };
-
 };
