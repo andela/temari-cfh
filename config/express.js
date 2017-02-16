@@ -35,7 +35,7 @@ module.exports = function (app, passport, mongoose) {
   // Enable jsonp
   app.enable('jsonp callback');
 
-  app.configure(function () {
+  app.configure(() => {
     // cookieParser should be above session
     app.use(express.cookieParser());
 
