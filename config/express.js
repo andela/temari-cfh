@@ -13,7 +13,7 @@ module.exports = function (app, passport, mongoose) {
 
   // Should be placed before express.static
   app.use(express.compress({
-    filter: function (req, res) {
+    filter(req, res) {
       return (/json|text|javascript|css/).test(res.getHeader('Content-Type'));
     },
     level: 9
