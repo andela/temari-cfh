@@ -7,9 +7,7 @@
           <!-- Logo -->
           <div class="wpb-logo-container">
             <div id="landing-logo">
-              <span id="first-word">Cards</span>
-              <span id="second-word"> for</span>
-              <span id="third-word">Humanity</span>
+              <span id="cfhLogo">CFH</span>
             </div>
             <div class="col-md-9 wpb-menu-container">
               <ul class="wpb-main-menu">
@@ -22,49 +20,56 @@
     </div>
   </div>
 <!-- Fixed Logo & Menu Bar End -->
-<!-- Landing Start -->
-<div class="wpb-teaser parallax-background" id="homer">
-  <div class="background-opacity"></div>
-  <div class="modified-container">
-    <div class="row" id="main-text">
-    <!-- Teaser Text Start -->
-    <div id="landing-logo">
-      <h2 id="slogan">Sign in with:</h2>
-      <div id="login-buttons">
-        <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
-        <a href="/auth/github"><img class="login-item" src="/img/icons/github.png"></a>
-        <a href="/auth/twitter"><img class="login-item" src="/img/icons/twitter.png"></a>
-        <a href="/auth/google"><img class="login-item" src="/img/icons/google.png"></a>
-      </div>
-      <p id="create">Or log in below:</p>
 
-      <div class="sign-body">
-        <div class="more-sign">
-          <div class="sign-error" ng-show="showError() === 'invalid'">
-            Please check your username/password and try again.
-          </div>
-          <form class="signup form-horizontal" action="/users/session" method="post">
-            <div class="control-group">
-              <label for="email" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="email" type="text" name="email" placeholder="Email" required novalidate />
-              </div>
-            </div>
-            <div class="control-group">
-              <label for="password" class="control-label"></label>
-              <div class="controls">
-                <input class="input-info" id="password" type="password" name="password" placeholder="Password" required novalidate />
-              </div>
-            </div>
-            <div class="form-actions top-margin">
-              <button id="sign-up-btn-other" type='submit'>Sign In</button>
-            </div>
-          </form>
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('../img/bck2.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h3>Cards for Humanity</h3>
+          <hr class="small">
+          <span class="subheading">A game for horrible people desperately trying to do good<img class="donation" src="../img/dn-tag.png"></span>
         </div>
       </div>
     </div>
+  </div>
+</header>
+
+<div id="main-body" class="col-md-12">
+  <div class="col-md-2"></div>
+  <div id="sign-in-box" class="col-md-8">
+    <div class="col-md-5 sign-in-left">
+      <div class="sign-error" ng-hide="true">
+        Please check your username/password and try again.
+      </div>
+      <form class="signup form-horizontal" ng-submit="signin(userInfo)" novalidate name="signinForm">
+        <h3 class="sign-in-title">Sign in</h3>
+        <div class="control-group">
+          <input class="col-md-12" type="email" name="email" placeholder="E-mail" ng-model="userInfo.email" required/><br>
+          <input class="col-md-12" type="password" name="password" placeholder="Password" required ng-model="userInfo.password"/><br>
+        </div>
+        <div class="col-xs-12 alert alert-warning" ng-show="error.show">{{error.msg}}</div>
+        <div class="form-actions top-margin">
+          <button class="btn btn-primary btn-block signin-btn" ng-disabled="signinForm.$invalid || processing">
+            <i class="icon fa fa-spinner fa-spin" ng-show="processing"></i>
+            Sign in
+          </button>
+        </div>
+      </form>
     </div>
+    <div class="col-md-2">
+      <div class="or-wrap"><span>OR</span></div>
+    </div>
+    <div id="login-buttons" class="col-md-5 sign-in-right">
+      <h3 class="sign-in-title">Social Login</h3>
+      <div class="col-md-12"><a href="/auth/facebook"> <button class="social-signin facebook">Facebook</button></a></div>
+      <div class="col-md-12"><a href="/auth/twitter"><button class="social-signin twitter">Twitter</button></a></div>
+      <div class="col-md-12"><a href="/auth/google"><button class="social-signin google">Google+</button></a></div>
+      <div class="col-md-12"><a href="auth/github"><button class="social-signin github">Github</button></a></div>
     </div>
   </div>
-</div>
+  <div class="col-md-2"></div>
+</div
 

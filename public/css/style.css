@@ -143,7 +143,7 @@ font-size: 14px;
 
  /**** Links ****/
  a {
-   color: #60B197;
+   color: #777;
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
@@ -153,16 +153,16 @@ font-size: 14px;
 
  a:hover {
    text-decoration: none;
-   color: #2ecc71;
+   color: #777;
    border-radius:0px !important;
  }
 
  p a {
-   color: #60B197;
+   color: #777;
  }
 
  p a:hover {
-   color: #2ecc71;
+   color: #777;
  }
 
 
@@ -254,7 +254,7 @@ font-size: 14px;
  }
 
   .wpb-menu-container .wpb-main-menu li a:hover {
-   color: #2ECC71 !important;
+   color: #777 !important;
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;

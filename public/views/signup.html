@@ -6,17 +6,18 @@
         <div class="row">
           <!-- Logo -->
           <div class="wpb-logo-container">
-            <div id="landing-logo"> 
-              <span id="first-word">Cards</span>
-              <span id="second-word"> for</span> 
-              <span id="third-word">Humanity</span> 
-            </div> 
+            <div id="landing-logo">
+              <span id="first-word">C F H</span>
+              <!--<span id="first-word">Cards</span>
+              <span id="second-word"> for</span>
+              <span id="third-word">Humanity</span> -->
+            </div>
             <div class="col-md-9 wpb-menu-container">
               <ul class="wpb-main-menu">
                 <li><a href="/">Home</a></li>
               </ul>
             </div>
-          </div>      
+          </div>
         </div>
       </div>
     </div>
@@ -24,12 +25,12 @@
 <!-- Fixed Logo & Menu Bar End -->
 
 <!-- Landing Start -->
-<div class="wpb-teaser parallax-background" id="homer">
-  <div class="background-opacity"></div> 
+<!--<div class="wpb-teaser parallax-background" id="homer">
+  <div class="background-opacity"></div>
   <div class="modified-container">
-    <div class="row" id="main-text"> 
+    <div class="row" id="main-text"> -->
     <!-- Teaser Text Start -->
-    <div id="landing-logo">
+    <!--<div id="landing-logo">
       <h2 id="slogan">Sign Up with:</h2>
       <div id="login-buttons">
         <a href="/auth/facebook"><img class="login-item" src="/img/icons/facebook.png"></a>
@@ -78,7 +79,66 @@
     </div>
     </div>
     </div>
+  </div>-->
+
+	<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('../img/bck2.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="site-heading">
+          <h3>Cards for Humanity</h3>
+          <hr class="small">
+          <span class="subheading">
+            A game for horrible people desperately trying to do good
+            <img class="donation" src="../img/dn-tag.png">
+          </span>
+        </div>
+      </div>
+    </div>
   </div>
+</header>
+<div id="main-body" class="col-md-12">
+  <div class="col-md-2"></div>
+  <div id="sign-up-box" class="col-md-8">
+    <div class="col-md-5 sign-up-left">
+      <form class="signup form-horizontal" novalidate name="signupForm" ng-submit="signup(userInfo)">
+        <h3 class="sign-up-title">Sign Up</h3>
+        <div class="control-group">
+          <input class="col-md-12" type="text" name="name"
+                 placeholder="Full Name" required ng-model="userInfo.fullname" /><br>
+          <input class="col-md-12" type="email" name="email" placeholder="E-mail"
+                 required ng-model="userInfo.email" /><br>
+          <input class="col-md-12" type="password" name="password"
+                 placeholder="Password" required ng-model="userInfo.password" /><br>
+        </div>
+        <div class="col-xs-12 alert alert-warning" ng-show="error.show">{{error.msg}}</div>
+        <div class="form-actions top-margin">
+          <button class="btn btn-primary btn-block signin-btn" ng-disabled="signupForm.$invalid || processing">
+            <i class="icon fa fa-spinner fa-spin" ng-show="processing"></i>
+            Sign Up
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-2">
+      <div class="or-wrap-signup"><span>OR</span></div>
+    </div>
+    <div id="login-buttons" class="col-md-5 sign-in-right">
+      <h3 class="sign-in-title">Social Login</h3>
+      <div class="col-md-12">
+        <a href="/auth/facebook">
+           <button class="social-signin facebook">Facebook</button>
+        </a>
+      </div>
+      <div class="col-md-12"><a href="/auth/twitter"><button class="social-signin twitter">Twitter</button></a></div>
+      <div class="col-md-12"><a href="/auth/google"><button class="social-signin google">Google+</button></a></div>
+      <div class="col-md-12"><a href="auth/github"><button class="social-signin github">Github</button></a></div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+</div>
 </div>
 
 

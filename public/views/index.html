@@ -22,42 +22,36 @@ $(document).ready(function() {
 });
 </script>
 <script></script>
+<div landing id="main-bod">
+	<div id="top-part">
+		<div class="wpb-top-bar">
+			<div class ="mod-contain" id="navver">
+				<div class="row">
+					<div class="wpb-logo-container">
+						<div id="landing-logo">
+							<span id="wpb-logo">C F H</span>
+						</div>
+						<div class="col-md-9 wpb-menu-container">
+							<ul class="wpb-main-menu">
+								<li><a onclick="scroll(0,0)">Home</a></li>
+								<li><a onclick="scroll(0,742)">How to Play</a></li>
+								<span ng-show="showOptions">
+									<li><a href="#!/signup">Sign Up</a></li>
+									<li><a href="#!/signin">Sign In</a></li>
+								</span>
+								<span ng-hide="showOptions">
+									<li><a href="/signout">Sign Out</a></li>
+								</span>
+							</ul>
+						</div>
+					</div>
 
-<body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header page-scroll">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-      </button>
-      <a class="navbar-brand" href="index.html">CFH</a>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="#">About</a>
-        </li>
-        <li>
-          <a href="#">How to play</a>
-        </li>
-        <li>
-          <a href="/signup">Sign Up</a>
-        </li>
-        <li>
-          <a href="/signin">Sign In</a>
-        </li>
-        <li>
-          <a href="/play">Play</a>
-        </li>
-      </ul>
-    </div>
-    <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-  </nav>
-  <!-- Page Header -->
+				</div>
+			</div>
+		</div>
+	</div>
+<!-- Logo & Menu Bar End -->
+<br><br><br>
   <!-- Set your background image for this header on the line below. -->
   <header class="intro-header" style="background-image: url('/img/bck2.jpg')">
     <div class="container">
@@ -77,13 +71,13 @@ $(document).ready(function() {
   <div class="container card-container">
     <div class="row card-row">
       <div class="card-overlay col-md-6" style="background-image: url('/img/right-crd.jpg')">
-        <!--Content-->
+
         <div class="white-text text-center">
           <div class="card-block">
             <h3>About this Game</h3>
             <hr class="small">
-            <p class="adjust">Cards for humanity is a fast-paced online ersion of the popular card game, Cards Against Humanity, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are. Warning! This games conatins offensice, profane, explicit content created by Cards Aganist Humanity and provided here, uncensored and complete, in digital form. Human Resources made us say that. To send a private link to your friends, sign up! </p>
-            <button type="button" class="btn btn-info" placeholder="View project">Sign up</button>
+            <p class="adjust">Cards for humanity is a fast-paced online version of the popular card game, <a href="http://cardsagainsthumanity.com/">Cards Against Humanity</a>, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are. Warning! This games contains offensive, profane, explicit content created by Cards Aganist Humanity and provided here, uncensored and complete, in digital form. Human Resources made us say that. To send a private link to your friends, sign up! </p>
+            <button type="button" class="btn btn-info" placeholder="View project"><a href="/play">Play Game</a></button>
           </div>
         </div>
       </div>
@@ -93,13 +87,14 @@ $(document).ready(function() {
           <div class="card-block">
             <h3>Make A Donation</h3>
             <hr class="small">
-            <p class="adjust2"><em>We're quite sure you feel the same way, so we've integrated donation widget (via <a href="crowdrise.com">crowdrise</a>), along with some not-so-subtle remainders throughout the game to give you the opportunity to donate.</em></p>
-            <button type="button" class="btn btn-info2" placeholder="View project">Donate</button>
+            <p class="adjust2"><em>"We're quite sure you feel the same way, so we've integrated donation widget (via <a href="http://www.crowdrise.com/cfhio/fundraiser/cards4humanity">crowdrise</a>), along with some not-so-subtle reminders throughout the game to give you the opportunity to donate."</em> ~ CFH</p>
+            <button type="button" class="btn btn-info2" placeholder="View project"><a href="http://www.crowdrise.com/cfhio/fundraiser/cards4humanity">Donate</a></button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
   <h3 class="text-center">How to Play</h3>
   <hr style="border-color:black" class="small">
   <hr>
@@ -168,7 +163,7 @@ $(document).ready(function() {
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="https://github.com/cardsforhumanity/cardsforhumanity">
                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
@@ -177,7 +172,7 @@ $(document).ready(function() {
             </li>
           </ul>
           <p class="copyright text-muted">
-            Legal stuff: This game is based on the Cards Against Humanity card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by crowdrise. Copyright &copy; Your Website 2016</p>
+            Legal stuff: This game is based on the Cards Against Humanity card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by crowdrise. Copyright &copy; <em style="color:red">Team Temari </em>2017</p>
         </div>
       </div>
     </div>
