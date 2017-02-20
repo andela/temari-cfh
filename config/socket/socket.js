@@ -17,7 +17,7 @@ module.exports = function(io) {
   let gameID = 0;
 
   io.sockets.on('connection', function (socket) {
-    console.log(socket.id + ' Connected');
+    // console.log(socket.id + ' Connected');
     socket.emit('id', { id: socket.id });
 
     socket.on('pickCards', function(data) {
@@ -25,7 +25,7 @@ module.exports = function(io) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards, socket.id);
       } else {
-        console.log('Received pickCard from', socket.id, 'but game does not appear to exist!');
+        // console.log('Received pickCard from', socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -33,7 +33,7 @@ module.exports = function(io) {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickWinning(data.card, socket.id);
       } else {
-        console.log('Received pickWinning from', socket.id, 'but game does not appear to exist!');
+        // console.log('Received pickWinning from', socket.id, 'but game does not appear to exist!');
       }
     });
 
@@ -51,7 +51,7 @@ module.exports = function(io) {
     socket.on('startGame', function() {
       if (allGames[socket.gameID]) {
         var thisGame = allGames[socket.gameID];
-        console.log('comparing',thisGame.players[0].socket.id, 'with', socket.id);
+        // console.log('comparing',thisGame.players[0].socket.id, 'with', socket.id);
         if (thisGame.players.length >= thisGame.playerMinLimit) {
           // Remove this game from gamesNeedingPlayers so new players can't join it.
           gamesNeedingPlayers.forEach(function(game, index) {
@@ -70,7 +70,7 @@ module.exports = function(io) {
     });
 
     socket.on('disconnect', function() {
-      console.log('Rooms on Disconnect ', io.sockets.manager.rooms);
+
       exitGame(socket);
     });
   });
@@ -84,7 +84,7 @@ module.exports = function(io) {
         _id: data.userID
       }).exec(function (err, user) {
         if (err) {
-          console.log('err', err);
+          // console.log('err', err);
           return err; // Hopefully this never happens.
         }
         if (!user) {
@@ -113,7 +113,7 @@ module.exports = function(io) {
     createPrivate = createPrivate || false;
     console.log(socket.id, 'is requesting room', requestedGameId);
     if (requestedGameId.length && allGames[requestedGameId]) {
-      console.log('Room', requestedGameId, 'is valid');
+      // console.log('Room', requestedGameId, 'is valid');
       const game = allGames[requestedGameId];
       // Ensure that the same socket doesn't try to join the same game
       // This can happen because we rewrite the browser's URL to reflect
@@ -141,7 +141,7 @@ module.exports = function(io) {
       }
     } else {
       // Put players into the general queue
-      console.log('Redirecting player', socket.id, 'to general queue');
+      // console.log('Redirecting player', socket.id, 'to general queue');
       if (createPrivate) {
         createGameWithFriends(player, socket);
       } else {
@@ -162,7 +162,7 @@ module.exports = function(io) {
       gamesNeedingPlayers.push(game);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
-      console.log(socket.id, 'has joined newly created game', game.gameID);
+      // console.log(socket.id, 'has joined newly created game', game.gameID);
       game.assignPlayerColors();
       game.assignGuestNames();
       game.sendUpdate();
@@ -170,7 +170,7 @@ module.exports = function(io) {
       game = gamesNeedingPlayers[0];
       allPlayers[socket.id] = true;
       game.players.push(player);
-      console.log(socket.id, 'has joined game', game.gameID);
+      // console.log(socket.id, 'has joined game', game.gameID);
       socket.join(game.gameID);
       socket.gameID = game.gameID;
       game.assignPlayerColors();
@@ -197,7 +197,7 @@ module.exports = function(io) {
         isUniqueRoom = true;
       }
     }
-    console.log(socket.id, 'has created unique game', uniqueRoom);
+    // console.log(socket.id, 'has created unique game', uniqueRoom);
     const game = new Game(uniqueRoom, io);
     allPlayers[socket.id] = true;
     game.players.push(player);
@@ -210,10 +210,10 @@ module.exports = function(io) {
   };
 
   const exitGame = function(socket) {
-    console.log(socket.id, 'has disconnected');
+    // console.log(socket.id, 'has disconnected');
     if (allGames[socket.gameID]) { // Make sure game exists
       const game = allGames[socket.gameID];
-      console.log(socket.id, 'has left game', game.gameID);
+      // console.log(socket.id, 'has left game', game.gameID);
       delete allPlayers[socket.id];
       if (game.state === 'awaiting players' ||
         game.players.length - 1 >= game.playerMinLimit) {
