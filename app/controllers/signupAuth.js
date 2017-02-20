@@ -7,8 +7,9 @@ const User = mongoose.model('User');
 const secret = process.env.SECRET_TOKEN_KEY;
 
 module.exports.signup = (req, res) => {
+	console.log(req.body);
   const body = req.body;
-  if (!(body.name || body.email || body.password)) {
+	if (!(body.name || body.email || body.password)) {
     return res.status(400).json({
       success: false,
       message: 'Incomplete information. name, email and password are required.'

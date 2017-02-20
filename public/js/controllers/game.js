@@ -31,6 +31,24 @@ if ($routeParams.email && $routeParams.password) {
     console.log(data);
   });
 }
+
+if ($routeParams.name && $routeParams.email && $routeParams.password) {
+	const info = {
+	 name: $routeParams.name,
+   email: $routeParams.email,
+    password: $routeParams.password
+  }
+  $http
+  .post('/api/auth/signup', info)
+  .success((info, status, headers) => {
+    const token = data.token;
+    console.log(token);
+    $location.path('/');
+  })
+  .error((info, status, header) => {
+    console.log(info);
+  });
+}
       /**
       * Method to scroll the chat thread to the bottom
       * so user can see latest message when messages overflow
@@ -250,7 +268,7 @@ if ($routeParams.email && $routeParams.password) {
                 $('#oh-el')
                   .css({
                     'text-align': 'center',
-                    'font-size': '22px',
+                    'font-size': '10px',
                     'background': 'white',
                     'color': 'black'
                   }).text(link);

@@ -9,14 +9,13 @@ angular.module('mean.system')
 
     if (!!window.user) {
       var userId = { id: window.user._id };
-      $http.get('/api/auth/validate', { params: userId }).then((result) => {
+			$http.get('/api/auth/validate', { params: userId }).then((result) => {
         const userToken = result.data.token;
         $window.localStorage.setItem('token', userToken);
       })
     } else {
       $window.localStorage.removeItem('token');
-    }
-
+		}
 
     return _this._data;
   }])
@@ -32,18 +31,6 @@ angular.module('mean.system')
       }
     };
   }])
-  // .factory('jwtService', ['$http', function($http) {
-  //   return {
-  //     setToken: function() {
-  //       return $http.get('/api/auth/validate');
-  //       // .then(function(results) {
-  //       //   console.log('Json::', results);
-  //       //   return results[0].data;
-  //       // });
-
-//     }
-//   };
-// }])
 
 .factory('DonationService', ['$http', '$q', function($http, $q) {
     return {

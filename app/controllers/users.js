@@ -1,8 +1,11 @@
 // Module dependencies.
 const mongoose = require('mongoose');
 const avatars = require('./avatars').all();
+const jwt = require('jsonwebtoken');
+const moment = require('moment');
 
 const User = mongoose.model('User');
+const secret = process.env.SECRET_TOKEN_KEY;
 
 // Auth callback
 exports.authCallback = (req, res, next) => {
