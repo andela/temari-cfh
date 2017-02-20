@@ -1,8 +1,8 @@
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser',
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http',
     function ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser) {
+      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http) {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
@@ -11,11 +11,26 @@ angular.module('mean.system')
       $scope.game = game;
       $scope.pickedCards = [];
       $scope.inviteList = [];
-      let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
+      var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
       $scope.makeAWishFact = makeAWishFacts.pop();
       $scope.chat = game.gameChat;
 
-
+if ($routeParams.email && $routeParams.password) {
+  const data = {
+    email: $routeParams.email,
+    password: $routeParams.password
+  }
+  $http
+  .post('/api/auth/validate', data)
+  .success((data, status, headers) => {
+    const token = data.token;
+    console.log(token);
+    $location.path('/');
+  })
+  .error((data, status, header) => {
+    console.log(data);
+  });
+}
       /**
       * Method to scroll the chat thread to the bottom
       * so user can see latest message when messages overflow
@@ -50,7 +65,7 @@ angular.module('mean.system')
               $scope.hasPickedCards = true;
             } else if (game.curQuestion.numAnswers === 2 &&
               $scope.pickedCards.length === 2) {
-              // delay and send
+              //delay and send
               $scope.hasPickedCards = true;
               $timeout($scope.sendPickedCards, 300);
             }
@@ -290,6 +305,9 @@ angular.module('mean.system')
 
       $scope.selectList = (word) => {
         $scope.email = word;
+      };
+      $scope.drawCard = () => {
+        game.drawCard();
       };
     }
   ])
