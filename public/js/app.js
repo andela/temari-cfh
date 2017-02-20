@@ -4,13 +4,10 @@ angular.module('mean', [
   'ui.bootstrap',
   'ui.route',
   'mean.system',
-  'mean.directives',
-  'auth.controllers',
-  'auth.service',
-  'LocalStorageModule'
+  'mean.directives'
 ])
   .config(['$routeProvider',
-    function($routeProvider) {
+    ($routeProvider) => {
       $routeProvider
         .when('/', {
           templateUrl: 'views/index.html'
@@ -25,12 +22,10 @@ angular.module('mean', [
           templateUrl: '/views/bottom.html'
         })
         .when('/signin', {
-          templateUrl: '/views/signin.html',
-          controller: 'signinController',
+          templateUrl: '/views/signin.html'
         })
         .when('/signup', {
-          templateUrl: '/views/signup.html',
-          controller: 'signupController',
+          templateUrl: '/views/signup.html'
         })
         .when('/choose-avatar', {
           templateUrl: '/views/choose-avatar.html'
@@ -40,22 +35,23 @@ angular.module('mean', [
         });
     }
   ]).config(['$locationProvider',
-    function($locationProvider) {
+    function ($locationProvider) {
       $locationProvider.hashPrefix('!');
     }
-  ]).run(['$rootScope', function($rootScope) {
-    $rootScope.safeApply = function(fn) {
-      var phase = this.$root.$$phase;
+  ]).run(['$rootScope', function ($rootScope) {
+    $rootScope.safeApply = function (fn) {
+      const phase = this.$root.$$phase;
       if (phase === '$apply' || phase === '$digest') {
-        if (fn && (typeof(fn) === 'function')) {
+        if (fn && (typeof (fn) === 'function')) {
           fn();
         }
       } else {
         this.$apply(fn);
       }
     };
-  }]).run(['DonationService', function(DonationService) {
-    window.userDonationCb = function(donationObject) {
+  }])
+  .run(['DonationService', function (DonationService) {
+    window.userDonationCb = function (donationObject) {
       DonationService.userDonated(donationObject);
     };
   }]);

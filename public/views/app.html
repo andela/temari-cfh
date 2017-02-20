@@ -1,10 +1,13 @@
+<script type="text/javascript">
+    $(window).load(function(){
+        $('#intrusiveModal').modal('show');
+    });
 </script>
-<div id="app-container" ng-controller="GameController">
+<div id="app-container" ng-controller="GameController" style="background-image: url('/img/gamepageBG.png')">
   <div id="menu-container">
     <div id="logo">
-      <span id="first-word">Cards</span>
-      <span id="second-word"> for</span>
-      <span id="third-word">Humanity</span>
+      <a href="#" style="color:antiquewhite" >Cards For Humanity</a>
+      <span ng-show="userName">
     </div>
     <div id='abandon-game-button' ng-click="abandonGame()">
       Abandon Game
@@ -31,3 +34,24 @@
         <answers></answers>
   </div>
 </div>
+<!-- Modal for game start section -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="intrusiveModal" data-backdrop="static" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <!-- Modal content-->
+      <div class="modal-content" style="background-color:white">
+        <div class="modal-header">
+          <h3 class="modal-title" style="text-align: center; font-weight: bold; font-family: Helvetica">Welcome!</h3>
+        </div>
+        <div class="modal-body">
+          <h4 style="text-align: center; font-weight: bold; font-family: Helvetica">You are about to start a new game session...</h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="text-align: center; font-weight: bold; font-family: Verdana">CONTINUE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal end section -->
