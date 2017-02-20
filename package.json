@@ -30,7 +30,6 @@
     "console-stamp": "~0.1.1",
     "coveralls": "^2.11.15",
     "dotenv": "^4.0.0",
-    "eslint-config-airbnb": "^14.0.0",
     "eslint-config-airbnb-base": "^11.0.1",
     "express": "~3.4.0",
     "express-session": "^1.14.2",
