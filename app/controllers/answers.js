@@ -41,7 +41,7 @@ exports.all = (req, res) => {
 exports.allAnswersForGame = (cb) => {
   Answer.find({ official: true }).select('-_id').exec((err, answers) => {
     if (err) {
-      console.log(err);
+      // console.log(err);
     } else {
       cb(answers);
     }

@@ -295,7 +295,7 @@ angular.module('mean.system')
   .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
     const $ctrl = this;
 
-    $scope.open = function () {
+    $scope.open = () => {
       $('#modalView').modal('show');
     };
   }]);
