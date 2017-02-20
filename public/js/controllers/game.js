@@ -134,10 +134,8 @@ angular.module('mean.system')
           $scope.pickedCards[0] === card.id;
       };
 
-      $scope.showSecond = (card) => {
-        return game.curQuestion.numAnswers > 1 &&
+      $scope.showSecond = card => game.curQuestion.numAnswers > 1 &&
           $scope.pickedCards[1] === card.id;
-      };
 
       $scope.isCzar = () => {
         return game.czar === game.playerIndex;
@@ -152,7 +150,7 @@ angular.module('mean.system')
           game.state === 'awaiting players';
       };
 
-      $scope.customGameCreator = function () {
+      $scope.customGameCreator = () => {
         if (game.players[0] === undefined) {
           return false;
         } else if (window.user === null) {
@@ -161,40 +159,33 @@ angular.module('mean.system')
         return true;
       };
 
-      $scope.isPremium = function ($index) {
-        return game.players[$index].premium;
-      };
+      $scope.isPremium = $index => game.players[$index].premium;
 
-      $scope.currentCzar = function ($index) {
-        return $index === game.czar;
-      };
+      $scope.currentCzar = $index => $index === game.czar;
 
-      $scope.winningColor = function ($index) {
+      $scope.winningColor = ($index) => {
         if (game.winningCardPlayer !== -1 && $index ===
           game.winningCard) {
           return $scope.colors[game.players[game.winningCardPlayer].color];
         }
         return '#f9f9f9';
-
       };
 
-      $scope.pickWinning = function (winningSet) {
+      $scope.pickWinning = (winningSet) => {
         if ($scope.isCzar()) {
           game.pickWinning(winningSet.card[0]);
           $scope.winningCardPicked = true;
         }
       };
 
-      $scope.winnerPicked = function () {
-        return game.winningCard !== -1;
-      };
+      $scope.winnerPicked = () => game.winningCard !== -1;
 
 
-      $scope.startGame = function () {
+      $scope.startGame = () => {
         game.startGame();
       };
 
-      $scope.abandonGame = function () {
+      $scope.abandonGame = () => {
         game.leaveGame();
         $location.path('/');
       };
@@ -234,8 +225,8 @@ angular.module('mean.system')
             $location.search({ game: game.gameID });
             if (!$scope.modalShown) {
               setTimeout(() => {
-                let link = document.URL;
-                let txt =
+                const link = document.URL;
+                const txt =
                   'If you insist, Give the following link to your ' +
                   'friends so they can join your game: ';
                 $('#lobby-how-to-play').text(txt);
