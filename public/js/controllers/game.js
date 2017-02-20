@@ -20,11 +20,11 @@ angular.module('mean.system')
           password: $routeParams.password
         };
         $http.post('/api/auth/validate', data)
-      .success((data, status, headers) => {
-        const token = data.token;
+      .success((info, status, headers) => {
+        const token = info.token;
         $location.path('/');
       })
-      .error((data, status, header) => {
+      .error((info, status, header) => {
       });
       }
 
@@ -137,9 +137,7 @@ angular.module('mean.system')
       $scope.showSecond = card => game.curQuestion.numAnswers > 1 &&
           $scope.pickedCards[1] === card.id;
 
-      $scope.isCzar = () => {
-        return game.czar === game.playerIndex;
-      };
+      $scope.isCzar = () => game.czar === game.playerIndex;
 
       $scope.isPlayer = function ($index) {
         return $index === game.playerIndex;
@@ -295,7 +293,7 @@ angular.module('mean.system')
     }
   ])
   .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
-    let $ctrl = this;
+    const $ctrl = this;
 
     $scope.open = function () {
       $('#modalView').modal('show');
