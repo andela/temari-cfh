@@ -1,8 +1,7 @@
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http',
-    function ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http) {
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http', ($scope, game, $timeout, $location,
+      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http) => {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
@@ -11,44 +10,24 @@ angular.module('mean.system')
       $scope.game = game;
       $scope.pickedCards = [];
       $scope.inviteList = [];
-      var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
+      let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
       $scope.makeAWishFact = makeAWishFacts.pop();
       $scope.chat = game.gameChat;
 
-if ($routeParams.email && $routeParams.password) {
-  const data = {
-    email: $routeParams.email,
-    password: $routeParams.password
-  }
-  $http
-  .post('/api/auth/validate', data)
-  .success((data, status, headers) => {
-    const token = data.token;
-    console.log(token);
-    $location.path('/');
-  })
-  .error((data, status, header) => {
-    console.log(data);
-  });
-}
+      if ($routeParams.email && $routeParams.password) {
+        const data = {
+          email: $routeParams.email,
+          password: $routeParams.password
+        };
+        $http.post('/api/auth/validate', data)
+      .success((data, status, headers) => {
+        const token = data.token;
+        $location.path('/');
+      })
+      .error((data, status, header) => {
+      });
+      }
 
-if ($routeParams.name && $routeParams.email && $routeParams.password) {
-	const info = {
-	 name: $routeParams.name,
-   email: $routeParams.email,
-    password: $routeParams.password
-  }
-  $http
-  .post('/api/auth/signup', info)
-  .success((info, status, headers) => {
-    const token = data.token;
-    console.log(token);
-    $location.path('/');
-  })
-  .error((info, status, header) => {
-    console.log(info);
-  });
-}
       /**
       * Method to scroll the chat thread to the bottom
       * so user can see latest message when messages overflow
@@ -74,7 +53,7 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
         $scope.chat.postGroupMessage(userMessage);
         $scope.chatMessage = '';
       };
-      $scope.pickCard = function (card) {
+      $scope.pickCard = (card) => {
         if (!$scope.hasPickedCards) {
           if ($scope.pickedCards.indexOf(card.id) < 0) {
             $scope.pickedCards.push(card.id);
@@ -83,7 +62,7 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
               $scope.hasPickedCards = true;
             } else if (game.curQuestion.numAnswers === 2 &&
               $scope.pickedCards.length === 2) {
-              //delay and send
+              // delay and send
               $scope.hasPickedCards = true;
               $timeout($scope.sendPickedCards, 300);
             }
@@ -94,14 +73,14 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
       };
 
 
-      $scope.keyPressed = function ($event) {
+      $scope.keyPressed = ($event) => {
         const keyCode = $event.which || $event.keyCode;
         if (keyCode === 13) {
           $scope.sendMessage($scope.chatMessage);
         }
       };
 
-      $scope.showChat = function () {
+      $scope.showChat = () => {
         $scope.chat.chatWindowVisible = !$scope.chat.chatWindowVisible;
         // enableChatWindow;
         if ($scope.chat.chatWindowVisible) {
@@ -109,63 +88,58 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
         }
       };
 
-      $scope.pointerCursorStyle = function () {
+      $scope.pointerCursorStyle = () => {
         if ($scope.isCzar() && $scope.game.state ===
           'waiting for czar to decide') {
-          return { 'cursor': 'pointer' };
-        } else {
-          return {};
+          return { cursor: 'pointer' };
         }
+        return {};
       };
 
-      $scope.sendPickedCards = function () {
+      $scope.sendPickedCards = () => {
         game.pickCards($scope.pickedCards);
         $scope.showTable = true;
       };
 
-      $scope.cardIsFirstSelected = function (card) {
+      $scope.cardIsFirstSelected = (card) => {
         if (game.curQuestion.numAnswers > 1) {
           return card === $scope.pickedCards[0];
-        } else {
-          return false;
         }
+        return false;
       };
 
-      $scope.cardIsSecondSelected = function (card) {
+      $scope.cardIsSecondSelected = (card) => {
         if (game.curQuestion.numAnswers > 1) {
           return card === $scope.pickedCards[1];
-        } else {
-          return false;
         }
+        return false;
       };
 
-      $scope.firstAnswer = function ($index) {
+      $scope.firstAnswer = ($index) => {
         if ($index % 2 === 0 && game.curQuestion.numAnswers > 1) {
           return true;
-        } else {
-          return false;
         }
+        return false;
       };
 
-      $scope.secondAnswer = function ($index) {
+      $scope.secondAnswer = ($index) => {
         if ($index % 2 === 1 && game.curQuestion.numAnswers > 1) {
           return true;
-        } else {
-          return false;
         }
+        return false;
       };
 
-      $scope.showFirst = function (card) {
+      $scope.showFirst = (card) => {
         return game.curQuestion.numAnswers > 1 &&
           $scope.pickedCards[0] === card.id;
       };
 
-      $scope.showSecond = function (card) {
+      $scope.showSecond = (card) => {
         return game.curQuestion.numAnswers > 1 &&
           $scope.pickedCards[1] === card.id;
       };
 
-      $scope.isCzar = function () {
+      $scope.isCzar = () => {
         return game.czar === game.playerIndex;
       };
 
@@ -199,9 +173,9 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
         if (game.winningCardPlayer !== -1 && $index ===
           game.winningCard) {
           return $scope.colors[game.players[game.winningCardPlayer].color];
-        } else {
-          return '#f9f9f9';
         }
+        return '#f9f9f9';
+
       };
 
       $scope.pickWinning = function (winningSet) {
@@ -227,7 +201,7 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
 
       // Catches changes to round to update when no players pick card
       // (because game.state remains the same)
-      $scope.$watch('game.round', function () {
+      $scope.$watch('game.round', () => {
         $scope.hasPickedCards = false;
         $scope.showTable = false;
         $scope.winningCardPicked = false;
@@ -239,14 +213,14 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
       });
 
       // In case player doesn't pick a card in time, show the table
-      $scope.$watch('game.state', function () {
+      $scope.$watch('game.state', () => {
         if (game.state === 'waiting for czar to decide' &&
           $scope.showTable === false) {
           $scope.showTable = true;
         }
       });
 
-      $scope.$watch('game.gameID', function () {
+      $scope.$watch('game.gameID', () => {
         if (game.gameID && game.state === 'awaiting players') {
           if (!$scope.isCustomGame() && $location.search().game) {
             // If the player didn't successfully enter the request room,
@@ -259,9 +233,9 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
             // where the link is meant to be shared.
             $location.search({ game: game.gameID });
             if (!$scope.modalShown) {
-              setTimeout(function () {
-                var link = document.URL;
-                var txt =
+              setTimeout(() => {
+                let link = document.URL;
+                let txt =
                   'If you insist, Give the following link to your ' +
                   'friends so they can join your game: ';
                 $('#lobby-how-to-play').text(txt);
@@ -269,8 +243,8 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
                   .css({
                     'text-align': 'center',
                     'font-size': '10px',
-                    'background': 'white',
-                    'color': 'black'
+                    background: 'white',
+                    color: 'black'
                   }).text(link);
               }, 200);
               $scope.modalShown = true;
@@ -330,7 +304,7 @@ if ($routeParams.name && $routeParams.email && $routeParams.password) {
     }
   ])
   .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
-    var $ctrl = this;
+    let $ctrl = this;
 
     $scope.open = function () {
       $('#modalView').modal('show');
