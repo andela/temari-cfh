@@ -9,7 +9,7 @@ angular.module('mean.system')
     $scope.gameTour = introJs();
     $scope.gamePlayerLength = 1;
     $scope.playerScore = 0;
-    $scope.gameTour.setOption('showBullets', false);
+    $scope.gameTour.setOption('showBullets', true);
     $scope.gameTour.setOption('showStepNumbers', false);
     $scope.gameTour.setOptions({
       steps: [{
@@ -98,9 +98,9 @@ angular.module('mean.system')
 
     const tourComplete = () => {
       if (isGameCustom()) {
-        $window.location = '/app?custom';
+        $window.location = '/play?custom';
       } else {
-        $window.location = '/app';
+        $window.location = '/play';
       }
     };
 
@@ -110,6 +110,7 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.awaitingPlayers = true;
+              $scope.questionShow = true;
             });
             break;
           }

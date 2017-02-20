@@ -8,6 +8,7 @@ const mocha = require('gulp-mocha');
 const nodemon = require('gulp-nodemon');
 const sass = require('gulp-sass');
 const bower = require('gulp-bower');
+const istanbul = require('gulp-istanbul');
 
 /*
  **Include gulp tasks
@@ -21,18 +22,26 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
+gulp.task('pre-test', () => gulp.src(['test/**/*.js'])
+  .pipe(istanbul({ includeUntested: true }))
+  .pipe(istanbul.hookRequire()));
 
-gulp.task('mochaTest', () => {
-  gulp.src('test/**/*.js', {
+gulp.task('mochaTest', ['pre-test'], () => gulp.src(['./test/**/*.js'],
+  {
     read: false
   })
-    .pipe(mocha({
-      reporter: 'spec'
-    }))
-    .once('end', () => {
-      process.exit();
-    });
-});
+  .pipe(mocha({ reporter: 'spec' }))
+  .pipe(istanbul.writeReports({
+    dir: './coverage',
+    reporters: ['lcov'],
+    reportOpts: { dir: 'coverage/' },
+  }))
+  .once('error', () => {
+    process.exit(1);
+  })
+  .once('end', () => {
+    process.exit();
+  }));
 
 // Nodemon task
 gulp.task('nodemon', () => {

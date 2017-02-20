@@ -50,7 +50,7 @@ angular.module('mean.directives', [])
                   endStyle);
               }
               curQ.text = curQuestionArr.join('');
-              /* Clean up the last punctuation mark in the 
+              /* Clean up the last punctuation mark in the
                ** question if there already is one in the answer
                */
               if (shouldRemoveQuestionPunctuation) {
@@ -81,7 +81,22 @@ angular.module('mean.directives', [])
       templateUrl: '/views/timer.html',
       link: function(scope, elem, attr) {}
     };
-  }).directive('landing', function() {
+  })
+  .directive('inviteList', function() {
+    return {
+      restrict: 'EA',
+      templateUrl: '/views/invite-list.html',
+      link: function(scope, elem, attr) {}
+    };
+  })
+  .directive('gameTour', function () {
+    return {
+      restrict: 'EA',
+      templateUrl: '/views/game-tour.html',
+      link: function(scope, elem, attr) {}
+    };
+  })
+  .directive('landing', function() {
     return {
       restrict: 'EA',
       link: function(scope, elem, attr) {

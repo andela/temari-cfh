@@ -4,6 +4,9 @@
 var mongoose = require('mongoose'),
   User = mongoose.model('User');
 var avatars = require('./avatars').all();
+var moment = require('moment');
+var jwt = require('jsonwebtoken');
+var secret = process.env.JWT_SECRET;
 
 /**
  * Auth callback
@@ -112,7 +115,7 @@ exports.create = function(req, res) {
  * Assign avatar to user
  */
 exports.avatars = function(req, res) {
-  /* Update the current user's profile to 
+  /* Update the current user's profile to
    ** include the avatar choice they've made
    */
   if (req.user && req.user._id && req.body.avatar !== undefined &&
