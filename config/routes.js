@@ -3,7 +3,6 @@ const answers = require('../app/controllers/answers');
 const questions = require('../app/controllers/questions');
 const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
-const authentication = require('../app/controllers/signupAuth');
 const validation = require('../app/controllers/userAuth');
 const GameHistory = require('../app/controllers/game-history');
 const search = require('../app/controllers/api/search');
@@ -104,8 +103,10 @@ module.exports = (app, passport, auth) => {
   app.post('/api/mail/user', mail.emailInvite);
 
   // authentication and validation routes
-  app.post('/api/auth/signup', authentication.signup);
-  app.post('/api/auth/login', validation.login);
+
+  // app.post('/api/auth/signup', authentication.signup);
+  // app.post('/api/auth/login', validation.login);
+  app.get('/api/auth/validate', validation.login);
 
   // game history
   app.get('/api/games/history/:email', GameHistory.getUserGames);

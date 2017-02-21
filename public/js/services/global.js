@@ -1,71 +1,71 @@
 angular.module('mean.system')
-  .factory('Global', [function () {
-    var _this = this;
+  .factory('Global', ['$http', '$window', ($http, $window) => {
+    const _this = this;
     _this._data = {
       user: window.user,
       authenticated: !!window.user
     };
 
+    if (window.user) {
+      const userId = { id: window.user._id };
+      $http.get('/api/auth/validate', { params: userId }).then((result) => {
+        const userToken = result.data.token;
+        $window.localStorage.setItem('token', userToken);
+      });
+    } else {
+      $window.localStorage.removeItem('token');
+    }
+
     return _this._data;
   }])
-  .factory('AvatarService', ['$http', '$q', function ($http, $q) {
-    return {
-      getAvatars: function () {
-        return $q.all([
-          $http.get('/avatars')
-        ])
-          .then(function (results) {
-            return results[0].data;
-          });
-      }
-    };
-  }])
-  .factory('DonationService', ['$http', '$q', function ($http, $q) {
-    return {
-      userDonated: function (donationObject) {
-        return $q.all([
-          $http.post('/donations', donationObject)
-        ])
-          .then(function (results) {
+  .factory('AvatarService', ['$http', '$q', ($http, $q) => ({
+    getAvatars() {
+      return $q.all([
+        $http.get('/avatars')
+      ])
+          .then(results => results[0].data);
+    }
+  })])
+
+  .factory('DonationService', ['$http', '$q', ($http, $q) => ({
+    userDonated(donationObject) {
+      return $q.all([
+        $http.post('/donations', donationObject)
+      ])
+          .then((results) => {
             console.log('userDonated success', results);
           });
-      }
-    };
-  }])
-  .factory('sendMail', ['$http', '$q', ($http, $q) => {
-    return {
-      postMail: (email, gameUrl) => {
-        const deferred = $q.defer();
-        $http.post('/api/mail/user', { email: email, link: gameUrl },
-          { headers: { 'Content-Type': 'application/json' } })
+    }
+  })])
+  .factory('sendMail', ['$http', '$q', ($http, $q) => ({
+    postMail: (email, gameUrl) => {
+      const deferred = $q.defer();
+      $http.post('/api/mail/user', { email, link: gameUrl }, { headers: { 'Content-Type': 'application/json' } })
           .success((res) => {
             deferred.resolve(res);
           }).error((err) => {
             deferred.reject(err);
           });
-        return deferred.promise;
-      }
-    };
-  }])
-  .factory('searchUser', ['$http', '$q', ($http, $q) => {
-    return {
-      getUsers: (email) => {
-        const deferred = $q.defer();
-        $http.get(`/api/search/users/${email}`)
+      return deferred.promise;
+    }
+  })])
+  .factory('searchUser', ['$http', '$q', ($http, $q) => ({
+    getUsers: (email) => {
+      const deferred = $q.defer();
+      $http.get(`/api/search/users/${email}`)
           .success((data, status, headers, config) => {
             deferred.resolve(data, status, headers, config);
           }).error((err) => {
             deferred.reject(err);
           });
-        return deferred.promise;
-      }
-    };
-  }])
+      return deferred.promise;
+    }
+  })])
   .factory('MakeAWishFactsService', [function () {
     return {
-      getMakeAWishFacts: function () {
+      getMakeAWishFacts() {
         /* jshint ignore:start */
-        var facts = ['Health professionals who treat wish kids, including nurses and doctors, overwhelmingly believe that the wish experience can improve a wish kids’ physical health.',
+        const facts = ['Health professionals who treat wish kids, including nurses and doctors, overwhelmingly believe that the wish experience can improve a wish kids’ physical health.',
           'Most health professionals say a wish come true has the potential to be a positive turning point in the child’s battle for health.',
           'Parents and volunteers observe that a wish come true makes kids feel stronger and more energetic.',
           'Wish kids are more willing to comply with difficult, but vital, treatment regimens.',
@@ -91,9 +91,9 @@ angular.module('mean.system')
           'As of August 2012, the average cost of a wish was $8,141.'
         ];
         /* jshint ignore:end */
-        var shuffleIndex = facts.length;
-        var temp;
-        var randNum;
+        let shuffleIndex = facts.length;
+        let temp;
+        let randNum;
 
         while (shuffleIndex) {
           randNum = Math.floor(Math.random() * shuffleIndex--);

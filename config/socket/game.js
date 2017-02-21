@@ -247,7 +247,7 @@ Game.prototype.getAnswers = function (cb) {
 };
 
 Game.prototype.shuffleCards = function (cards) {
-  const shuffleIndex = cards.length;
+  let shuffleIndex = cards.length;
   let temp;
   let randNum;
 

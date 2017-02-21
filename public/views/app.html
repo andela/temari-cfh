@@ -3,10 +3,10 @@
         $('#intrusiveModal').modal('show');
     });
 </script>
-<div id="app-container" ng-controller="GameController">
+<div id="app-container" ng-controller="GameController" style="background-image: url('/img/gamepageBG.png')">
   <div id="menu-container">
     <div id="logo">
-      <a href="#" style="color:antiquewhite" >CFH</a>
+      <a href="#" style="color:antiquewhite" >Cards For Humanity</a>
       <span ng-show="userName">
     </div>
     <div id='abandon-game-button' ng-click="abandonGame()">
@@ -48,7 +48,7 @@
           <h4 style="text-align: center; font-weight: bold; font-family: Helvetica">You are about to start a new game session...</h4>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" style="text-align: center; font-weight: bold; font-family: Helvetica">CONTINUE</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="text-align: center; font-weight: bold; font-family: Verdana">CONTINUE</button>
         </div>
       </div>
     </div>

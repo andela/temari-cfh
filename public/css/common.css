@@ -8,7 +8,11 @@
   margin: 1%;
   background-color: #fff;
   border-radius: 8px;
+<<<<<<< HEAD
   color: #252525;
+=======
+  color: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   font-family: Arial;
   font-size: 20px;
   font-weight: bold;
@@ -31,12 +35,20 @@
   font-size: 18px;
 }
 .card.black {
+<<<<<<< HEAD
   background: #252525;
+=======
+  background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   border-color: white;
   color: white;
 }
 .card.longBlack {
+<<<<<<< HEAD
   background: #252525;
+=======
+  background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   border-color: white;
   color: white;
   height: 100%;
@@ -133,7 +145,11 @@ body {
 }
 #main-container #app-container {
   height: 100%;
+<<<<<<< HEAD
   max-width: 99%;
+=======
+  max-width: 95%;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   margin: 0px auto;
   position: relative;
 }
@@ -142,7 +158,11 @@ body {
   /*-webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;*/
+<<<<<<< HEAD
   background: #252525;
+=======
+  background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   margin-bottom: 10px;
   margin-top: 5px;
   padding: 5px;
@@ -185,7 +205,11 @@ body {
   font-weight: 400;
   text-align: center;
   color: black;
+<<<<<<< HEAD
   background: slategrey;
+=======
+  background: darkcyan;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   margin-top: 3px;
   margin-bottom: 3px;
   margin-right: 10px;
@@ -254,7 +278,11 @@ body {
   padding-top: 4%;
   padding-bottom: 4%;
   min-height: 75px;
+<<<<<<< HEAD
   background: #777;
+=======
+  background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   margin: 0 0 6% 8%;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -501,7 +529,11 @@ body {
   -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
   box-shadow: inset 0px 1px 0px 0px #ffffff;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fcfcfc', endColorstr='#f0f0f0');
+<<<<<<< HEAD
   background-color: #777;
+=======
+  background-color: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   text-indent: 0;
   text-shadow: 1px 1px 0px #ffffff;
   cursor: pointer;
@@ -667,7 +699,11 @@ body {
   font-size: 20px;
   font-size: 1.25rem;
   font-weight: 400;
+<<<<<<< HEAD
   color: #777;
+=======
+  color: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   background: #1F959C;
   padding: 0.65em 20px;
   margin: 10px;
@@ -687,7 +723,11 @@ body {
   }
 }
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button:hover {
+<<<<<<< HEAD
   background: #777;
+=======
+  background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
 }
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #game-end-info {
   text-align: center;
@@ -709,7 +749,11 @@ body {
 }
 #main-container #app-container #gameplay-container #info-container {
   width: 100%;
+<<<<<<< HEAD
   background: #252525;
+=======
+  background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   color: white;
   /*-webkit-border-radius: 8px;
   -moz-border-radius: 8px;*/
@@ -764,7 +808,11 @@ body {
 }
 #main-container #app-container #gameplay-container #game-end-container {
   width: 100%;
+<<<<<<< HEAD
   background: #252525;
+=======
+  background: g;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   /*-webkit-border-radius: 8px;
   -moz-border-radius: 8px;*/
   border-radius: 8px;
@@ -842,7 +890,11 @@ body {
   border-bottom-left-radius: 8px;*/
   text-indent: 0;
   display: inline-block;
+<<<<<<< HEAD
   color: #252525;
+=======
+  color: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   font-size: 39px;
   font-weight: bold;
   font-style: normal;
@@ -886,7 +938,11 @@ body {
   border-bottom-left-radius: 8px;
   text-indent: 0;
   display: inline-block;
+<<<<<<< HEAD
   color: #252525;
+=======
+  color: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   font-size: 39px;
   font-weight: bold;
   font-style: normal;
@@ -915,7 +971,11 @@ body {
 #main-container #app-container #gameplay-container #czar-blank-container {
   color: white;
   width: 100%;
+<<<<<<< HEAD
   background: #252525;
+=======
+  background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
@@ -949,7 +1009,11 @@ body {
   -moz-border-radius: 8px;
   border-radius: 8px;
   background-color: #fff;
+<<<<<<< HEAD
   color: black;
+=======
+  color: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   position: absolute;
   bottom: 4%;
   margin: 0 2%;
@@ -1006,7 +1070,11 @@ body {
 }
 #main-container #app-container #gameplay-container #cards-container {
   width: 100%;
+<<<<<<< HEAD
   background: #252525;
+=======
+  background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
   margin-top: 11px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -1026,7 +1094,11 @@ body {
 }
 @media (max-width: 520px) {
   #main-container #app-container #gameplay-container #cards-container #cards {
+<<<<<<< HEAD
     background: #252525;
+=======
+    background: #2B0F0E;
+>>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;

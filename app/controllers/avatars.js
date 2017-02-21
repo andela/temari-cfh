@@ -21,7 +21,7 @@ avatars = ['/img/chosen/E01.png',
 exports.allJSON = (req, res) => {
   // Only return the first 12
   // The last 4 avatar types are reserved for guests
-  res.jsonp(avatars.slice(0, 12));
+  res.jsonp(avatars.slice(0, 10));
 };
 
 exports.all = () => avatars;
