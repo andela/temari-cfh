@@ -107,5 +107,5 @@ module.exports = (app, passport, auth) => {
 
   app.post('/api/auth/signup', authentication.signup);
 
-  app.post('/api/auth/login', validation.login);
+  app.post('/api/auth/validate', validation.login);
 };

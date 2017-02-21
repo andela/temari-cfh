@@ -1,8 +1,8 @@
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser',
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http',
     function ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser) {
+      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http) {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
@@ -13,6 +13,24 @@ angular.module('mean.system')
       $scope.inviteList = [];
       var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
       $scope.makeAWishFact = makeAWishFacts.pop();
+
+      if ($routeParams.name && $routeParams.email && $routeParams.password) {
+        const info = {
+          name: $routeParams.name,
+          email: $routeParams.email,
+          password: $routeParams.password
+        }
+        $http
+          .post('/api/auth/signup', info)
+          .success((info, status, headers) => {
+            const token = info.token;
+            console.log(token);
+            $location.path('/');
+          })
+          .error((info, status, header) => {
+            console.log(info);
+          });
+      }
 
       $scope.pickCard = function (card) {
         if (!$scope.hasPickedCards) {
@@ -36,7 +54,9 @@ angular.module('mean.system')
       $scope.pointerCursorStyle = function () {
         if ($scope.isCzar() && $scope.game.state ===
           'waiting for czar to decide') {
-          return { 'cursor': 'pointer' };
+          return {
+            'cursor': 'pointer'
+          };
         } else {
           return {};
         }
@@ -181,7 +201,9 @@ angular.module('mean.system')
              ** update the URL if this is a game with friends,
              */
             // where the link is meant to be shared.
-            $location.search({ game: game.gameID });
+            $location.search({
+              game: game.gameID
+            });
             if (!$scope.modalShown) {
               setTimeout(function () {
                 var link = document.URL;
@@ -204,7 +226,7 @@ angular.module('mean.system')
       });
 
       if ($location.search().game && !(/^\d+$/).test($location
-        .search().game)) {
+          .search().game)) {
         console.log('joining custom game');
         game.joinGame('joinGame', $location.search().game);
       } else if ($location.search().custom) {
