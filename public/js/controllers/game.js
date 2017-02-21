@@ -129,24 +129,19 @@ angular.module('mean.system')
         return false;
       };
 
-      $scope.showFirst = (card) => {
-        return game.curQuestion.numAnswers > 1 &&
+      $scope.showFirst = card => game.curQuestion.numAnswers > 1 &&
           $scope.pickedCards[0] === card.id;
-      };
+
 
       $scope.showSecond = card => game.curQuestion.numAnswers > 1 &&
           $scope.pickedCards[1] === card.id;
 
       $scope.isCzar = () => game.czar === game.playerIndex;
 
-      $scope.isPlayer = function ($index) {
-        return $index === game.playerIndex;
-      };
+      $scope.isPlayer = $index => $index === game.playerIndex;
 
-      $scope.isCustomGame = function () {
-        return !(/^\d+$/).test(game.gameID) &&
+      $scope.isCustomGame = () => !(/^\d+$/).test(game.gameID) &&
           game.state === 'awaiting players';
-      };
 
       $scope.customGameCreator = () => {
         if (game.players[0] === undefined) {
@@ -232,8 +227,8 @@ angular.module('mean.system')
                   .css({
                     'text-align': 'center',
                     'font-size': '10px',
-                    background: 'white',
-                    color: 'black'
+                    'background': 'white',
+                    'color': 'black'
                   }).text(link);
               }, 200);
               $scope.modalShown = true;

@@ -61,7 +61,7 @@ angular.module('mean.system')
       return deferred.promise;
     }
   })])
-  .factory('MakeAWishFactsService', [function () {
+  .factory('MakeAWishFactsService', [() => {
     return {
       getMakeAWishFacts() {
         /* jshint ignore:start */
