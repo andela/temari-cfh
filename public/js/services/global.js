@@ -65,7 +65,7 @@ angular.module('mean.system')
     return {
       getMakeAWishFacts() {
         /* jshint ignore:start */
-        const facts = ['Health professionals who treat wish kids, including nurses and doctors, overwhelmingly believe that the wish experience can improve a wish kids’ physical health.',
+        const facts = ['Health professionals who treat wish kids,      including nurses and doctors, overwhelmingly believe that            the wish experience can improve a wish kids’ physical health.',
           'Most health professionals say a wish come true has the potential to be a positive turning point in the child’s battle for health.',
           'Parents and volunteers observe that a wish come true makes kids feel stronger and more energetic.',
           'Wish kids are more willing to comply with difficult, but vital, treatment regimens.',
