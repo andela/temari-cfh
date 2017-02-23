@@ -142,7 +142,7 @@ body {
   /*-webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;*/
-  background: #2B0F0E;
+  background: #252525;
   margin-bottom: 10px;
   margin-top: 5px;
   padding: 5px;
@@ -184,8 +184,8 @@ body {
   font-size: 1.25rem;
   font-weight: 400;
   text-align: center;
-  color: black;
-  background: darkcyan;
+  color: white;
+  background: darkmagenta;
   margin-top: 3px;
   margin-bottom: 3px;
   margin-right: 10px;
@@ -203,7 +203,7 @@ body {
   }
 }
 #main-container #app-container #menu-container #abandon-game-button:hover {
-  background: slategrey;
+  background: #d876e8;
 }
 #main-container #app-container #menu-container #tweet-container {
   float: right;
@@ -255,7 +255,7 @@ body {
   padding-bottom: 4%;
   min-height: 75px;
   background: #2B0F0E;
-  margin: 0 0 6% 8%;
+  margin: 5% 5% 5%;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
@@ -537,14 +537,14 @@ body {
   text-indent: 0;
   text-shadow: 1px 1px 0px #ffffff;
   cursor: pointer;
-  background: #FFF;
+  background: darkmagenta;
   text-shadow: none;
   cursor: default;
   border: none;
   min-width: 85px;
   min-height: 85px;
   height: 100%;
-  color: #000;
+  color: #fff;
 }
 #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container #timer-container #inner-timer-container #timer-status-round, #main-container #app-container #gameplay-container #upper-gameplay-container #menu-timeremaining-container #timer-container #inner-timer-container #timer-status-czar-choosing {
   position: absolute;
@@ -709,7 +709,7 @@ body {
 }
 #main-container #app-container #gameplay-container #info-container {
   width: 100%;
-  background: #2B0F0E;
+  background: #252525;
   color: white;
   /*-webkit-border-radius: 8px;
   -moz-border-radius: 8px;*/
