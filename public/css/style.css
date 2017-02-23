@@ -19,6 +19,7 @@ font-size: 14px;
    color: white;
    height: 100px;
    overflow-y: scroll;
+   font-size: 12px;
  }
  #landing-charity {
    width: 300px !important;
@@ -1440,3 +1441,128 @@ button.social-signin.github {
     text-align:center;
 
 }
+/*chat styles*/
+div.chatpanel {
+  position: fixed;
+  bottom: 0px;
+  width: 290px;
+  right: 0;
+  background: #f6f6f6;
+  box-shadow: 3px 0px 3px 0px rgba(50, 50, 50, 0.5);
+}
+
+@media screen and (max-width:650px){
+  div.chatpanel {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    right: 0;
+    background: #f6f6f6;
+    box-shadow: 3px 0px 3px 0px rgba(50, 50, 50, 0.5);
+  }
+}
+
+div.panel-heading {
+  height: 40px;
+  padding: 5px;
+  background: rosybrown;
+  color: brown;
+  font-size: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+li.message:hover {
+  background: #f2f3f4;
+}
+
+li.message {
+  padding: 0px 0px;
+  font-size: 15px;
+}
+
+div.chatthread {
+  overflow-y: scroll;
+  height: 300px;
+  width: 100%;
+  margin-bottom:40px;
+  background: white;
+}
+
+div.chat_body {
+  margin-top: -15px;
+}
+p.message_content {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+li.align-left{
+  background: white;
+  margin-right: 20px;
+  width:100%;
+  margin-top: 0px;
+}
+li.no-margin{
+margin:0px;
+padding:0px;
+}
+ul.no-padding{
+  padding: 0px 3px;
+  margin-top: 2px;
+}
+div.chatinput {
+  width: 100%;
+  position: absolute;
+  background: lightgrey;
+  bottom: 0;
+  left: 0;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input.chat_message {
+  outline: none;
+  width: calc(100% - 60px);
+  background: white;
+  padding: 0px 4px;
+  height: 35px;
+
+}
+small.message_notification {
+  color: darkslateblue;
+  position: absolute;
+  left: 30px;
+  bottom: 10px;
+}
+
+a.retract_button {
+  position: absolute;
+  right: 0px;
+  padding: 5px;
+  color: black;
+}
+
+a.send_icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  color: #909497;
+}
+
+p.message_content {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+strong.username {
+  text-transform: capitalize;
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+small.time-content {
+  font-family: "Courier New", Courier, monospace;
+}
+ .avatar-size{
+   width: 50px;
+   height:20px;
+ }

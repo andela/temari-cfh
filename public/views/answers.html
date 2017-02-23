@@ -46,7 +46,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h3 class="modal-title" id="exampleModalLabel" style="color:black">Only a maximum of 12 players are allowed per game, You cannot invite any other person.</h3>
+          <h3 class="modal-title" id="exampleModalLabel" style="color:black; font-size:30px;">Only a maximum of 12 players are allowed per game, You cannot invite any other person.</h3>
 </div>
 </div>
 </div>
@@ -65,7 +65,7 @@
 <div id="inner-info">
   <div id="searchArea" ng-show="isCustomGame() === true">
     <div id="show-search" ng-show="customGameCreator() === true">
-      <div class="row">
+      <!--<div class="row">-->
         <h3> Search for friends and Send Invite ..... </h3>
         <div class="col-lg-8 col-md-offset-2">
           <div class="input-group">
@@ -77,17 +77,18 @@
 
           </div>
         </div>
-        <div class="search-result" ng-if="email !== ''">
+        <div class="search-result" ng-if="email !== ''" >
           <!--<div id="searchResult" style="color:white" ng-class="{'tem-focus': hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-repeat="result in searchResult"
             ng-model="email">{{result.email}} </div>
           </div>-->
           <div ng-class="{'item-focus': hovering}" ng-mouseenter="hovering=true" ng-mouseleave="hovering=false" ng-repeat="result in searchResult"
-            ng-click="selectList(result.email)" ng-model="email">{{result.email}}
+          ng-click="selectList(result.email)" ng-model="email"
+          style="background-color:floralwhite; color:black; padding: 2px; width:30%;
+          margin:0 auto;">{{result.email}}
           </div>
-
         </div>
         <p ng-if="isMailSent">Mail sent successfully</p>
-      </div>
+      <!--</div>-->
     </div>
 </div>
 <div id="game-end-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'">

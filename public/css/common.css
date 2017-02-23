@@ -314,8 +314,9 @@ body {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
-  min-width: 40px;
-  min-height: 40px;
+  /*min-width: 36px;
+  min-height: 24px;*/
+  margin-left: 34px;
 }
 @media only screen and (min-width: 521px) and (max-width: 768px) {
   #main-container #app-container #social-bar-container #player-container #above-czar-container #avatar_ img {
