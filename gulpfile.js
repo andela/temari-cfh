@@ -6,7 +6,6 @@ const browserSync = require('browser-sync');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 const nodemon = require('gulp-nodemon');
-const sass = require('gulp-sass');
 const bower = require('gulp-bower');
 const istanbul = require('gulp-istanbul');
 
@@ -51,13 +50,6 @@ gulp.task('nodemon', () => {
   });
 });
 
-// Sass Task
-gulp.task('sass', () => {
-  gulp.src('public/css/common.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('public/css/'));
-});
-
 // Bower Task
 gulp.task('bower', () => {
   bower()
@@ -66,9 +58,11 @@ gulp.task('bower', () => {
 
 // Watch Task
 gulp.task('watch', () => {
-  gulp.watch('public/css/*.scss', ['sass']);
-  gulp.watch('app/**/*.js', ['lint']);
-  gulp.watch(['app/views/**/*.jade', 'public/**/**.*'])
+  gulp.watch(['app/**/*.js', 'public/js/**/*.js'], ['lint'])
+    .on('change', browserSync.reload);
+  gulp.watch(['app/views/**/*.jade', 'public/css/*.css'])
+    .on('change', browserSync.reload);
+  gulp.watch('public/views/*.html')
     .on('change', browserSync.reload);
 });
 
@@ -76,7 +70,7 @@ gulp.task('watch', () => {
 gulp.task('server', ['nodemon'], () => {
   browserSync.create({
     server: 'server.js',
-    port: 3000,
+    port: 4000,
     reloadOnRestart: true
   });
 });

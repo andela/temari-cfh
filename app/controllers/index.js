@@ -1,9 +1,13 @@
-// Module dependencies.
+/*
+  Module dependencies.
+*/
 const mongoose = require('mongoose');
 const async = require('async');
 const _ = require('underscore');
 
-// Redirect users to /#!/app (forcing Angular to reload the page)
+/*
+  Redirect users to /#!/app (forcing Angular to reload the page)
+*/
 exports.play = (req, res) => {
   if (Object.keys(req.query)[0] === 'custom') {
     res.redirect('/#!/app?custom');
@@ -32,3 +36,4 @@ exports.render = (req, res) => {
     user: req.user ? JSON.stringify(req.user) : 'null'
   });
 };
+

@@ -2,3 +2,4 @@
 node_modules/*
 public/js/intro.min.js
 karma.conf.js
+config/*

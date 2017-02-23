@@ -9,7 +9,6 @@ module.exports = function(config) {
 
     basePath: '',
 
-
     /* frameworks to use
      available frameworks:
      https://npmjs.org/browse/keyword/karma-adapter */
@@ -24,9 +23,8 @@ module.exports = function(config) {
       'test/src/**/*.js',
       'test/unit/TestSpec.js'
     ],
+    // list of files to exclude:
 
-
-    // list of files to exclude
     exclude: [],
 
 
@@ -39,6 +37,7 @@ module.exports = function(config) {
     /* preprocess matching files before serving them to the browser
      available preprocessors:
      https://npmjs.org/browse/keyword/karma-preprocessor */
+
 
     preprocessors: { 'app/**/*.js': ['coverage'] },
 
@@ -59,12 +58,9 @@ module.exports = function(config) {
 
     port: 9876,
 
-
     // enable / disable colors in the output (reporters and logs)
 
     colors: true,
-
-
     /* level of logging
      possible values: config.LOG_DISABLE || config.LOG_ERROR ||
      config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG */
@@ -73,12 +69,12 @@ module.exports = function(config) {
 
 
     /* enable / disable watching file and executing
+
+    /* enable / disable watching file and executing
     tests whenever any file changes
     */
 
     autoWatch: false,
-
-
     /* start these browsers
     // available browser launchers:
     https://npmjs.org/browse/keyword/karma-launcher */

@@ -47,7 +47,7 @@ angular.module('mean.system')
         a game, any player can start by clicking the START GAME button.`
       },
       {
-        element: '#question',
+        element: '#question-container-outer',
         intro: 'The questions are displayed here in the game.'
       },
       {
@@ -80,10 +80,10 @@ angular.module('mean.system')
         intro: `If you don't wish to continue, click on this button, you
         would be taken out of the game.`
       },
-      {
-        element: '#home',
-        intro: 'Click here to return to the homepage'
-      },
+      // {
+      //   element: '#home',
+      //   intro: 'Click here to return to the homepage'
+      // },
       {
         element: '#tweet-container',
         intro: `You can share your experience on twitter here, and invite
@@ -134,7 +134,7 @@ angular.module('mean.system')
             });
             break;
           }
-        case 'question':
+        case 'question-container-outer':
           {
             $scope.$apply(() => {
               $scope.showStartButton = false;
