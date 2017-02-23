@@ -1,5 +1,5 @@
 angular.module('mean.system')
-  .factory('chat', function () {
+  .factory('chat', () => {
     /**
     * Class to implement chat functionality
     */
@@ -12,7 +12,6 @@ angular.module('mean.system')
       constructor() {
         // declare fire base reference with link to our firebase database
         this.firebase = new Firebase('https://temari-chat.firebaseio.com/');
-        console.log(this.firebase);
         this.messageArray = [];
         this.enableListener = true;
         this.chatWindowVisible = false;
