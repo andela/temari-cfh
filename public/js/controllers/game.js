@@ -24,7 +24,6 @@ if ($routeParams.email && $routeParams.password) {
   .post('/api/auth/validate', data)
   .success((data, status, headers) => {
     const token = data.token;
-    console.log(token);
     $location.path('/');
   })
   .error((data, status, header) => {
