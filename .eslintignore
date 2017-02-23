@@ -1,4 +1,5 @@
 node_modules/*
 karma.conf.js
-config/*
 public/js/controllers/game.js
+config/*
+

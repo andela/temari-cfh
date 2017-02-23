@@ -54,7 +54,6 @@ angular.module('mean.system')
       postGroupMessage(messageText) {
         const date = new Date();
         const messageTime = date.toTimeString().substr(0, 5);
-        // We do not want to send empty messages
         if (messageText !== undefined && messageText.trim().length > 0) {
           // Push message to group thread on firebase
           const messageObject = {
