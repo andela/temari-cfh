@@ -198,7 +198,6 @@ Game.prototype.selectFirst = function () {
   }
 };
 
-
 Game.prototype.stateJudging = function (self) {
   self.state = 'waiting for czar to decide';
   // console.log(self.gameID,self.state);

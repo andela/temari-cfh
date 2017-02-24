@@ -73,13 +73,14 @@ module.exports = function(io) {
 
       exitGame(socket);
     });
-
+    
     socket.on('drawCard', () => {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].drawCard();
       }
     });
   });
+  
   const joinGame = function(socket, data) {
     const player = new Player(socket);
     data = data || {};
