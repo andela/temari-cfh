@@ -1,0 +1,40 @@
+<div class="chatpanel">
+  <div class="panel-heading">
+    <i class="material-icons">forum</i><small class="message_notification" ng-show="chat.unreadMessageCount > 0">{{chat.unreadMessageCount + ' new message'}}</small>
+    <a href="" class="retract_button" ng-click="showChat()"><i class="material-icons">expand_{{chat.chatWindowVisible ? 'more': 'less' }}</i></a>
+    <hr/>
+    <br/>
+
+  </div>
+
+  <div ng-show="chat.chatWindowVisible">
+    <div id="results" class="chatthread">
+      <ul class="demo-list-item mdl-list no-padding">
+        <li ng-repeat="message in chat.messageArray" class="message align-left
+        no-margin">
+          <br/>
+          <div class="chat_body">
+            <div class="row">
+              <div class="col-md-2">
+                <img ng-src="{{message.avatar}}" style="height:30px; width:30px">
+              </div>
+              <div class="col-md-10">
+                <span class="mdl-list__item-primary-content">
+                <strong class="username">{{message.username}}</strong>
+                <small class="text-muted time-content">{{message.time}}</small></b></span>
+                <p class="message_content">{{message.text}}</p>
+              </div>
+            </div>
+          </div>
+          </li>
+      </ul>
+    </div>
+    <div>
+      <div class="chatinput">
+        <input id="example" type="text" class="mdl-textfield__input chat_message" placeholder="Enter Message"
+          ng-model="chatMessage" ng-keypress="keyPressed($event)" />
+        <a class="send_icon" href="" ng-click="sendMessage(chatMessage)"><i class="material-icons">send</i></a>
+      </div>
+    </div>
+  </div>
+</div>

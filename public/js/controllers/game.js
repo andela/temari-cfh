@@ -1,8 +1,9 @@
 
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http', ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http) => {
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http',
+    function ($scope, game, $timeout, $location,
+      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http) {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
@@ -11,24 +12,25 @@ angular.module('mean.system')
       $scope.game = game;
       $scope.pickedCards = [];
       $scope.inviteList = [];
-      let makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
+      var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
       $scope.makeAWishFact = makeAWishFacts.pop();
       $scope.chat = game.gameChat;
 
-      if ($routeParams.email && $routeParams.password) {
-        const data = {
-          email: $routeParams.email,
-          password: $routeParams.password
-        };
-        $http.post('/api/auth/validate', data)
-      .success((info, status, headers) => {
-        const token = info.token;
-        $location.path('/');
-      })
-      .error((info, status, header) => {
-      });
-      }
-
+if ($routeParams.email && $routeParams.password) {
+  const data = {
+    email: $routeParams.email,
+    password: $routeParams.password
+  }
+  $http
+  .post('/api/auth/validate', data)
+  .success((data, status, headers) => {
+    const token = data.token;
+    $location.path('/');
+  })
+  .error((data, status, header) => {
+    console.log(data);
+  });
+}
       /**
       * Method to scroll the chat thread to the bottom
       * so user can see latest message when messages overflow
@@ -54,7 +56,7 @@ angular.module('mean.system')
         $scope.chat.postGroupMessage(userMessage);
         $scope.chatMessage = '';
       };
-      $scope.pickCard = (card) => {
+      $scope.pickCard = function (card) {
         if (!$scope.hasPickedCards) {
           if ($scope.pickedCards.indexOf(card.id) < 0) {
             $scope.pickedCards.push(card.id);
@@ -63,7 +65,7 @@ angular.module('mean.system')
               $scope.hasPickedCards = true;
             } else if (game.curQuestion.numAnswers === 2 &&
               $scope.pickedCards.length === 2) {
-              // delay and send
+              //delay and send
               $scope.hasPickedCards = true;
               $timeout($scope.sendPickedCards, 300);
             }
@@ -74,14 +76,14 @@ angular.module('mean.system')
       };
 
 
-      $scope.keyPressed = ($event) => {
+      $scope.keyPressed = function ($event) {
         const keyCode = $event.which || $event.keyCode;
         if (keyCode === 13) {
           $scope.sendMessage($scope.chatMessage);
         }
       };
 
-      $scope.showChat = () => {
+      $scope.showChat = function () {
         $scope.chat.chatWindowVisible = !$scope.chat.chatWindowVisible;
         // enableChatWindow;
         if ($scope.chat.chatWindowVisible) {
@@ -89,56 +91,65 @@ angular.module('mean.system')
         }
       };
 
-      $scope.pointerCursorStyle = () => {
+      $scope.pointerCursorStyle = function () {
         if ($scope.isCzar() && $scope.game.state ===
           'waiting for czar to decide') {
-          return { cursor: 'pointer' };
+          return { 'cursor': 'pointer' };
+        } else {
+          return {};
         }
-        return {};
       };
 
-      $scope.sendPickedCards = () => {
+      $scope.sendPickedCards = function () {
         game.pickCards($scope.pickedCards);
         $scope.showTable = true;
       };
 
-      $scope.cardIsFirstSelected = (card) => {
+      $scope.cardIsFirstSelected = function (card) {
         if (game.curQuestion.numAnswers > 1) {
           return card === $scope.pickedCards[0];
+        } else {
+          return false;
         }
-        return false;
       };
 
-      $scope.cardIsSecondSelected = (card) => {
+      $scope.cardIsSecondSelected = function (card) {
         if (game.curQuestion.numAnswers > 1) {
           return card === $scope.pickedCards[1];
+        } else {
+          return false;
         }
-        return false;
       };
 
-      $scope.firstAnswer = ($index) => {
+      $scope.firstAnswer = function ($index) {
         if ($index % 2 === 0 && game.curQuestion.numAnswers > 1) {
           return true;
+        } else {
+          return false;
         }
-        return false;
       };
 
-      $scope.secondAnswer = ($index) => {
+      $scope.secondAnswer = function ($index) {
         if ($index % 2 === 1 && game.curQuestion.numAnswers > 1) {
           return true;
+        } else {
+          return false;
         }
-        return false;
       };
 
-      $scope.showFirst = (card) => {
+      $scope.showFirst = function (card) {
         return game.curQuestion.numAnswers > 1 &&
           $scope.pickedCards[0] === card.id;
       };
 
-      $scope.showSecond = card => game.curQuestion.numAnswers > 1 &&
+      $scope.showSecond = function (card) {
+        return game.curQuestion.numAnswers > 1 &&
           $scope.pickedCards[1] === card.id;
+      };
 
-      $scope.isCzar = () => game.czar === game.playerIndex;
+      $scope.isCzar = function () {
+        return game.czar === game.playerIndex;
+      };
 
       $scope.isPlayer = function ($index) {
         return $index === game.playerIndex;
@@ -149,7 +160,7 @@ angular.module('mean.system')
           game.state === 'awaiting players';
       };
 
-      $scope.customGameCreator = () => {
+      $scope.customGameCreator = function () {
         if (game.players[0] === undefined) {
           return false;
         } else if (window.user === null) {
@@ -158,40 +169,47 @@ angular.module('mean.system')
         return true;
       };
 
-      $scope.isPremium = $index => game.players[$index].premium;
+      $scope.isPremium = function ($index) {
+        return game.players[$index].premium;
+      };
 
-      $scope.currentCzar = $index => $index === game.czar;
+      $scope.currentCzar = function ($index) {
+        return $index === game.czar;
+      };
 
-      $scope.winningColor = ($index) => {
+      $scope.winningColor = function ($index) {
         if (game.winningCardPlayer !== -1 && $index ===
           game.winningCard) {
           return $scope.colors[game.players[game.winningCardPlayer].color];
+        } else {
+          return '#f9f9f9';
         }
-        return '#f9f9f9';
       };
 
-      $scope.pickWinning = (winningSet) => {
+      $scope.pickWinning = function (winningSet) {
         if ($scope.isCzar()) {
           game.pickWinning(winningSet.card[0]);
           $scope.winningCardPicked = true;
         }
       };
 
-      $scope.winnerPicked = () => game.winningCard !== -1;
+      $scope.winnerPicked = function () {
+        return game.winningCard !== -1;
+      };
 
 
-      $scope.startGame = () => {
+      $scope.startGame = function () {
         game.startGame();
       };
 
-      $scope.abandonGame = () => {
+      $scope.abandonGame = function () {
         game.leaveGame();
         $location.path('/');
       };
 
       // Catches changes to round to update when no players pick card
       // (because game.state remains the same)
-      $scope.$watch('game.round', () => {
+      $scope.$watch('game.round', function () {
         $scope.hasPickedCards = false;
         $scope.showTable = false;
         $scope.winningCardPicked = false;
@@ -203,14 +221,14 @@ angular.module('mean.system')
       });
 
       // In case player doesn't pick a card in time, show the table
-      $scope.$watch('game.state', () => {
+      $scope.$watch('game.state', function () {
         if (game.state === 'waiting for czar to decide' &&
           $scope.showTable === false) {
           $scope.showTable = true;
         }
       });
 
-      $scope.$watch('game.gameID', () => {
+      $scope.$watch('game.gameID', function () {
         if (game.gameID && game.state === 'awaiting players') {
           if (!$scope.isCustomGame() && $location.search().game) {
             // If the player didn't successfully enter the request room,
@@ -223,18 +241,18 @@ angular.module('mean.system')
             // where the link is meant to be shared.
             $location.search({ game: game.gameID });
             if (!$scope.modalShown) {
-              setTimeout(() => {
-                const link = document.URL;
-                const txt =
+              setTimeout(function () {
+                var link = document.URL;
+                var txt =
                   'If you insist, Give the following link to your ' +
                   'friends so they can join your game: ';
                 $('#lobby-how-to-play').text(txt);
                 $('#oh-el')
                   .css({
                     'text-align': 'center',
-                    'font-size': '10px',
-                    background: 'white',
-                    color: 'black'
+                    'font-size': '22px',
+                    'background': 'white',
+                    'color': 'black'
                   }).text(link);
               }, 200);
               $scope.modalShown = true;
@@ -294,9 +312,9 @@ angular.module('mean.system')
     }
   ])
   .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
-    const $ctrl = this;
+    var $ctrl = this;
 
-    $scope.open = () => {
+    $scope.open = function () {
       $('#modalView').modal('show');
     };
   }]);

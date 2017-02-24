@@ -1,5 +1,5 @@
 angular.module('mean.system')
-  .factory('game', ['socket', '$timeout', '$http', (socket, $timeout, $http) => {
+  .factory('game', ['socket', '$timeout', 'chat', '$http', (socket, $timeout, chat, $http) => {
     const game = {
       id: null, // This player's socket ID, so we know who this player is
       gameID: null,
@@ -19,9 +19,10 @@ angular.module('mean.system')
       curQuestion: null,
       notification: null,
       timeLimits: {},
-      joinOverride: false
+      joinOverride: false,
+      gameChat: chat,
+      chatUsername: null
     };
-
     const notificationQueue = [];
     let timeout = false;
     const self = this;
@@ -105,6 +106,11 @@ angular.module('mean.system')
       }
 
       // These are the properties to be entered on each update.
+      game.chatUsername = data.players[game.playerIndex].username;
+      game.gameChat.setChatUsername(game.chatUsername);
+      game.gameChat.setChatAvatar(data.players[game.playerIndex].avatar);
+      game.gameChat.setChatGroup(data.gameID);
+      game.gameChat.listenForMessages();
       game.round = data.round;
       game.winningCard = data.winningCard;
       game.winningCardPlayer = data.winningCardPlayer;
