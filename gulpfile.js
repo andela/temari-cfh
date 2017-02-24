@@ -70,7 +70,7 @@ gulp.task('watch', () => {
 gulp.task('server', ['nodemon'], () => {
   browserSync.create({
     server: 'server.js',
-    port: 3000,
+    port: 4000,
     reloadOnRestart: true
   });
 });
