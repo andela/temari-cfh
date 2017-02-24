@@ -1,16 +1,6 @@
  .clear {
    clear:both;
  }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
- .uppercase {
-   text-transform: uppercase;
- }
-
-=======
-=======
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 .invite{
 border: 1px solid thick;
 width: 200px;
@@ -29,13 +19,8 @@ font-size: 14px;
    color: white;
    height: 100px;
    overflow-y: scroll;
-<<<<<<< HEAD
- }
->>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
-=======
    font-size: 12px;
  }
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
  #landing-charity {
    width: 300px !important;
    margin-left: 15px !important;
@@ -159,15 +144,7 @@ font-size: 14px;
 
  /**** Links ****/
  a {
-<<<<<<< HEAD
-<<<<<<< HEAD
-   color: #60B197;
-=======
    color: white;
->>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
-=======
-   color: white;
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
@@ -177,38 +154,16 @@ font-size: 14px;
 
  a:hover {
    text-decoration: none;
-<<<<<<< HEAD
-<<<<<<< HEAD
-   color: #2ecc71;
-=======
-   color: black;
->>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
-=======
    color: lemonchiffon;
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    border-radius:0px !important;
  }
 
  p a {
-<<<<<<< HEAD
-<<<<<<< HEAD
-   color: #60B197;
- }
-
- p a:hover {
-   color: #2ecc71;
-=======
-=======
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    color: #777;
  }
 
  p a:hover {
    color: #777;
-<<<<<<< HEAD
->>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
-=======
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
  }
 
 
@@ -300,15 +255,7 @@ font-size: 14px;
  }
 
   .wpb-menu-container .wpb-main-menu li a:hover {
-<<<<<<< HEAD
-<<<<<<< HEAD
-   color: #2ECC71 !important;
-=======
    color: #777 !important;
->>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
-=======
-   color: #777 !important;
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
@@ -1062,23 +1009,10 @@ font-size: 14px;
 
 
 /*Override Bootstrap Row Class*/
-<<<<<<< HEAD
-<<<<<<< HEAD
-.row {
-   margin-left: 0;
-   margin-right: 9px;
-}
-=======
-=======
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 /*.row {
    margin-left: 0;
    margin-right: 9px;
 }*/
-<<<<<<< HEAD
->>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
-=======
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 
 #donations {
    margin-top: 160px;
@@ -1087,21 +1021,9 @@ font-size: 14px;
 /*MORE MEDIA QUERIESS WHOOOOOAAAA*/
 
 @media (min-width: 1430px) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-   .row {
-      margin: 0 0 -9px 0;
-   }
-=======
    /*.row {
       margin: 0 0 -9px 0;
    }*/
->>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
-=======
-   /*.row {
-      margin: 0 0 -9px 0;
-   }*/
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 
    .wpb-logo-container {
       margin-right: 0;
@@ -1344,15 +1266,6 @@ font-size: 14px;
       margin: 30px auto;
    }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-   .row {
-      margin: 0 0 0 4px;
-   }
- }
-=======
-=======
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    /*.row {
       margin: 0 0 0 4px;
    }*/
@@ -1528,9 +1441,6 @@ button.social-signin.github {
     text-align:center;
 
 }
-<<<<<<< HEAD
->>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
-=======
 /*chat styles*/
 div.chatpanel {
   position: fixed;
@@ -1656,4 +1566,3 @@ small.time-content {
    width: 50px;
    height:20px;
  }
->>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
