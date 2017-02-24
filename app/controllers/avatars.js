@@ -16,7 +16,8 @@ avatars = ['/img/chosen/E01.png',
   '/img/chosen/N02.png',
   '/img/chosen/N03.png',
   '/img/chosen/N04.png',
-  '/img/chosen/N05.png'];
+  '/img/chosen/N05.png'
+];
 
 exports.allJSON = (req, res) => {
   // Only return the first 12

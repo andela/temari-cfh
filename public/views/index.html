@@ -75,6 +75,10 @@ $(document).ready(function() {
             <hr class="small">
             <p class="adjust">Cards for humanity is a fast-paced online version of the popular card game, <a href="http://cardsagainsthumanity.com/">Cards Against Humanity</a>, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are. Warning! This games contains offensive, profane, explicit content created by Cards Aganist Humanity and provided here, uncensored and complete, in digital form. Human Resources made us say that. To send a private link to your friends, sign up! </p>
             <!--<button type="button" class="btn btn-info" placeholder="View project"><a href="/play">Play Game</a></button>-->
+            <span ng-show="showOptions">
+              							<button type="button" class="btn btn-info" placeholder="View project">
+              <a href="/play">Play as Guest</a></button>
+            </span>
 						<span ng-hide="showOptions">
 							<button type="button" class="btn btn-info" placeholder="View project">
               <a href="/play">Play Game with Strangers</a></button>
