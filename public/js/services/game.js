@@ -23,7 +23,6 @@ angular.module('mean.system')
       gameChat: chat,
       chatUsername: null
     };
-    // chat.setChatGroup();
     const notificationQueue = [];
     let timeout = false;
     const self = this;

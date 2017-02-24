@@ -1,3 +1,4 @@
+
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
     '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http',
@@ -24,7 +25,6 @@ if ($routeParams.email && $routeParams.password) {
   .post('/api/auth/validate', data)
   .success((data, status, headers) => {
     const token = data.token;
-    console.log(token);
     $location.path('/');
   })
   .error((data, status, header) => {
@@ -66,7 +66,7 @@ if ($routeParams.email && $routeParams.password) {
               $scope.hasPickedCards = true;
             } else if (game.curQuestion.numAnswers === 2 &&
               $scope.pickedCards.length === 2) {
-              // delay and send
+              //delay and send
               $scope.hasPickedCards = true;
               $timeout($scope.sendPickedCards, 300);
             }

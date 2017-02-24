@@ -21,7 +21,7 @@
               <div class="col-md-10">
                 <span class="mdl-list__item-primary-content">
                 <strong class="username">{{message.username}}</strong>
-                <small class="text-muted time-content">{{message.time}}</small></b></span>
+                <small class="text-muted time-content">{{message.time}}</small></span>
                 <p class="message_content">{{message.text}}</p>
               </div>
             </div>
@@ -30,8 +30,7 @@
       </ul>
     </div>
     <div>
-      <div class="chatinput">
-        
+      <div class="chatinput">       
         <form novalidate>
            <input id="example" type="text" class="mdl-textfield__input chat_message" placeholder="Enter Message" ng-model="chatMessage"/>
            <a ng-click="sendMessage(chatMessage)"

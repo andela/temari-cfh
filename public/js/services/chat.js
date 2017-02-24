@@ -1,3 +1,4 @@
+/* eslint prefer-arrow-callback: 0,func-names: 0 */
 angular.module('mean.system')
   .factory('chat', function () {
     /**
@@ -12,7 +13,6 @@ angular.module('mean.system')
       constructor() {
         // declare fire base reference with link to our firebase database
         this.firebase = new Firebase('https://temari-chat.firebaseio.com/');
-        console.log(this.firebase);
         this.messageArray = [];
         this.enableListener = true;
         this.chatWindowVisible = false;
