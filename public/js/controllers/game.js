@@ -38,13 +38,18 @@ if ($routeParams.email && $routeParams.password) {
       */
       const scrollChatThread = () => {
         const chatResults = document.getElementById('results');
-        chatResults.scrollTop = chatResults.scrollHeight;
+          chatResults.scrollTop = chatResults.scrollHeight;
       };
 
       $scope.$watchCollection('chat.messageArray', (newValue, oldValue) => {
-        $timeout(() => {
-          scrollChatThread();
-        }, 100);
+        try {
+          $timeout(() => {
+            scrollChatThread();
+          }, 100);
+        }
+        catch (err) {
+          console.log(err);
+        }
       });
 
       /**
