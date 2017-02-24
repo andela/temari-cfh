@@ -21,7 +21,7 @@
               <div class="col-md-10">
                 <span class="mdl-list__item-primary-content">
                 <strong class="username">{{message.username}}</strong>
-                <small class="text-muted time-content">{{message.time}}</small></b></span>
+                <small class="text-muted time-content">{{message.time}}</small></span>
                 <p class="message_content">{{message.text}}</p>
               </div>
             </div>
@@ -30,11 +30,26 @@
       </ul>
     </div>
     <div>
-      <div class="chatinput">
-        <input id="example" type="text" class="mdl-textfield__input chat_message" placeholder="Enter Message"
-          ng-model="chatMessage" ng-keypress="keyPressed($event)" />
-        <a class="send_icon" href="" ng-click="sendMessage(chatMessage)"><i class="material-icons">send</i></a>
+      <div class="chatinput">       
+        <form novalidate>
+           <input id="example" type="text" class="mdl-textfield__input chat_message" placeholder="Enter Message" ng-model="chatMessage"/>
+           <a ng-click="sendMessage(chatMessage)"
+              class="send_icon"
+              style="display:inline-block; right:.0; top:.5em; z-index:10000"
+              href=""><i class="material-icons">send</i></a>
+        </form>
       </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var el = $("#example").emojioneArea();
+    el[0].emojioneArea.on("change", function(btn) {
+        var text = el[0].emojioneArea.getText();
+        $('input#example').val(text);
+        $('input#example').triggerHandler('input');
+    });
+  });
+</script>
