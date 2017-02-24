@@ -19,7 +19,7 @@ angular.module('mean.system')
         directly into the game.`
       },
       {
-        element: '#find-players',
+        element: '#question-container-outer',
         intro: `You need a maximum of 11 and a minimum of 3 people to play.
         When there are 3 people, you can proceed.`
       },
@@ -30,13 +30,10 @@ angular.module('mean.system')
         When a player wins 5 rounds he/she becomes the winner.`
       },
       {
-        element: '#start-game-button',
-        intro: `When you have the minimum required number of players for
-        a game, any player can start by clicking the START GAME button.`
-      },
-      {
         element: '#question-container-outer',
-        intro: 'The questions are displayed here in the game.'
+        intro: `When you have the minimum required number of players for
+        a game, any player can start by clicking the START GAME button.
+        The questions are displayed here in the game.`
       },
       {
         element: '#cardsShow',
@@ -50,7 +47,7 @@ angular.module('mean.system')
         the winner for that round.`
       },
       {
-        element: '#the-czar',
+        element: '#social-bar-container',
         intro: 'Here, you get to know who the next CZAR is.'
       },
       {
@@ -94,6 +91,7 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.awaitingPlayers = true;
+              $scope.gameEnd = false;
               $scope.questionShow = true;
             });
             break;
@@ -103,6 +101,7 @@ angular.module('mean.system')
             $scope.$apply(() => {
               $scope.awaitingPlayers = true;
               $scope.showOtherPlayers = true;
+              $scope.gameEnd = false;
               $scope.showStartButton = false;
             });
             break;
@@ -114,6 +113,7 @@ angular.module('mean.system')
               $scope.showOtherPlayers = true;
               $scope.showStartButton = true;
               $scope.showTime = false;
+              $scope.gameEnd = false;
               $scope.showQuestion = false;
             });
             break;
@@ -124,6 +124,7 @@ angular.module('mean.system')
               $scope.showStartButton = false;
               $scope.showTime = true;
               $scope.showQuestion = true;
+              $scope.gameEnd = false;
               $scop.showOtherPlayers = false;
             });
             break;
@@ -132,6 +133,7 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.showCzar = false;
+              $scope.gameEnd = false;
             });
             break;
           }
@@ -148,6 +150,7 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.showCzar = true;
+              $scope.gameEnd = false;
               $scope.playerScore = 1;
             });
             break;
@@ -157,6 +160,26 @@ angular.module('mean.system')
             $scope.$apply(() => {
               $scope.showQuestion = false;
               $scope.gameEnd = true;
+              $scope.showChatBody = false;
+              $scope.expandChat = 'expand_less';
+            });
+            break;
+          }
+        case 'join-new-game':
+          {
+            $scope.$apply(() => {
+              $scope.showQuestion = false;
+              $scope.gameEnd = true;
+              $scope.showChatBody = false;
+              $scope.expandChat = 'expand_less';
+            });
+            break;
+          }
+        case 'abandon-game-button':
+          {
+            $scope.$apply(() => {
+              $scope.showQuestion = false;
+              $scope.gameEnd = false;
               $scope.showChatBody = false;
               $scope.expandChat = 'expand_less';
             });
