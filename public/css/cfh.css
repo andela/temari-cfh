@@ -406,3 +406,13 @@ hr.small {
 .text-small{
 	font-size: 12px;
 }
+
+.emojionearea-button-open {
+  display: inline-block !important;
+  right: 3em !important;
+}
+
+.emojionearea-button-close {
+  display: inline-block !important;
+  right: 3em !important;
+}

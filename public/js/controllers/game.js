@@ -55,6 +55,7 @@ if ($routeParams.email && $routeParams.password) {
       $scope.sendMessage = (userMessage) => {
         $scope.chat.postGroupMessage(userMessage);
         $scope.chatMessage = '';
+        $('#example').emojioneArea()[0].emojioneArea.setText('');
       };
       $scope.pickCard = function (card) {
         if (!$scope.hasPickedCards) {
@@ -65,7 +66,7 @@ if ($routeParams.email && $routeParams.password) {
               $scope.hasPickedCards = true;
             } else if (game.curQuestion.numAnswers === 2 &&
               $scope.pickedCards.length === 2) {
-              //delay and send
+              // delay and send
               $scope.hasPickedCards = true;
               $timeout($scope.sendPickedCards, 300);
             }
