@@ -1,0 +1,55 @@
+<div class="chatpanel">
+  <div class="panel-heading">
+    <i class="material-icons">forum</i><small class="message_notification" ng-show="chat.unreadMessageCount > 0">{{chat.unreadMessageCount + ' new message'}}</small>
+    <a href="" class="retract_button" ng-click="showChat()"><i class="material-icons">expand_{{chat.chatWindowVisible ? 'more': 'less' }}</i></a>
+    <hr/>
+    <br/>
+
+  </div>
+
+  <div ng-show="chat.chatWindowVisible">
+    <div id="results" class="chatthread">
+      <ul class="demo-list-item mdl-list no-padding">
+        <li ng-repeat="message in chat.messageArray" class="message align-left
+        no-margin">
+          <br/>
+          <div class="chat_body">
+            <div class="row">
+              <div class="col-md-2">
+                <img ng-src="{{message.avatar}}" style="height:30px; width:30px">
+              </div>
+              <div class="col-md-10">
+                <span class="mdl-list__item-primary-content">
+                <strong class="username">{{message.username}}</strong>
+                <small class="text-muted time-content">{{message.time}}</small></span>
+                <p class="message_content">{{message.text}}</p>
+              </div>
+            </div>
+          </div>
+          </li>
+      </ul>
+    </div>
+    <div>
+      <div class="chatinput">       
+        <form novalidate>
+           <input id="example" type="text" class="mdl-textfield__input chat_message" placeholder="Enter Message" ng-model="chatMessage"/>
+           <a ng-click="sendMessage(chatMessage)"
+              class="send_icon"
+              style="display:inline-block; right:.0; top:.5em; z-index:10000"
+              href=""><i class="material-icons">send</i></a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    var el = $("#example").emojioneArea();
+    el[0].emojioneArea.on("change", function(btn) {
+        var text = el[0].emojioneArea.getText();
+        $('input#example').val(text);
+        $('input#example').triggerHandler('input');
+    });
+  });
+</script>

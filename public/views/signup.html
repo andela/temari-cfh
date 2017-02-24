@@ -19,77 +19,80 @@
       </div>
     </div>
   </div>
-<!-- Fixed Logo & Menu Bar End -->
+  <!-- Fixed Logo & Menu Bar End -->
 
-	<!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('../img/bck2.jpg')">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        <div class="site-heading">
-          <h3>Cards for Humanity</h3>
-          <hr class="small">
-          <span class="subheading">
+  <!-- Page Header -->
+  <!-- Set your background image for this header on the line below. -->
+  <header class="intro-header" style="background-image: url('../img/bck2.jpg')">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          <div class="site-heading">
+            <h3>Cards for Humanity</h3>
+            <hr class="small">
+            <span class="subheading">
+              
             A game for horrible people desperately trying to do good
             <img class="donation" src="../img/dn-tag.png">
           </span>
+          </div>
+
         </div>
 
       </div>
-
     </div>
-  </div>
-</header>
+  </header>
 
-<div id="main-body" class="col-md-12">
-  <div class="col-md-2"></div>
-  <div id="sign-up-box" class="col-md-8">
-    <div class="col-md-5 sign-up-left">
-      <form class="signup form-horizontal" action="/users" method="post">
-        <h3 class="sign-up-title">Sign Up</h3>
-        <div class="control-group">
-          <input class="col-md-12" id="name" type="text" name="name" placeholder="Full name" required novalidate /><br>
-          <input class="col-md-12" id="email" type="email" name="email" placeholder="Email" required novalidate /><br>
-          <input class="col-md-12" id="password" type="password" name="password" placeholder="Password" required novalidate  /><br>
-        </div>
-        <div class="col-xs-12 alert alert-warning" ng-show="error.show">{{error.msg}}</div>
-        <div class="form-actions top-margin">
-          <button class="btn btn-primary btn-block signin-btn" ng-disabled="signupForm.$invalid || processing">
+  <div id="main-body" class="col-md-12">
+    <div class="col-md-2"></div>
+    <form class="signup form-horizontal" action="/users" method="post">
+      <div id="sign-up-box" class="col-md-8">
+        <div class="col-md-5 sign-up-left">
+          <h3 class="sign-up-title">Sign Up</h3>
+          <div class="control-group">
+            <input class="col-md-12" id="name" type="text" name="name" placeholder="Full name"
+              required novalidate /><br>
+            <input class="col-md-12" id="email" type="email" name="email" placeholder="Email"
+              required novalidate /><br>
+            <input class="col-md-12" id="password" type="password" name="password" placeholder="Password"
+              required novalidate /><br>
+          </div>
+          <div class="col-xs-12 alert alert-warning" ng-show="error.show">{{error.msg}}</div>
+          <div class="form-actions top-margin">
+            <button class="btn btn-primary btn-block signin-btn" ng-disabled="signupForm.$invalid || processing">
             <i class="icon fa fa-spinner fa-spin" ng-show="processing"></i>
             Sign Up
           </button>
+          </div>
+
         </div>
-      </form>
+        <div class="col-md-2">
+          <div class="or-wrap-signup"><span>OR</span></div>
+        </div>
+        <div id="login-buttons" class="col-md-5 sign-in-right">
+          <h3 class="sign-in-title">Social Login</h3>
+          <div class="col-md-12">
+            <a href="/auth/facebook">
+              <button class="social-signin facebook">Facebook</button>
+            </a>
+          </div>
+          <div class="col-md-12"><a href="/auth/twitter"><button class="social-signin twitter">Twitter</button></a></div>
+          <div class="col-md-12"><a href="/auth/google"><button class="social-signin google">Google+</button></a></div>
+          <div class="col-md-12"><a href="auth/github"><button class="social-signin github">Github</button></a></div>
+        </div>
 
-
-    </div>
-    <div class="col-md-2">
-      <div class="or-wrap-signup"><span>OR</span></div>
-    </div>
-    <div id="login-buttons" class="col-md-5 sign-in-right">
-      <h3 class="sign-in-title">Social Login</h3>
-      <div class="col-md-12">
-        <a href="/auth/facebook">
-           <button class="social-signin facebook">Facebook</button>
-        </a>
+      <p class="sign-up-title"> Pick an avatar below </p>
+      <div id="contain-avatars">
+        <ul ng-controller="IndexController" class="avatar-list">
+          <li ng-repeat="avatar in avatars" class="avatars ng-scope">
+            <input name="avatar" type='radio' value="{{$index}}">
+            <img ng-src="{{avatar}}">
+          </li>
+        </ul>
       </div>
-      <div class="col-md-12"><a href="/auth/twitter"><button class="social-signin twitter">Twitter</button></a></div>
-      <div class="col-md-12"><a href="/auth/google"><button class="social-signin google">Google+</button></a></div>
-      <div class="col-md-12"><a href="auth/github"><button class="social-signin github">Github</button></a></div>
-    </div>
-	   <p class="sign-up-title"> Pick an avatar below </p>
-            <div id="contain-avatars">
-              <ul ng-controller="IndexController" class="avatar-list">
-                <li ng-repeat="avatar in avatars" class="avatars ng-scope">
-                  <input name="avatar" type='radio' value="{{$index}}">
-                    <img ng-src="{{avatar}}">
-                  </input>
-                </li>
-              </ul>
-            </div>
+      </div>
+
+    </form>
   </div>
 
-  <div class="col-md-2"></div>
-</div>
 </div>
