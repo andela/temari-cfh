@@ -24,21 +24,9 @@ angular.module('mean.system')
         When there are 3 people, you can proceed.`
       },
       {
-        element: '#player-container',
-        intro: 'Find info about yourself and the game in progress here'
-      },
-      {
         element: '#social-bar-container',
-        intro: 'The avatar you chose is displayed here'
-      },
-      {
-        element: '#player-star',
-        intro: `With this Icon you can distinguish yourself from
-        the other players`
-      },
-      {
-        element: '#player-score',
-        intro: `Your score is shown here during every round of each game.
+        intro: `The avatar you chose is displayed here, you also find info
+        about yourself and the game in progress, scores for each game round.
         When a player wins 5 rounds he/she becomes the winner.`
       },
       {
@@ -51,7 +39,7 @@ angular.module('mean.system')
         intro: 'The questions are displayed here in the game.'
       },
       {
-        element: '#cards',
+        element: '#cardsShow',
         intro: `Different answers are shown here. Pick an answer most
         suitable for the question. Despicably too!`
       },
@@ -80,10 +68,6 @@ angular.module('mean.system')
         intro: `If you don't wish to continue, click on this button, you
         would be taken out of the game.`
       },
-      // {
-      //   element: '#home',
-      //   intro: 'Click here to return to the homepage'
-      // },
       {
         element: '#tweet-container',
         intro: `You can share your experience on twitter here, and invite
@@ -118,7 +102,7 @@ angular.module('mean.system')
           {
             $scope.$apply(() => {
               $scope.awaitingPlayers = true;
-              $scope.showOtherPlayers = false;
+              $scope.showOtherPlayers = true;
               $scope.showStartButton = false;
             });
             break;
@@ -140,10 +124,11 @@ angular.module('mean.system')
               $scope.showStartButton = false;
               $scope.showTime = true;
               $scope.showQuestion = true;
+              $scop.showOtherPlayers = false;
             });
             break;
           }
-        case 'cards':
+        case 'cardsShow':
           {
             $scope.$apply(() => {
               $scope.showCzar = false;

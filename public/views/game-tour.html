@@ -26,10 +26,39 @@
       </div>
       <div id="question-container-outer">
         <question>
-
-        </question>
+          <div id = "startGame" ng-click="startGame()">
+      <div id="player-count">{{game.players.length}} / 6 </div>
+      <div id="the-word-players"> Players </div>
+    </div>
+    <div id="loading-container">
+      <div id="loading-gif"></div>
+    </div>
+    <div id="start-game-container">
+      <div id = 'start-game-button'>
+        Start Game with {{game.players.length}} players
       </div>
     </div>
-        <answers></answers>
+        </question>
+
+      </div>
+    </div>
+        <answers>
+          <div ng-show="game.state === 'waiting for czar to draw cards'">
+  <div ng-show="!isCzar()">
+    <h4 class='text-center'>Wait for czar to draw next set of cards</h4>
+  </div>
+  <div ng-show="isCzar()">
+    <h4 class='text-center'>Click to draw next set of cards</h4>
+    <div class="draw-card-icon" ng-click="drawCard()"></div>
+  </div>
+</div>
+        </answers>
+
+  </div>
+  <div id="social-bar-container">
+    <player>
+      <div id="player-score" ng-show="showOtherPlayers">
+        <h2>{{player.points}}/{{game.pointLimit}}</h2></div>
+    </player>
   </div>
 </div>
