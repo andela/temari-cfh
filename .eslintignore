@@ -1,6 +1,7 @@
+/public/lib
 node_modules/*
+public/js/intro.min.js
 karma.conf.js
 public/js/controllers/game.js
 public/js/directives.js
 config/*
-

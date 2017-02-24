@@ -2,6 +2,10 @@
  * cfh
  */
 
+.introjs-tooltiptext {
+    font-size: 12px;
+}
+
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;

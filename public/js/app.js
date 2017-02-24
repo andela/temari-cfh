@@ -9,36 +9,42 @@ angular.module('mean', [
   .config(['$routeProvider',
     ($routeProvider) => {
       $routeProvider
-        .when('/', {
-          templateUrl: 'views/index.html'
-        })
-        .when('/app', {
-          templateUrl: '/views/app.html',
-        })
-        .when('/privacy', {
-          templateUrl: '/views/privacy.html',
-        })
-        .when('/bottom', {
-          templateUrl: '/views/bottom.html'
-        })
-        .when('/signin', {
-          templateUrl: '/views/signin.html'
-        })
-        .when('/signup', {
-          templateUrl: '/views/signup.html'
-        })
-        .when('/choose-avatar', {
-          templateUrl: '/views/choose-avatar.html'
-        })
-        .otherwise({
-          redirectTo: '/'
-        });
+      .when('/', {
+        templateUrl: 'views/index.html'
+      })
+      .when('/app', {
+        templateUrl: '/views/app.html',
+      })
+      .when('/privacy', {
+        templateUrl: '/views/privacy.html',
+      })
+      .when('/bottom', {
+        templateUrl: '/views/bottom.html'
+      })
+      .when('/signin', {
+        templateUrl: '/views/signin.html'
+      })
+      .when('/signup', {
+        templateUrl: '/views/signup.html'
+      })
+      .when('/choose-avatar', {
+        templateUrl: '/views/choose-avatar.html'
+      })
+      .when('/gametour', {
+        templateUrl: '/views/game-tour.html',
+        controller: 'OnboardController'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
     }
-  ]).config(['$locationProvider',
-    function ($locationProvider) {
+  ])
+  .config(['$locationProvider',
+    ($locationProvider) => {
       $locationProvider.hashPrefix('!');
     }
-  ]).run(['$rootScope', function ($rootScope) {
+  ])
+  .run(['$rootScope', function ($rootScope) {
     $rootScope.safeApply = function (fn) {
       const phase = this.$root.$$phase;
       if (phase === '$apply' || phase === '$digest') {
