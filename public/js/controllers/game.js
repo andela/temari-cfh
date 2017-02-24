@@ -48,7 +48,6 @@ if ($routeParams.email && $routeParams.password) {
           }, 100);
         }
         catch (err) {
-          console.log(err);
         }
       });
 
