@@ -97,6 +97,9 @@ angular.module('mean.system')
         'game dissolved') {
         game.time = game.timeLimits.stateChoosing - 1;
         timeSetViaUpdate = true;
+      } else if (newState && data.state === 'waiting for czar to draw cards') {
+        game.time = game.timeLimits.stateDrawCards - 1;
+        timeSetViaUpdate = true;
       } else if (newState && data.state === 'waiting for czar to decide') {
         game.time = game.timeLimits.stateJudging - 1;
         timeSetViaUpdate = true;
@@ -173,6 +176,12 @@ angular.module('mean.system')
           addToNotificationQueue('Everyone\'s done. Choose the winner!');
         } else {
           addToNotificationQueue('The czar is contemplating...');
+        }
+      } else if (data.state === 'waiting for czar to draw cards') {
+        if (game.czar === game.playerIndex) {
+          addToNotificationQueue('Click to Draw the Cards!');
+        } else {
+          addToNotificationQueue('The czar is drawing the cards...');
         }
       } else if (data.state === 'winner has been chosen' &&
         game.curQuestion.text.indexOf('<u></u>') > -1) {
@@ -260,6 +269,9 @@ angular.module('mean.system')
 
     game.pickWinning = (card) => {
       socket.emit('pickWinning', { card: card.id });
+    };
+    game.drawCard = () => {
+      socket.emit('drawCard');
     };
 
     decrementTime();

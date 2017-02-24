@@ -32,6 +32,8 @@ module.exports.signup = (req, res) => {
       success: true,
       message: 'Successfully created new user.',
       token,
+      email: req.body.email,
+      name: req.body.name,
       expires
     });
   });
