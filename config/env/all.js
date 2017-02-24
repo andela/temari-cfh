@@ -5,7 +5,7 @@ const rootPath = path.normalize(`${__dirname}/../..`);
 
 module.exports = {
   root: rootPath,
-  port: process.env.PORT,
+  port: process.env.PORT || 2002,
   db: process.env.MONGOHQ_URL,
   app: { name: 'Cards for Humanity' }
 };
