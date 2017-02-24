@@ -109,6 +109,10 @@ module.exports = (app, passport, auth) => {
   // authentication and validation routes
   // app.post('/api/auth/signup', authentication.signup);
   // app.post('/api/auth/login', validation.login);
+  // authentication and validation routes
+
+  // app.post('/api/auth/signup', authentication.signup);
+  // app.post('/api/auth/login', validation.login);
 
   // game history
   app.get('/api/games/history/:email', GameHistory.getUserGames);

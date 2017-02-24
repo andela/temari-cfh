@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 .card {
   position: relative;
   display: inline-block;
@@ -8,6 +12,7 @@
   margin: 1%;
   background-color: #fff;
   border-radius: 8px;
+<<<<<<< HEAD
 <<<<<<< HEAD
   color: #252525;
   font-family: Arial;
@@ -85,6 +90,8 @@ html {
     html {
       margin-top: 0px; } }
 =======
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
   color: #2B0F0E;
   font-family: Arial;
   font-size: 20px;
@@ -178,11 +185,15 @@ html {
     margin-top: 0px;
   }
 }
+<<<<<<< HEAD
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 
 body {
   font-family: "helvetica neue", helvetica, sans-serif;
   background: transparent;
+<<<<<<< HEAD
 <<<<<<< HEAD
   margin: 10px; }
   @media only screen and (min-width: 521px) and (max-width: 768px) {
@@ -923,6 +934,8 @@ body {
   #notifications {
     font-size: 15px; } }
 =======
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
   margin: 0px;
 }
 @media only screen and (min-width: 521px) and (max-width: 768px) {
@@ -1132,8 +1145,12 @@ body {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+<<<<<<< HEAD
   min-width: 40px;
   min-height: 40px;
+=======
+  margin-left: 34px;
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 }
 @media only screen and (min-width: 521px) and (max-width: 768px) {
   #main-container #app-container #social-bar-container #player-container #above-czar-container #avatar_ img {
@@ -1505,7 +1522,11 @@ body {
   }
 }
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #startGame #start-game-container #start-game-button:hover {
+<<<<<<< HEAD
   background: #2B0F0E;
+=======
+  background: antiquewhite;
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 }
 #main-container #app-container #gameplay-container #upper-gameplay-container #question-container-outer #question-container-inner .card #game-end-info {
   text-align: center;
@@ -1862,7 +1883,10 @@ body {
     font-size: 15px;
   }
 }
+<<<<<<< HEAD
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 
 .crDonateWidget {
   -webkit-box-shadow: 0px 0px 0px 0px transparent !important;
@@ -1871,15 +1895,21 @@ body {
   -webkit-border-radius: 8px !important;
   -moz-border-radius: 8px !important;
 <<<<<<< HEAD
+<<<<<<< HEAD
   border-radius: 8px !important; }
 =======
   border-radius: 8px !important;
 }
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+  border-radius: 8px !important;
+}
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 
 .crDonateWidgetOuter {
   text-align: center;
   background-color: transparent !important;
+<<<<<<< HEAD
 <<<<<<< HEAD
   -webkit-box-shadow: 0px 0px 0px 0px transparent !important;
   box-shadow: 0px 0px 0px 0px transparent !important;
@@ -1906,6 +1936,8 @@ body {
   #crDonateWidget_cfhio_cards4humanity h4 {
     margin-bottom: 8px !important; }
 =======
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
   -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
   border: 0px solid #e6e6e6 !important;
@@ -1938,7 +1970,10 @@ body {
 #crDonateWidget_cfhio_cards4humanity h4 {
   margin-bottom: 8px !important;
 }
+<<<<<<< HEAD
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 
 .gradientButton {
   width: 80% !important;
@@ -1948,13 +1983,19 @@ body {
   -moz-border-radius: 8px !important;
   border-radius: 8px !important;
 <<<<<<< HEAD
+<<<<<<< HEAD
   text-transform: none !important; }
   .gradientButton .donateNow {
     border-top: 0px solid black !important; }
 =======
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
   text-transform: none !important;
 }
 .gradientButton .donateNow {
   border-top: 0px solid black !important;
 }
+<<<<<<< HEAD
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67

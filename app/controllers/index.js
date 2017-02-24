@@ -29,11 +29,8 @@ exports.gameTour = (req, res) => {
     res.redirect('/#!/gametour');
   }
 };
-
-
 exports.render = (req, res) => {
   res.render('index', {
     user: req.user ? JSON.stringify(req.user) : 'null'
   });
 };
-

@@ -1,40 +1,40 @@
 angular.module('mean.directives', [])
-  .directive('player', function() {
+  .directive('player', function () {
     return {
       restrict: 'EA',
       templateUrl: '/views/player.html',
-      link: function(scope, elem, attr) {
+      link: function (scope, elem, attr) {
         scope.colors = ['#7CE4E8', '#FFFFa5', '#FC575E',
           '#F2ADFF', '#398EC4', '#8CFF95'
         ];
       }
     };
-  }).directive('answers', function() {
+  }).directive('answers', function () {
     return {
       restrict: 'EA',
       templateUrl: '/views/answers.html',
-      link: function(scope, elem, attr) {
+      link: function (scope, elem, attr) {
 
-        scope.$watch('game.state', function() {
+        scope.$watch('game.state', function () {
           if (scope.game.state === 'winner has been chosen') {
             var curQ = scope.game.curQuestion;
             var curQuestionArr = curQ.text.split('_');
             var startStyle = '<span style="color: ' +
               scope
-              .colors[scope.game.players[scope.game.winningCardPlayer]
+                .colors[scope.game.players[scope.game.winningCardPlayer]
                 .color] + '">';
             var endStyle = '</span>';
             var shouldRemoveQuestionPunctuation = false;
-            var removePunctuation = function(cardIndex) {
+            var removePunctuation = function (cardIndex) {
               var cardText = scope.game
                 .table[scope.game.winningCard].card[cardIndex].text;
               if (cardText.indexOf('.', cardText.length - 2) ===
                 cardText.length - 1) {
                 cardText = cardText.slice(0, cardText.length - 1);
               } else if ((cardText.indexOf('!', cardText.length - 2) ===
-                  cardText.length - 1 ||
-                  cardText.indexOf('?', cardText.length - 2) ===
-                  cardText.length - 1) &&
+                cardText.length - 1 ||
+                cardText.indexOf('?', cardText.length - 2) ===
+                cardText.length - 1) &&
                 cardIndex === curQ.numAnswers - 1) {
                 shouldRemoveQuestionPunctuation = true;
               }
@@ -68,32 +68,39 @@ angular.module('mean.directives', [])
         });
       }
     };
-  }).directive('question', function() {
+  }).directive('question', function () {
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link: function(scope, elem, attr) {}
+      link: function (scope, elem, attr) { }
     };
   })
-  .directive('timer', function() {
+  .directive('timer', function () {
     return {
       restrict: 'EA',
       templateUrl: '/views/timer.html',
-      link: function(scope, elem, attr) {}
+      link: function (scope, elem, attr) { }
     };
   })
-  .directive('inviteList', function() {
+  .directive('inviteList', function () {
     return {
       restrict: 'EA',
       templateUrl: '/views/invite-list.html',
-      link: function(scope, elem, attr) {}
+      link: function (scope, elem, attr) { }
     };
   })
   .directive('gameTour', function () {
     return {
       restrict: 'EA',
       templateUrl: '/views/game-tour.html',
-      link: function(scope, elem, attr) {}
+      link: function (scope, elem, attr) { }
+    };
+  })
+  .directive('chat', function () {
+    return {
+      restrict: 'EA',
+      templateUrl: '/views/chat.html',
+      link: function (scope, elem, attr) { }
     };
   })
   .directive('landing', function() {

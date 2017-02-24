@@ -2,12 +2,15 @@
    clear:both;
  }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
  .uppercase {
    text-transform: uppercase;
  }
 
 =======
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 .invite{
 border: 1px solid thick;
 width: 200px;
@@ -26,8 +29,13 @@ font-size: 14px;
    color: white;
    height: 100px;
    overflow-y: scroll;
+<<<<<<< HEAD
  }
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+   font-size: 12px;
+ }
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
  #landing-charity {
    width: 300px !important;
    margin-left: 15px !important;
@@ -152,10 +160,14 @@ font-size: 14px;
  /**** Links ****/
  a {
 <<<<<<< HEAD
+<<<<<<< HEAD
    color: #60B197;
 =======
    color: white;
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+   color: white;
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
@@ -166,14 +178,19 @@ font-size: 14px;
  a:hover {
    text-decoration: none;
 <<<<<<< HEAD
+<<<<<<< HEAD
    color: #2ecc71;
 =======
    color: black;
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+   color: lemonchiffon;
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    border-radius:0px !important;
  }
 
  p a {
+<<<<<<< HEAD
 <<<<<<< HEAD
    color: #60B197;
  }
@@ -181,12 +198,17 @@ font-size: 14px;
  p a:hover {
    color: #2ecc71;
 =======
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    color: #777;
  }
 
  p a:hover {
    color: #777;
+<<<<<<< HEAD
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
  }
 
 
@@ -279,10 +301,14 @@ font-size: 14px;
 
   .wpb-menu-container .wpb-main-menu li a:hover {
 <<<<<<< HEAD
+<<<<<<< HEAD
    color: #2ECC71 !important;
 =======
    color: #777 !important;
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+   color: #777 !important;
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    -webkit-transition: color 0.5s ease;
    -moz-transition: color 0.5s ease;
    -ms-transition: color 0.5s ease;
@@ -1037,16 +1063,22 @@ font-size: 14px;
 
 /*Override Bootstrap Row Class*/
 <<<<<<< HEAD
+<<<<<<< HEAD
 .row {
    margin-left: 0;
    margin-right: 9px;
 }
 =======
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 /*.row {
    margin-left: 0;
    margin-right: 9px;
 }*/
+<<<<<<< HEAD
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 
 #donations {
    margin-top: 160px;
@@ -1056,6 +1088,7 @@ font-size: 14px;
 
 @media (min-width: 1430px) {
 <<<<<<< HEAD
+<<<<<<< HEAD
    .row {
       margin: 0 0 -9px 0;
    }
@@ -1064,6 +1097,11 @@ font-size: 14px;
       margin: 0 0 -9px 0;
    }*/
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+   /*.row {
+      margin: 0 0 -9px 0;
+   }*/
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
 
    .wpb-logo-container {
       margin-right: 0;
@@ -1307,11 +1345,14 @@ font-size: 14px;
    }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    .row {
       margin: 0 0 0 4px;
    }
  }
 =======
+=======
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
    /*.row {
       margin: 0 0 0 4px;
    }*/
@@ -1487,4 +1528,132 @@ button.social-signin.github {
     text-align:center;
 
 }
+<<<<<<< HEAD
 >>>>>>> 57c747505a03a74e8daa91e9d2f30e91bfdff2bb
+=======
+/*chat styles*/
+div.chatpanel {
+  position: fixed;
+  bottom: 0px;
+  width: 290px;
+  right: 0;
+  background: #f6f6f6;
+  box-shadow: 3px 0px 3px 0px rgba(50, 50, 50, 0.5);
+}
+
+@media screen and (max-width:650px){
+  div.chatpanel {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    right: 0;
+    background: #f6f6f6;
+    box-shadow: 3px 0px 3px 0px rgba(50, 50, 50, 0.5);
+  }
+}
+
+div.panel-heading {
+  height: 40px;
+  padding: 5px;
+  background: rosybrown;
+  color: brown;
+  font-size: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+li.message:hover {
+  background: #f2f3f4;
+}
+
+li.message {
+  padding: 0px 0px;
+  font-size: 15px;
+}
+
+div.chatthread {
+  overflow-y: scroll;
+  height: 300px;
+  width: 100%;
+  margin-bottom:40px;
+  background: white;
+}
+
+div.chat_body {
+  margin-top: -15px;
+}
+p.message_content {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+li.align-left{
+  background: white;
+  margin-right: 20px;
+  width:100%;
+  margin-top: 0px;
+}
+li.no-margin{
+margin:0px;
+padding:0px;
+}
+ul.no-padding{
+  padding: 0px 3px;
+  margin-top: 2px;
+}
+div.chatinput {
+  width: 100%;
+  position: absolute;
+  background: lightgrey;
+  bottom: 0;
+  left: 0;
+  font-size: 12px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input.chat_message {
+  outline: none;
+  width: calc(100% - 60px);
+  background: white;
+  padding: 0px 4px;
+  height: 35px;
+
+}
+small.message_notification {
+  color: darkslateblue;
+  position: absolute;
+  left: 30px;
+  bottom: 10px;
+}
+
+a.retract_button {
+  position: absolute;
+  right: 0px;
+  padding: 5px;
+  color: black;
+}
+
+a.send_icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  color: #909497;
+}
+
+p.message_content {
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+strong.username {
+  text-transform: capitalize;
+  font-family: "Arial Black", Gadget, sans-serif;
+}
+
+small.time-content {
+  font-family: "Courier New", Courier, monospace;
+}
+ .avatar-size{
+   width: 50px;
+   height:20px;
+ }
+>>>>>>> 0f903f2b5705dead80ea7a20562123818a409f67
