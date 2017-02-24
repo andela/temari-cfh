@@ -1,10 +1,11 @@
 // Module dependencies.
 const mongoose = require('mongoose');
 const avatars = require('./avatars').all();
+
+const User = mongoose.model('User');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
 
-const User = mongoose.model('User');
 const secret = process.env.SECRET_TOKEN_KEY;
 
 // Auth callback
@@ -132,7 +133,7 @@ exports.addDonation = (req, res) => {
             }
           }
           if (!duplicate) {
-            console.log('Validated donation');
+            // console.log('Validated donation');
             user.donations.push(req.body);
             user.premium = 1;
             user.save();
