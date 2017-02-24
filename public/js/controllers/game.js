@@ -54,6 +54,7 @@ angular.module('mean.system')
       $scope.sendMessage = (userMessage) => {
         $scope.chat.postGroupMessage(userMessage);
         $scope.chatMessage = '';
+        $('#example').emojioneArea()[0].emojioneArea.setText('');
       };
       $scope.pickCard = (card) => {
         if (!$scope.hasPickedCards) {

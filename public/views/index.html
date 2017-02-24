@@ -20,35 +20,36 @@ $(document).ready(function() {
 </script>
 <script></script>
 <div landing id="main-bod">
-	<div id="top-part">
-		<div class="wpb-top-bar">
-			<div class ="mod-contain" id="navver">
-				<div class="row">
-					<div class="wpb-logo-container">
-						<div id="landing-logo">
-							<span id="wpb-logo">Cards For Humanity</span>
-						</div>
-						<div class="col-md-9 wpb-menu-container">
-							<ul class="wpb-main-menu">
-								<li><a onclick="scroll(0,0)">Home</a></li>
-								<li><a onclick="scroll(0,742)">How to Play</a></li>
-								<span ng-show="showOptions">
-									<li><a href="#!/signup">Sign Up</a></li>
-									<li><a href="#!/signin">Sign In</a></li>
-								</span>
-								<span ng-hide="showOptions">
-									<li><a href="/signout">Sign Out</a></li>
-								</span>
-							</ul>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- Logo & Menu Bar End -->
-<br><br><br>
+  <div id="top-part">
+    <div class="wpb-top-bar">
+      <div class="mod-contain" id="navver">
+        <div class="row">
+          <div class="wpb-logo-container">
+            <div id="landing-logo">
+              <span id="wpb-logo">CFH</span>
+            </div>
+            <div class="col-md-9 wpb-menu-container">
+              <ul class="wpb-main-menu">
+                <li><a onclick="scroll(0,0)">Home</a></li>
+                <li><a onclick="scroll(0,742)">How to Play</a></li>
+                <span ng-show="showOptions">
+                  <li><a href="#!/signup">Sign Up</a></li>
+                  <li><a href="#!/signin">Sign In</a></li>
+                </span>
+                <span ng-hide="showOptions">
+                  <li><a href="/signout">Sign Out</a></li>
+                </span>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Logo & Menu Bar End -->
+  <br>
+  <br>
+  <br>
   <!-- Set your background image for this header on the line below. -->
   <header class="intro-header" style="background-image: url('/img/bck2.jpg')" ng-controller="IndexController">
     <div class="container">
@@ -68,21 +69,16 @@ $(document).ready(function() {
   <div class="container card-container">
     <div class="row card-row">
       <div class="card-overlay col-md-6" style="background-image: url('/img/right-crd.jpg')">
-
         <div class="white-text text-center">
           <div class="card-block">
             <h3>About this Game</h3>
             <hr class="small">
             <p class="adjust">Cards for humanity is a fast-paced online version of the popular card game, <a href="http://cardsagainsthumanity.com/">Cards Against Humanity</a>, that gives you the opportunity to donate to children in need - all while remaining as despicable and awkward as you naturally are. Warning! This games contains offensive, profane, explicit content created by Cards Aganist Humanity and provided here, uncensored and complete, in digital form. Human Resources made us say that. To send a private link to your friends, sign up! </p>
             <!--<button type="button" class="btn btn-info" placeholder="View project"><a href="/play">Play Game</a></button>-->
-            <span ng-show="showOptions">
-              							<button type="button" class="btn btn-info" placeholder="View project">
-              <a href="/play">Play as Guest</a></button>
-            </span>
-						<span ng-hide="showOptions">
-							<button type="button" class="btn btn-info" placeholder="View project">
+            <span ng-hide="showOptions">
+              <button type="button" class="btn btn-info" placeholder="View project">
               <a href="/play">Play Game with Strangers</a></button>
-							<button type="button" class="btn btn-info" placeholder="View project">
+              <button type="button" class="btn btn-info" placeholder="View project">
               <a href="/play?custom">Play Game with Friends</a></button>
 
            </span>
@@ -103,77 +99,77 @@ $(document).ready(function() {
     </div>
   </div>
 </div>
-  <h3 class="text-center">How to Play</h3>
-  <hr style="border-color:black" class="small">
-  <hr>
-  <div class="container">
-    <div class="text-center">
-      <div class="post-preview text1 col-md-3">
-        <span class="fa-stack fa-lg">
+<h3 class="text-center">How to Play</h3>
+<hr style="border-color:black" class="small">
+<hr>
+<div class="container">
+  <div class="text-center">
+    <div class="post-preview text1 col-md-3">
+      <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-inverse fa-stack-1x">1</i>
     </span>
-        <h4 class="post-title">Each player begins with, and will always have, 10 white answer cards.</h4>
-      </div>
-      <div class="post-preview text2 col-md-3">
-        <span class="fa-stack fa-lg">
+      <h4 class="post-title">Each player begins with, and will always have, 10 white answer cards.</h4>
+    </div>
+    <div class="post-preview text2 col-md-3">
+      <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-inverse fa-stack-1x">2</i>
     </span>
-        <h4 class="post-title">For each round, one player is randomly chosen as the Card Czar.</h4>
-      </div>
-      <div class="post-preview text3 col-md-3">
-        <span class="fa-stack fa-lg">
+      <h4 class="post-title">For each round, one player is randomly chosen as the Card Czar.</h4>
+    </div>
+    <div class="post-preview text3 col-md-3">
+      <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-inverse fa-stack-1x">3</i>
     </span>
-        <h4 class="post-title">Everyone else answers the black question card by clicking on the answer card they want to use.</h4>
-      </div>
-      <div class="post-preview text4 col-md-3">
-        <span class="fa-stack fa-lg">
+      <h4 class="post-title">Everyone else answers the black question card by clicking on the answer card they want to use.</h4>
+    </div>
+    <div class="post-preview text4 col-md-3">
+      <span class="fa-stack fa-lg">
       <i class="fa fa-circle fa-stack-2x"></i>
       <i class="fa fa-inverse fa-stack-1x">4</i>
     </span>
-        <h4 class="post-title">The Card Czar then picks a favorite answer, and whoever played that answer wins the round.</h4>
-      </div>
+      <h4 class="post-title">The Card Czar then picks a favorite answer, and whoever played that answer wins the round.</h4>
     </div>
   </div>
-  </div>
-  <hr>
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <ul class="list-inline text-center">
-            <li>
-              <a href="https://twitter.com/CFH_App">
-                <span class="fa-stack fa-lg">
+</div>
+</div>
+<hr>
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          <li>
+            <a href="https://twitter.com/CFH_App">
+              <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                 </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.facebook.com/cardsforhumanityLA/">
-                <span class="fa-stack fa-lg">
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/cardsforhumanityLA/">
+              <span class="fa-stack fa-lg">
                   <i class="fa fa-circle fa-stack-2x"></i>
                   <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                 </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://github.com/cardsforhumanity/cardsforhumanity">
-                <span class="fa-stack fa-lg">
-									<i class="fa fa-circle fa-stack-2x"></i>
-									<i class="fa fa-github fa-stack-1x fa-inverse"></i>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/cardsforhumanity/cardsforhumanity">
+              <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                 </span>
-              </a>
-            </li>
-          </ul>
-          <p class="copyright text-muted text-small">
-            Legal stuff: This game is based on the Cards Against Humanity card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by crowdrise. Copyright &copy; <em style="color:red">Team Temari </em>2017</p>
-        </div>
+            </a>
+          </li>
+        </ul>
+        <p class="copyright text-muted text-small">
+          Legal stuff: This game is based on the Cards Against Humanity card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all proceeds from donations go directly to charity, as managed by crowdrise. Copyright &copy; <em style="color:red">Team Temari </em>2017</p>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
