@@ -16,35 +16,44 @@ angular.module('mean.system')
       $scope.makeAWishFact = makeAWishFacts.pop();
       $scope.chat = game.gameChat;
 
-if ($routeParams.email && $routeParams.password) {
-  const data = {
-    email: $routeParams.email,
-    password: $routeParams.password
-  }
-  $http
-  .post('/api/auth/validate', data)
-  .success((data, status, headers) => {
-    const token = data.token;
-    $location.path('/');
-  })
-  .error((data, status, header) => {
-    console.log(data);
-  });
-}
+      if ($routeParams.email && $routeParams.password) {
+        const data = {
+          email: $routeParams.email,
+          password: $routeParams.password
+        }
+        $http
+          .post('/api/auth/validate', data)
+          .success((data, status, headers) => {
+            const token = data.token;
+            $location.path('/');
+          })
+          .error((data, status, header) => {
+            console.log(data);
+          });
+      }
       /**
       * Method to scroll the chat thread to the bottom
       * so user can see latest message when messages overflow
       * @return{undefined}
       */
       const scrollChatThread = () => {
-        const chatResults = document.getElementById('results');
-        chatResults.scrollTop = chatResults.scrollHeight;
+        try {
+          const chatResults = document.getElementById('results');
+          chatResults.scrollTop = chatResults.scrollHeight;
+        }
+        catch (err) {
+
+        }
       };
 
       $scope.$watchCollection('chat.messageArray', (newValue, oldValue) => {
-        $timeout(() => {
-          scrollChatThread();
-        }, 100);
+        try {
+          $timeout(() => {
+            scrollChatThread();
+          }, 100);
+        }
+        catch (err) {
+        }
       });
 
       /**
