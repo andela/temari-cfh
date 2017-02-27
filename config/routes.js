@@ -4,9 +4,10 @@ const questions = require('../app/controllers/questions');
 const avatars = require('../app/controllers/avatars');
 const index = require('../app/controllers/index');
 const validation = require('../app/controllers/userAuth');
-const GameHistory = require('../app/controllers/game-history');
+const startGame = require('../app/controllers/api/start-game');
 const search = require('../app/controllers/api/search');
 const mail = require('../app/controllers/api/mailer');
+const gameLog = require('../app/controllers/api/game-log');
 
 module.exports = (app, passport, auth) => {
   // User Routes
@@ -108,11 +109,11 @@ module.exports = (app, passport, auth) => {
   // app.post('/api/auth/login', validation.login);
   app.get('/api/auth/validate', validation.login);
 
-  // game history
-  app.get('/api/games/history/:email', GameHistory.getUserGames);
-  app.get('/api/games/:id/history', GameHistory.getGame);
-  app.post('/api/games/:id/start', GameHistory.createGame);
-  app.patch('/api/games/:id/update', GameHistory.patchGame);
-  app.put('/api/games/:id/end', GameHistory.updateGame);
-  app.delete('/api/games/:id/delete', GameHistory.deleteGame);
+  // game start related routes
+  app.get('/api/games/:id', startGame.getGameRecords);
+  app.post('/api/games/:id/start', startGame.saveRecords);
+  app.post('/api/games/:id/end', startGame.updateRecords);
+
+  // game log route
+  app.post('/api/games/history', gameLog.getUserHistory);
 };
