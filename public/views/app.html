@@ -10,6 +10,9 @@
       <a href="#" style="color:antiquewhite" >Cards For Humanity</a>
       <span ng-show="userName">
     </div>
+    <button id="gameLogButton" data-target="#bs-example-modal-sm" class="btn" data-toggle="modal" ng-click="allGameRecords()">
+      Game Log
+    </button>
     <div id='abandon-game-button' ng-click="abandonGame()">
       Abandon Game
     </div><h5 class="pull-right" style="color:white; margin-right: 10px;"><a href='/gametour'><i>Take a tour</i></a></h5>
@@ -35,6 +38,7 @@
         <answers></answers>
         <chat></chat>
   </div>
+  <div ng-include="'./views/game-log.html'">
 </div>
 <!-- Modal for game start section -->
 
