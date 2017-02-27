@@ -1,9 +1,9 @@
 
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http',
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http', '$window',
     function ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http) {
+      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http, $window) {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
@@ -209,7 +209,10 @@ angular.module('mean.system')
 
 
       $scope.startGame = function () {
-        game.startGame();
+        const isUptoRequiredNumber = game.players.length >= game.playerMinLimit;
+        if (isUptoRequiredNumber) {
+          game.startGame();
+        } else { $('#playerMinimumAlert').modal('show'); }
       };
 
       $scope.abandonGame = function () {
@@ -316,8 +319,21 @@ angular.module('mean.system')
       $scope.selectList = (word) => {
         $scope.email = word;
       };
+
       $scope.drawCard = () => {
         game.drawCard();
+      };
+
+      $scope.allGameRecords = () => {
+        $http.post('/api/games/history').then((games) => {
+          $scope.allGameData = games.data;
+        }, (err) => {
+          console.log(err.data);
+        });
+      };
+
+      $scope.viewGameHistory = () => {
+        game.gameHistory();
       };
     }
   ])
