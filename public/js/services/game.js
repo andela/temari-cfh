@@ -208,9 +208,7 @@ angular.module('mean.system')
             winner: game.gameWinner
           }
         })
-          .success((res) => {
-            return res;
-          })
+          .success(res => res)
           .error(err => err);
       }
     });
@@ -247,12 +245,8 @@ angular.module('mean.system')
           winner: ''
         }
       })
-        .success((res) => {
-          return res;
-        })
-        .error((err) => {
-          return err;
-        });
+        .success(res => res)
+        .error(err => err);
     };
 
     game.leaveGame = () => {
@@ -277,9 +271,7 @@ angular.module('mean.system')
           game.gameHistory = res;
           return res;
         })
-        .error((err) => {
-          return err;
-        });
+        .error(err => err);
     };
 
     game.pickCards = (cards) => {
