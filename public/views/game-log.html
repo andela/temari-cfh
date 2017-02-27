@@ -31,17 +31,19 @@
                     Game : {{$index + 1}}
                     <tr class="success">
                       <th>Players</th>
+                      <th>Completed</th>
                       <th>Rounds</th>
                       <th>Winner</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr class="active">
-                      <td>Game Creator: {{i.players[0].username}}</td>
+                      <td>{{i.players[0].username}}</td>
                       <thead ng-repeat="j in i.players">
-                        <td>Players: {{j.username}}</td>
-                        <td>Rounds: {{i.rounds}}</td>
-                        <td>Game Winner: {{i.players[i.winner].username}}</td>
+                        <td>{{j.username}}</td>
+                        <td>{{i.completed}}</td>
+                        <td>{{i.rounds}}</td>
+                        <td>{{i.players[i.winner].username}}</td>
                       </thead>
                     </tr>
                   </tbody>
