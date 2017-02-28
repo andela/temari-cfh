@@ -1,9 +1,9 @@
 
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http', '$window',
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http', '$window', 'gameRecord',
     function ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http, $window) {
+      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http, $window, gameRecord) {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
@@ -148,7 +148,7 @@ angular.module('mean.system')
       };
 
       $scope.showSecond = card => game.curQuestion.numAnswers > 1 &&
-          $scope.pickedCards[1] === card.id;
+        $scope.pickedCards[1] === card.id;
 
       $scope.isCzar = () => game.czar === game.playerIndex;
 
@@ -310,22 +310,21 @@ angular.module('mean.system')
       };
 
       $scope.allGameRecords = () => {
-        $http.post('/api/games/history').then((games) => {
-          $scope.allGameData = games.data;
+        gameRecord.getRecord().then((games) => {
+          $scope.allGameData = games;
         }, (err) => {
-          console.log(err.data);
         });
       };
 
-      $scope.viewGameHistory = () => {
-        game.gameHistory();
-      };
+$scope.viewGameHistory = () => {
+  game.gameHistory();
+};
     }
   ])
   .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
-    const $ctrl = this;
+  const $ctrl = this;
 
-    $scope.open = () => {
-      $('#modalView').modal('show');
-    };
-  }]);
+  $scope.open = () => {
+    $('#modalView').modal('show');
+  };
+}]);
