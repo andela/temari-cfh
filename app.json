@@ -32,25 +32,25 @@
       "required": true
     },
     "MAILGUN_API_KEY": {
-      "required": true
+      "required": false
     },
     "MAILGUN_DOMAIN": {
-      "required": true
+      "required": false
     },
     "MAILGUN_PUBLIC_KEY": {
-      "required": true
+      "required": false
     },
     "MAILGUN_SMTP_LOGIN": {
-      "required": true
+      "required": false
     },
     "MAILGUN_SMTP_PASSWORD": {
-      "required": true
+      "required": false
     },
     "MAILGUN_SMTP_PORT": {
-      "required": true
+      "required": false
     },
     "MAILGUN_SMTP_SERVER": {
-      "required": true
+      "required": false
     },
     "MONGODB_URI": {
       "required": true
