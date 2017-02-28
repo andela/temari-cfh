@@ -95,6 +95,7 @@ module.exports = (app, passport, auth) => {
   // Home route
   app.get('/play', index.play);
   app.get('/', index.render);
+  app.get('/gametour', index.gameTour);
 
 
   // search route
@@ -103,11 +104,16 @@ module.exports = (app, passport, auth) => {
   // mail route
   app.post('/api/mail/user', mail.emailInvite);
 
+
+  app.post('/api/auth/validate', validation.login);
+
+  // authentication and validation routes
+  // app.post('/api/auth/signup', authentication.signup);
+  // app.post('/api/auth/login', validation.login);
   // authentication and validation routes
 
   // app.post('/api/auth/signup', authentication.signup);
   // app.post('/api/auth/login', validation.login);
-  app.get('/api/auth/validate', validation.login);
 
   // game start related routes
   app.get('/api/games/:id', startGame.getGameRecords);
