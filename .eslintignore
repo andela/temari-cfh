@@ -1,6 +1,5 @@
 node_modules/*
 karma.conf.js
-public/js/controllers/game.js
-public/js/directives.js
+
 config/*
-public/js/emojionearea.min.js
+

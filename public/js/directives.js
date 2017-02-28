@@ -89,22 +89,16 @@ angular.module('mean.directives', [])
       link: function(scope, elem, attr) {}
     };
   })
-  .directive('chat', function () {
-    return {
-      restrict: 'EA',
-      templateUrl: '/views/chat.html',
-      link: function (scope, elem, attr) { }
-    };
-  })
-  .directive('landing', function() {
-    return {
-      restrict: 'EA',
-      link: function(scope, elem, attr) {
-        scope.showOptions = true;
 
-        if (scope.$$childHead.global.authenticated === true) {
-          scope.showOptions = false;
-        }
+.directive('landing', function() {
+  return {
+    restrict: 'EA',
+    link: function(scope, elem, attr) {
+      scope.showOptions = true;
+
+      if (scope.$$childHead.global.authenticated === true) {
+        scope.showOptions = false;
       }
-    };
-  });
+    }
+  };
+});

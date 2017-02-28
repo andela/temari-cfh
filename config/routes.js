@@ -104,6 +104,7 @@ module.exports = (app, passport, auth) => {
 
   // authentication and validation routes
 
+
   // app.post('/api/auth/signup', authentication.signup);
   // app.post('/api/auth/login', validation.login);
   app.get('/api/auth/validate', validation.login);

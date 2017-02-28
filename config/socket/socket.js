@@ -16,7 +16,7 @@ module.exports = function(io) {
   const gamesNeedingPlayers = [];
   let gameID = 0;
 
-  io.sockets.on('connection', function (socket) {
+  io.sockets.on('connection', function(socket) {
     // console.log(socket.id + ' Connected');
     socket.emit('id', { id: socket.id });
 
@@ -73,14 +73,14 @@ module.exports = function(io) {
 
       exitGame(socket);
     });
-    
+
     socket.on('drawCard', () => {
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].drawCard();
       }
     });
   });
-  
+
   const joinGame = function(socket, data) {
     const player = new Player(socket);
     data = data || {};
@@ -88,7 +88,7 @@ module.exports = function(io) {
     if (data.userID !== 'unauthenticated') {
       User.findOne({
         _id: data.userID
-      }).exec(function (err, user) {
+      }).exec(function(err, user) {
         if (err) {
           // console.log('err', err);
           return err; // Hopefully this never happens.
@@ -127,7 +127,7 @@ module.exports = function(io) {
       // Also checking the number of players, so node doesn't crash when
       // no one is in this custom room.
       if (game.state === 'awaiting players' && (!game.players.length ||
-        game.players[0].socket.id !== socket.id)) {
+          game.players[0].socket.id !== socket.id)) {
         // Put player into the requested game
         console.log('Allowing player to join', requestedGameId);
         allPlayers[socket.id] = true;

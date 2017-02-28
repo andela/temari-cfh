@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
-const parse = require('mongoose-parse');
-
 const User = mongoose.model('User');
+const parse = require('mongoose-parse');
 const secret = process.env.SECRET_TOKEN_KEY;
 
 module.exports.signup = (req, res) => {
@@ -32,8 +31,6 @@ module.exports.signup = (req, res) => {
       success: true,
       message: 'Successfully created new user.',
       token,
-      email: req.body.email,
-      name: req.body.name,
       expires
     });
   });

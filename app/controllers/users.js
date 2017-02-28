@@ -2,9 +2,10 @@
 const mongoose = require('mongoose');
 const avatars = require('./avatars').all();
 
-const User = mongoose.model('User');
 const jwt = require('jsonwebtoken');
 const moment = require('moment');
+
+const User = mongoose.model('User');
 
 const secret = process.env.SECRET_TOKEN_KEY;
 
@@ -50,8 +51,8 @@ exports.session = (req, res) => {
 exports.checkAvatar = (req, res) => {
   if (req.user && req.user._id) {
     User.findOne({
-      _id: req.user._id
-    })
+        _id: req.user._id
+      })
       .exec((err, user) => {
         if (user.avatar !== undefined) {
           res.redirect('/#!/');
@@ -105,8 +106,8 @@ exports.avatars = (req, res) => {
   if (req.user && req.user._id && req.body.avatar !== undefined &&
     /\d/.test(req.body.avatar) && avatars[req.body.avatar]) {
     User.findOne({
-      _id: req.user._id
-    })
+        _id: req.user._id
+      })
       .exec((err, user) => {
         user.avatar = avatars[req.body.avatar];
         user.save();
@@ -121,8 +122,8 @@ exports.addDonation = (req, res) => {
     if (req.body.amount &&
       req.body.crowdriseDonationId && req.body.donorName) {
       User.findOne({
-        _id: req.user._id
-      })
+          _id: req.user._id
+        })
         .exec((err, user) => {
           // Confirm that this object hasn't already been entered
           let duplicate = false;
