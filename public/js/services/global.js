@@ -23,7 +23,7 @@ angular.module('mean.system')
       return $q.all([
         $http.get('/avatars')
       ])
-          .then(results => results[0].data);
+        .then(results => results[0].data);
     }
   })])
 
@@ -32,20 +32,20 @@ angular.module('mean.system')
       return $q.all([
         $http.post('/donations', donationObject)
       ])
-          .then((results) => {
-            console.log('userDonated success', results);
-          });
+        .then((results) => {
+          // console.log('userDonated success', results);
+        });
     }
   })])
   .factory('sendMail', ['$http', '$q', ($http, $q) => ({
     postMail: (email, gameUrl) => {
       const deferred = $q.defer();
       $http.post('/api/mail/user', { email, link: gameUrl }, { headers: { 'Content-Type': 'application/json' } })
-          .success((res) => {
-            deferred.resolve(res);
-          }).error((err) => {
-            deferred.reject(err);
-          });
+        .success((res) => {
+          deferred.resolve(res);
+        }).error((err) => {
+          deferred.reject(err);
+        });
       return deferred.promise;
     }
   })])
@@ -53,11 +53,23 @@ angular.module('mean.system')
     getUsers: (email) => {
       const deferred = $q.defer();
       $http.get(`/api/search/users/${email}`)
-          .success((data, status, headers, config) => {
-            deferred.resolve(data, status, headers, config);
-          }).error((err) => {
-            deferred.reject(err);
-          });
+        .success((data, status, headers, config) => {
+          deferred.resolve(data, status, headers, config);
+        }).error((err) => {
+          deferred.reject(err);
+        });
+      return deferred.promise;
+    }
+  })])
+  .factory('gameRecord', ['$http', '$q', ($http, $q) => ({
+    getRecord: () => {
+      const deferred = $q.defer();
+      $http.post('/api/games/history', { headers: { 'Content-Type': 'application/json' } })
+        .success((data, status, headers, config) => {
+          deferred.resolve(data, status, headers, config);
+        }).error((err) => {
+          deferred.reject(err);
+        });
       return deferred.promise;
     }
   })])

@@ -1,9 +1,9 @@
 
 angular.module('mean.system')
   .controller('GameController', ['$scope', 'game', '$timeout',
-    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http',
+    '$location', 'MakeAWishFactsService', 'sendMail', 'searchUser', '$routeParams', '$http', '$window', 'gameRecord',
     function ($scope, game, $timeout, $location,
-      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http) {
+      MakeAWishFactsService, sendMail, searchUser, $routeParams, $http, $window, gameRecord) {
       $scope.isMailSent = false;
       $scope.hasPickedCards = false;
       $scope.winningCardPicked = false;
@@ -148,7 +148,7 @@ angular.module('mean.system')
       };
 
       $scope.showSecond = card => game.curQuestion.numAnswers > 1 &&
-          $scope.pickedCards[1] === card.id;
+        $scope.pickedCards[1] === card.id;
 
       $scope.isCzar = () => game.czar === game.playerIndex;
 
@@ -192,8 +192,12 @@ angular.module('mean.system')
       $scope.winnerPicked = () => game.winningCard !== -1;
 
 
-      $scope.startGame = () => {
-        game.startGame();
+      $scope.startGame = function () {
+        const isUptoRequiredNumber = game.players.length >= game.playerMinLimit;
+        if (isUptoRequiredNumber) {
+          game.startGame();
+        } else { $('#playerMinimumAlert').modal('show'); }
+
       };
 
       $scope.abandonGame = () => {
@@ -300,15 +304,27 @@ angular.module('mean.system')
       $scope.selectList = (word) => {
         $scope.email = word;
       };
+
       $scope.drawCard = () => {
         game.drawCard();
       };
+
+      $scope.allGameRecords = () => {
+        gameRecord.getRecord().then((games) => {
+          $scope.allGameData = games;
+        }, (err) => {
+        });
+      };
+
+$scope.viewGameHistory = () => {
+  game.gameHistory();
+};
     }
   ])
   .controller('ModalController', ['$scope', '$dialog', ($scope, $dialog) => {
-    const $ctrl = this;
+  const $ctrl = this;
 
-    $scope.open = () => {
-      $('#modalView').modal('show');
-    };
-  }]);
+  $scope.open = () => {
+    $('#modalView').modal('show');
+  };
+}]);

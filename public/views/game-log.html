@@ -1,0 +1,60 @@
+<!--- Modal Start for Game Log-->
+<div class="modal fade removeModalScroll" id="bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+  ng-controller="GameController">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">X</span>
+      </button>
+      <!--<h4 class="modal-title" id="mySmallModalLabel" style="text-align: center">LOG FOR ALL GAMES</h4>-->
+    </div>
+    <div class="modal-body">
+      <!-- bootstrap accordion starts -->
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <ng-bind='allGameData'>
+          <!-- start of a new panel -->
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+              <h3 class="panel-title" style="text-align: center">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                  aria-controls="collapseOne">
+                  GAME LOGS
+                </a>
+              </h3>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne"
+              ng-repeat="i in allGameData">
+              <div class="panel-body">
+                <!-- start of table -->
+                <table class="table" style="font-size: 12px;">
+                  <thead class="head">
+                    Game : {{$index + 1}}
+                    <tr class="success">
+                      <th style="background-color: black; color:azure">Players</th>
+                      <th style="background-color: black; color:azure">Completed</th>
+                      <th style="background-color: black; color:azure">Rounds</th>
+                      <th style="background-color: black; color:azure">Winner</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Creator: {{i.players[0].username}}</td>
+                      <thead ng-repeat="j in i.players">
+                        <td>{{j.username}}</td>
+                        <td>{{i.completed}}</td>
+                        <td>{{i.rounds}}</td>
+                        <td>{{i.players[i.winner].username}}</td>
+                      </thead>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- End of table-->
+              </div>
+          </div>
+      </div>
+      <!-- End of panel -->
+    </div>
+  </div>
+  </div>
+  </div>
+  <!--- Modal End for Game Log-->

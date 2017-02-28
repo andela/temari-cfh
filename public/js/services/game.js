@@ -191,26 +191,24 @@ angular.module('mean.system')
         }, 15000);
       } else if (data.state === 'game dissolved' ||
         data.state === 'game ended') {
-        if (!(/^\d+$/).test(game.gameID) && data.state === 'game ended') {
-          $http({
-            method: 'PUT',
-            url: `/api/games/${game.gameID}/end`,
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            data: {
-              creator: game.players[0].id,
-              ended: true,
-              rounds: game.rounds,
-              winner: game.players[game.gameWinner].id
-            }
-          })
-            .success(response => response)
-            .error(response => response);
-        }
-
         game.players[game.playerIndex].hand = [];
         game.time = 0;
+        $http({
+          method: 'POST',
+          url: `/api/games/${game.gameID}/end`,
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          data: {
+            gameID: game.gameID,
+            players: game.players,
+            completed: true,
+            rounds: game.round,
+            winner: game.gameWinner
+          }
+        })
+          .success(res => res)
+          .error(err => err);
       }
     });
 
@@ -232,34 +230,47 @@ angular.module('mean.system')
 
     game.startGame = () => {
       socket.emit('startGame');
-    };
-
-    game.saveGame = () => {
-      socket.emit('startGame');
-      if (window.user) {
-        $http({
-          method: 'POST',
-          url: `/api/games/${game.gameID}/start`,
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          data: {
-            creator: game.players[0].id,
-            players: game.players,
-            ended: false,
-            rounds: 0,
-            winner: ''
-          }
-        })
-          .success(response => response)
-          .error(response => response);
-      }
+      $http({
+        method: 'POST',
+        url: `/api/games/${game.gameID}/start`,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          gameID: game.gameID,
+          players: game.players,
+          completed: false,
+          rounds: 0,
+          winner: ''
+        }
+      })
+        .success(res => res)
+        .error(err => err);
     };
 
     game.leaveGame = () => {
       game.players = [];
       game.time = 0;
       socket.emit('leaveGame');
+    };
+
+    game.gameHistory = () => {
+      socket.emit('viewGameHistory');
+      $http({
+        method: 'POST',
+        url: '/api/games/history',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: {
+          username: window.user.name
+        }
+      })
+        .success((res) => {
+          game.gameHistory = res;
+          return res;
+        })
+        .error(err => err);
     };
 
     game.pickCards = (cards) => {

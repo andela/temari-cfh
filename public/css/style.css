@@ -1566,3 +1566,27 @@ small.time-content {
    width: 50px;
    height:20px;
  }
+
+/*.modal-header {
+  background-color: darkcyan
+}*/
+
+#gameLogButton {
+  float: right;
+  color: black;
+  background-color: darkcyan;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+#bs-example-modal-sm {
+  width: 60%; /* desired relative width */
+  left: 5%; /* (100%-width)/2 */
+  /* place center */
+  margin-left:auto;
+  margin-right:auto;
+}
+.head{
+    background-color:black;
+    color: black;
+}
+
