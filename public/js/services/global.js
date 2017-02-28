@@ -33,7 +33,7 @@ angular.module('mean.system')
         $http.post('/donations', donationObject)
       ])
         .then((results) => {
-          console.log('userDonated success', results);
+          // console.log('userDonated success', results);
         });
     }
   })])
