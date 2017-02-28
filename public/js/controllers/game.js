@@ -248,7 +248,7 @@ angular.module('mean.system')
                 $('#oh-el')
                   .css({
                     'text-align': 'center',
-                    'font-size': '10px',
+                    'font-size': '20px',
                     background: 'white',
                     color: 'black'
                   }).text(link);
