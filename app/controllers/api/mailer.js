@@ -9,8 +9,8 @@ exports.emailInvite = (req, res) => {
   const fromEmail = new helper.Email('info@temari-cfh.com');
   const toEmail = new helper.Email(email);
   const subject = 'Invitation to join Temari-cfh game!';
-  const data = `<img src="https://goo.gl/aN3NWR" height="50"
-  width="300"><hr/>You have been invited by <strong><a>${req.user.name}</a>
+  const data = `<h2 style="font-size: 28px;
+  font-family: 'Lobster', cursive; color:black;">CFH</h2><hr/>You have been invited by <strong><a>${req.user.name}</a>
   </strong> to join a game in cards for humanity<br/><br/>Cards for Humanity is
   a fast-paced online version of the popular card game,Cards Against Humanity,
   that gives you the opportunity to donate to children in need - all while
